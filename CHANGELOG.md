@@ -12,6 +12,15 @@ All notable changes to Rivelle will be documented here. The project follows Sema
 ### Added
 
 - Initial Rivelle CLI, theme engine and shadcn-compatible source registry.
-- 33 editable React and Next.js components.
+- 53 editable React and Next.js components.
+- Alert Dialog, Button Group, Input Group, Field, Table, Pagination, Empty and Spinner primitives.
+- Form, Combobox, Calendar, Date Picker, Drawer, Navigation Menu and Input OTP primitives.
+- Carousel, Resizable, Menubar, Kbd and Item primitives.
+- Login, Sign Up, Hero, Pricing, Sidebar, Dashboard Shell, Settings and Empty Project blocks.
+- Dedicated `/blocks` gallery with full-size previews and install commands.
 - Interactive documentation, theme studio and syntax-highlighted usage examples.
 - TypeScript and JavaScript HTTP installation verification.
+
+### Changed
+
+- CLI `0.2.0` installs `registry:block` files into `components/blocks` while keeping primitives in `components/ui`.

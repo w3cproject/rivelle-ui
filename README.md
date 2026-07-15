@@ -13,7 +13,8 @@ An editable, shadcn-compatible component registry for React and Next.js. Rivelle
 - Tailwind CSS v4 semantic tokens powered by OKLCH colors and light/dark themes.
 - Server Component-safe primitives by default; `"use client"` exists only where interaction requires it.
 - CVA variants, `className` overrides, Radix composition, accessible states, and subtle motion.
-- 33 primitives, from Button and form controls to Dialog, Accordion, Slider, Context Menu, Toast, and navigation.
+- 53 primitives, from Button and form controls to Calendar, Carousel, Drawer, Table, Toast, and navigation.
+- 8 editable application blocks for authentication, marketing, dashboards and settings.
 
 ## Consumer usage
 
@@ -36,10 +37,10 @@ npx rivelle@latest add button
 Then use the editable source directly:
 
 ```tsx
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 export default function Page() {
-  return <Button variant="outline">Button</Button>
+  return <Button variant="outline">Button</Button>;
 }
 ```
 
