@@ -1,0 +1,33 @@
+{
+  "name": "rivelle-workspace",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/w3cproject/rivelle-ui.git"
+  },
+  "homepage": "https://rivelle.dev",
+  "bugs": {
+    "url": "https://github.com/w3cproject/rivelle-ui/issues"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@10.13.1",
+  "scripts": {
+    "build": "pnpm --filter rivelle build && pnpm registry:build && pnpm --filter @rivelle/www build",
+    "check": "pnpm --filter rivelle check",
+    "registry:build": "shadcn build -o apps/www/public/r",
+    "test:registry": "node scripts/verify-registry.mjs",
+    "verify": "pnpm check && pnpm build && pnpm test:registry",
+    "ci": "pnpm verify",
+    "dev": "pnpm --filter @rivelle/www dev",
+    "dev:cli": "pnpm --filter rivelle dev",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2",
+    "shadcn": "latest",
+    "typescript": "^5.9.2"
+  }
+}

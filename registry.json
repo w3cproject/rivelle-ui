@@ -1,0 +1,131 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "rivelle",
+  "homepage": "https://rivelle.dev",
+  "items": [
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Class name utility",
+      "description": "Merge conditional Tailwind CSS class names without conflicts.",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [{ "path": "registry/nova/lib/utils.ts", "type": "registry:lib" }]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "A tactile action primitive with a restrained accent edge and an optional signature shape.",
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"],
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [{ "path": "registry/nova/ui/button.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "A compact status and metadata label.",
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"],
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [{ "path": "registry/nova/ui/badge.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "A refined input surface with an inset focus baseline and validation states.",
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [{ "path": "registry/nova/ui/input.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "A responsive multiline text field.",
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [{ "path": "registry/nova/ui/textarea.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Composable content container with header, content and footer slots.",
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [{ "path": "registry/nova/ui/card.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "A semantic horizontal or vertical divider.",
+      "dependencies": ["@radix-ui/react-separator"],
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [{ "path": "registry/nova/ui/separator.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "An accessible animated on/off control.",
+      "dependencies": ["@radix-ui/react-switch"],
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [{ "path": "registry/nova/ui/switch.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "label", "type": "registry:ui", "title": "Label", "description": "Accessible form control label.",
+      "dependencies": ["@radix-ui/react-label"], "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/label.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "checkbox", "type": "registry:ui", "title": "Checkbox", "description": "Animated checkbox for boolean and indeterminate values.",
+      "dependencies": ["@radix-ui/react-checkbox", "lucide-react"], "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/checkbox.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "radio-group", "type": "registry:ui", "title": "Radio Group", "description": "A set of mutually exclusive options.",
+      "dependencies": ["@radix-ui/react-radio-group", "lucide-react"], "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/radio-group.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "select", "type": "registry:ui", "title": "Select", "description": "An accessible option picker with a floating content surface.",
+      "dependencies": ["@radix-ui/react-select", "lucide-react"], "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/select.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "tabs", "type": "registry:ui", "title": "Tabs", "description": "Layered content organized into keyboard-accessible tabs.",
+      "dependencies": ["@radix-ui/react-tabs"], "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/tabs.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "alert", "type": "registry:ui", "title": "Alert", "description": "A semantic callout for important information.",
+      "dependencies": ["class-variance-authority"], "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/alert.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "skeleton", "type": "registry:ui", "title": "Skeleton", "description": "A lightweight placeholder for loading content.",
+      "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/skeleton.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "avatar", "type": "registry:ui", "title": "Avatar", "description": "An image avatar with a reliable fallback.",
+      "dependencies": ["@radix-ui/react-avatar"], "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/avatar.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "tooltip", "type": "registry:ui", "title": "Tooltip", "description": "Contextual text revealed on hover or keyboard focus.",
+      "dependencies": ["@radix-ui/react-tooltip"], "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/tooltip.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "dialog", "type": "registry:ui", "title": "Dialog", "description": "A modal surface that focuses an important task.",
+      "dependencies": ["@radix-ui/react-dialog", "lucide-react"], "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/dialog.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "sheet", "type": "registry:ui", "title": "Sheet", "description": "A dialog that enters from an edge of the screen.",
+      "dependencies": ["@radix-ui/react-dialog", "class-variance-authority", "lucide-react"], "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/sheet.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "dropdown-menu", "type": "registry:ui", "title": "Dropdown Menu", "description": "A compact menu for actions and choices.",
+      "dependencies": ["@radix-ui/react-dropdown-menu", "lucide-react"], "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/dropdown-menu.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "popover", "type": "registry:ui", "title": "Popover", "description": "A non-modal floating surface anchored to a trigger.",
+      "dependencies": ["@radix-ui/react-popover"], "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/popover.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "command", "type": "registry:ui", "title": "Command", "description": "A fast, composable command menu and search surface.",
+      "dependencies": ["cmdk", "lucide-react"], "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/command.tsx", "type": "registry:ui" }]
+    }
+  ]
+}

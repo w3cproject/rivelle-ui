@@ -1,0 +1,17 @@
+changelog:
+  exclude:
+    labels:
+      - skip-changelog
+  categories:
+    - title: Breaking changes
+      labels: [breaking]
+    - title: Components
+      labels: [component]
+    - title: CLI and registry
+      labels: [cli, registry]
+    - title: Documentation
+      labels: [documentation]
+    - title: Fixes and improvements
+      labels: [bug, enhancement]
+    - title: Other changes
+      labels: ["*"]
