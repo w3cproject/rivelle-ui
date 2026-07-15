@@ -224,6 +224,148 @@ export function SwitchDemo() {
     <CommandItem>Create project</CommandItem>
   </CommandList>
 </Command>`, props: primitiveProps },
+  { slug: "accordion", name: "Accordion", description: "Vertically stacked disclosure sections with fluid, accessible motion.", install: "accordion", client: true, code: `import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+
+<Accordion collapsible type="single">
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Is the source editable?</AccordionTrigger>
+    <AccordionContent>Every detail is yours to change.</AccordionContent>
+  </AccordionItem>
+</Accordion>`, props: [
+    { name: "type", type: '"single" | "multiple"', defaultValue: "—", description: "Controls whether one or several items can be open." },
+    { name: "collapsible", type: "boolean", defaultValue: "false", description: "Allows the active single item to be closed." },
+    ...primitiveProps,
+  ] },
+  { slug: "breadcrumb", name: "Breadcrumb", description: "Server-safe hierarchical navigation with composable separators.", install: "breadcrumb", client: false, code: `import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
+
+<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem><BreadcrumbLink href="/">Home</BreadcrumbLink></BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem><BreadcrumbPage>Components</BreadcrumbPage></BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>`, props: primitiveProps },
+  { slug: "collapsible", name: "Collapsible", description: "An expandable content region controlled by a trigger.", install: "collapsible", client: true, code: `import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible"
+
+<Collapsible>
+  <CollapsibleTrigger>Toggle details</CollapsibleTrigger>
+  <CollapsibleContent>Hidden content</CollapsibleContent>
+</Collapsible>`, props: [
+    { name: "defaultOpen", type: "boolean", defaultValue: "false", description: "Sets the initial uncontrolled state." },
+    { name: "open", type: "boolean", defaultValue: "—", description: "Controls the expanded state." },
+    ...primitiveProps,
+  ] },
+  { slug: "progress", name: "Progress", description: "An accessible progress indicator with a luminous active range.", install: "progress", client: true, code: `import { Progress } from "@/components/ui/progress"
+
+<Progress value={72} />`, props: [
+    { name: "value", type: "number | null", defaultValue: "0", description: "Current progress between 0 and 100." },
+    { name: "max", type: "number", defaultValue: "100", description: "Maximum progress value exposed to assistive technology." },
+    ...primitiveProps,
+  ] },
+  { slug: "slider", name: "Slider", description: "A tactile single or multi-value range control.", install: "slider", client: true, code: `import { Slider } from "@/components/ui/slider"
+
+<Slider defaultValue={[58]} max={100} step={1} />`, props: [
+    { name: "defaultValue", type: "number[]", defaultValue: "[min]", description: "Initial uncontrolled values; multiple entries create a range." },
+    { name: "min / max", type: "number", defaultValue: "0 / 100", description: "Defines the available numeric range." },
+    { name: "step", type: "number", defaultValue: "1", description: "Increment between allowed values." },
+    ...primitiveProps,
+  ] },
+  { slug: "toggle", name: "Toggle", description: "A two-state button with tactile default and outline treatments.", install: "toggle", client: true, code: `import { Bold } from "lucide-react"
+import { Toggle } from "@/components/ui/toggle"
+
+<Toggle aria-label="Toggle bold" variant="outline">
+  <Bold />
+</Toggle>`, props: [
+    { name: "variant", type: '"default" | "outline"', defaultValue: '"default"', description: "Controls the surrounding surface." },
+    { name: "size", type: '"sm" | "default" | "lg"', defaultValue: '"default"', description: "Controls the hit area and padding." },
+    { name: "pressed", type: "boolean", defaultValue: "—", description: "Controls the active state." },
+    ...primitiveProps,
+  ] },
+  { slug: "toggle-group", name: "Toggle Group", description: "A coordinated set of single or multiple selection toggles.", install: "toggle-group", client: true, code: `import { Bold, Italic } from "lucide-react"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+
+<ToggleGroup type="multiple" variant="outline">
+  <ToggleGroupItem value="bold"><Bold /></ToggleGroupItem>
+  <ToggleGroupItem value="italic"><Italic /></ToggleGroupItem>
+</ToggleGroup>`, props: [
+    { name: "type", type: '"single" | "multiple"', defaultValue: "—", description: "Controls the selection model." },
+    { name: "variant", type: '"default" | "outline"', defaultValue: '"default"', description: "Shared treatment for every item." },
+    ...primitiveProps,
+  ] },
+  { slug: "hover-card", name: "Hover Card", description: "A rich preview revealed from a link or compact trigger.", install: "hover-card", client: true, code: `import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card"
+
+<HoverCard>
+  <HoverCardTrigger>@rivelle/ui</HoverCardTrigger>
+  <HoverCardContent>Editable React components.</HoverCardContent>
+</HoverCard>`, props: [
+    { name: "openDelay", type: "number", defaultValue: "700", description: "Delay before the card opens." },
+    { name: "closeDelay", type: "number", defaultValue: "300", description: "Delay before the card closes." },
+    ...primitiveProps,
+  ] },
+  { slug: "context-menu", name: "Context Menu", description: "A full-featured action menu opened with a secondary click.", install: "context-menu", client: true, code: `import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+} from "@/components/ui/context-menu"
+
+<ContextMenu>
+  <ContextMenuTrigger>Right-click here</ContextMenuTrigger>
+  <ContextMenuContent>
+    <ContextMenuItem>View source</ContextMenuItem>
+  </ContextMenuContent>
+</ContextMenu>`, props: primitiveProps },
+  { slug: "scroll-area", name: "Scroll Area", description: "A native-scrolling viewport with refined custom scrollbars.", install: "scroll-area", client: true, code: `import { ScrollArea } from "@/components/ui/scroll-area"
+
+<ScrollArea className="h-64">
+  <div className="p-4">Scrollable content</div>
+</ScrollArea>`, props: [
+    { name: "type", type: '"auto" | "always" | "scroll" | "hover"', defaultValue: '"hover"', description: "Controls when custom scrollbars are visible." },
+    { name: "scrollHideDelay", type: "number", defaultValue: "600", description: "Delay before an auto scrollbar hides." },
+    ...primitiveProps,
+  ] },
+  { slug: "aspect-ratio", name: "Aspect Ratio", description: "A small primitive for predictable media proportions.", install: "aspect-ratio", client: true, code: `import { AspectRatio } from "@/components/ui/aspect-ratio"
+
+<AspectRatio ratio={16 / 9}>
+  <img alt="Preview" src="/preview.jpg" />
+</AspectRatio>`, props: [
+    { name: "ratio", type: "number", defaultValue: "1", description: "Desired width divided by height." },
+    ...primitiveProps,
+  ] },
+  { slug: "sonner", name: "Toast / Sonner", description: "Polished toast notifications for transient feedback.", install: "sonner", client: true, code: `import { Toaster, toast } from "@/components/ui/sonner"
+
+export function App() {
+  return (
+    <>
+      <Toaster />
+      <button onClick={() => toast.success("Published")}>Publish</button>
+    </>
+  )
+}`, props: [
+    { name: "position", type: "ToasterProps['position']", defaultValue: '"bottom-right"', description: "Viewport edge used for the toast stack." },
+    { name: "richColors", type: "boolean", defaultValue: "false", description: "Enables stronger semantic colors." },
+    ...primitiveProps,
+  ] },
 ]
 
 export function getComponentDoc(slug: string) { return componentDocs.find((component) => component.slug === slug) }

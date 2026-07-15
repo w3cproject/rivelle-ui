@@ -12,6 +12,7 @@ import {
 
 import { ComponentPreview } from "@/components/component-preview"
 import { CopyCommand } from "@/components/copy-command"
+import { RivelleLogo } from "@/components/rivelle-logo"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -55,8 +56,7 @@ export default function Home() {
       <header className="sticky top-0 z-50 border-b border-border/60 bg-background/75 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-7xl items-center px-5 sm:px-8">
           <a className="group flex items-center gap-2.5 font-semibold tracking-tight" href="#top">
-            <span className="logo-mark"><span /></span>
-            <span>Rivelle</span>
+            <RivelleLogo />
             <Badge className="hidden sm:inline-flex" variant="secondary">v0.1</Badge>
           </a>
           <nav className="ml-auto hidden items-center gap-7 text-sm text-muted-foreground md:flex">
@@ -153,7 +153,7 @@ export default function Home() {
             <h2 className="mt-5 text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">Small pieces. Serious polish.</h2>
             <p className="mt-4 max-w-2xl text-muted-foreground">Accessible primitives with elegant defaults, designed to be composed and changed.</p>
           </div>
-          <Badge variant="secondary">7 components · growing</Badge>
+          <Badge variant="secondary">33 components · growing</Badge>
         </div>
 
         <div className="grid gap-5 lg:grid-cols-2">
@@ -247,7 +247,7 @@ export default function Home() {
 
       <footer className="border-t border-border/70">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <div className="flex items-center gap-2"><span className="logo-mark logo-mark-small"><span /></span><span>Rivelle</span></div>
+          <RivelleLogo markClassName="size-5" wordmarkClassName="text-sm" />
           <p>Built for interfaces worth remembering.</p>
         </div>
       </footer>

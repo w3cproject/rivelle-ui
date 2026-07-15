@@ -126,6 +126,54 @@
     {
       "name": "command", "type": "registry:ui", "title": "Command", "description": "A fast, composable command menu and search surface.",
       "dependencies": ["cmdk", "lucide-react"], "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/command.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "accordion", "type": "registry:ui", "title": "Accordion", "description": "Vertically stacked disclosure sections with fluid motion.",
+      "dependencies": ["@radix-ui/react-accordion", "lucide-react"], "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/accordion.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "breadcrumb", "type": "registry:ui", "title": "Breadcrumb", "description": "Server-safe hierarchical navigation with composable separators.",
+      "dependencies": ["@radix-ui/react-slot", "lucide-react"], "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/breadcrumb.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "collapsible", "type": "registry:ui", "title": "Collapsible", "description": "An expandable content region controlled by a trigger.",
+      "dependencies": ["@radix-ui/react-collapsible"], "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/collapsible.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "progress", "type": "registry:ui", "title": "Progress", "description": "An accessible progress indicator with a luminous active range.",
+      "dependencies": ["@radix-ui/react-progress"], "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/progress.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "slider", "type": "registry:ui", "title": "Slider", "description": "A tactile single or multi-value range control.",
+      "dependencies": ["@radix-ui/react-slider"], "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/slider.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "toggle", "type": "registry:ui", "title": "Toggle", "description": "A two-state button with default and outline treatments.",
+      "dependencies": ["@radix-ui/react-toggle", "class-variance-authority"], "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/toggle.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "toggle-group", "type": "registry:ui", "title": "Toggle Group", "description": "A coordinated set of single or multiple selection toggles.",
+      "dependencies": ["@radix-ui/react-toggle-group", "class-variance-authority"], "registryDependencies": ["@rivelle/utils", "@rivelle/toggle"], "files": [{ "path": "registry/nova/ui/toggle-group.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "hover-card", "type": "registry:ui", "title": "Hover Card", "description": "A rich preview revealed from a link or compact trigger.",
+      "dependencies": ["@radix-ui/react-hover-card"], "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/hover-card.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "context-menu", "type": "registry:ui", "title": "Context Menu", "description": "A full-featured action menu opened with a secondary click.",
+      "dependencies": ["@radix-ui/react-context-menu", "lucide-react"], "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/context-menu.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "scroll-area", "type": "registry:ui", "title": "Scroll Area", "description": "A native-scrolling viewport with refined custom scrollbars.",
+      "dependencies": ["@radix-ui/react-scroll-area"], "registryDependencies": ["@rivelle/utils"], "files": [{ "path": "registry/nova/ui/scroll-area.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "aspect-ratio", "type": "registry:ui", "title": "Aspect Ratio", "description": "A server-independent primitive for predictable media proportions.",
+      "dependencies": ["@radix-ui/react-aspect-ratio"], "files": [{ "path": "registry/nova/ui/aspect-ratio.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "sonner", "type": "registry:ui", "title": "Toast / Sonner", "description": "Polished toast notifications for transient feedback.",
+      "dependencies": ["sonner", "lucide-react"], "files": [{ "path": "registry/nova/ui/sonner.tsx", "type": "registry:ui" }]
     }
   ]
 }

@@ -1,25 +1,39 @@
-import { AlertCircle, ArrowUpRight, Check, MoreHorizontal, Settings, Sparkles } from "lucide-react"
+"use client"
 
+import { AlertCircle, ArrowUpRight, Bold, Check, ChevronDown, Italic, MoreHorizontal, Settings, Sparkles, Underline } from "lucide-react"
+
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command"
+import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuLabel, ContextMenuSeparator, ContextMenuShortcut, ContextMenuTrigger } from "@/components/ui/context-menu"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { Progress } from "@/components/ui/progress"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { Skeleton } from "@/components/ui/skeleton"
+import { Slider } from "@/components/ui/slider"
+import { Toaster, toast } from "@/components/ui/sonner"
 import { Switch } from "@/components/ui/switch"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Textarea } from "@/components/ui/textarea"
+import { Toggle } from "@/components/ui/toggle"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 export function ComponentDocDemo({ slug }: { slug: string }) {
@@ -46,6 +60,18 @@ export function ComponentDocDemo({ slug }: { slug: string }) {
       {slug === "dropdown-menu" && <DropdownMenu><DropdownMenuTrigger asChild><Button size="icon" variant="outline"><MoreHorizontal /></Button></DropdownMenuTrigger><DropdownMenuContent align="end"><DropdownMenuLabel>Project</DropdownMenuLabel><DropdownMenuSeparator /><DropdownMenuItem>Edit details</DropdownMenuItem><DropdownMenuItem>Duplicate</DropdownMenuItem><DropdownMenuItem variant="destructive">Delete</DropdownMenuItem></DropdownMenuContent></DropdownMenu>}
       {slug === "popover" && <Popover><PopoverTrigger asChild><Button variant="outline">Open popover</Button></PopoverTrigger><PopoverContent><div className="grid gap-2"><p className="font-medium">Dimensions</p><p className="text-xs text-muted-foreground">Set the width of your component.</p><Input defaultValue="320px" /></div></PopoverContent></Popover>}
       {slug === "command" && <Command className="w-full max-w-md border shadow-lg"><CommandInput placeholder="Search actions..." /><CommandList><CommandEmpty>No actions found.</CommandEmpty><CommandGroup heading="Suggestions"><CommandItem>Open documentation</CommandItem><CommandItem>Create component</CommandItem><CommandItem>Change theme</CommandItem></CommandGroup></CommandList></Command>}
+      {slug === "accordion" && <Accordion className="w-full max-w-lg rounded-2xl border border-foreground/10 bg-background/80 px-5 shadow-sm" collapsible defaultValue="item-1" type="single"><AccordionItem value="item-1"><AccordionTrigger>Is the source editable?</AccordionTrigger><AccordionContent>Every component is installed directly into your project, so you can reshape every detail.</AccordionContent></AccordionItem><AccordionItem value="item-2"><AccordionTrigger>Does it support Server Components?</AccordionTrigger><AccordionContent>Display-only primitives stay server-safe. Client boundaries are added only where interaction needs them.</AccordionContent></AccordionItem><AccordionItem value="item-3"><AccordionTrigger>Can I override the styles?</AccordionTrigger><AccordionContent>Yes. Public className values are merged last, keeping local ownership explicit.</AccordionContent></AccordionItem></Accordion>}
+      {slug === "breadcrumb" && <Breadcrumb><BreadcrumbList><BreadcrumbItem><BreadcrumbLink href="#">Workspace</BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator /><BreadcrumbItem><BreadcrumbLink href="#">Components</BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator /><BreadcrumbItem><BreadcrumbPage>Breadcrumb</BreadcrumbPage></BreadcrumbItem></BreadcrumbList></Breadcrumb>}
+      {slug === "collapsible" && <Collapsible className="w-full max-w-sm rounded-2xl border bg-background p-4" defaultOpen><div className="flex items-center justify-between gap-4"><div><p className="text-sm font-semibold">Three active branches</p><p className="text-xs text-muted-foreground">Updated a moment ago</p></div><CollapsibleTrigger asChild><Button aria-label="Toggle branches" size="icon-sm" variant="ghost"><ChevronDown /></Button></CollapsibleTrigger></div><CollapsibleContent className="pt-3"><div className="space-y-2 text-sm text-muted-foreground"><div className="rounded-xl bg-foreground/[.045] px-3 py-2">main</div><div className="rounded-xl bg-foreground/[.045] px-3 py-2">feature/new-primitives</div><div className="rounded-xl bg-foreground/[.045] px-3 py-2">docs/registry</div></div></CollapsibleContent></Collapsible>}
+      {slug === "progress" && <div className="w-full max-w-md space-y-3"><div className="flex items-center justify-between text-sm"><span className="font-medium">Publishing registry</span><span className="text-muted-foreground">72%</span></div><Progress value={72} /></div>}
+      {slug === "slider" && <div className="w-full max-w-md space-y-4"><div className="flex justify-between text-sm"><span className="font-medium">Interface density</span><span className="text-muted-foreground">Comfortable</span></div><Slider defaultValue={[58]} max={100} step={1} /></div>}
+      {slug === "toggle" && <div className="flex gap-2"><Toggle aria-label="Toggle bold" variant="outline"><Bold /></Toggle><Toggle aria-label="Toggle italic" defaultPressed><Italic /></Toggle></div>}
+      {slug === "toggle-group" && <ToggleGroup defaultValue={["bold"]} type="multiple" variant="outline"><ToggleGroupItem aria-label="Toggle bold" value="bold"><Bold /></ToggleGroupItem><ToggleGroupItem aria-label="Toggle italic" value="italic"><Italic /></ToggleGroupItem><ToggleGroupItem aria-label="Toggle underline" value="underline"><Underline /></ToggleGroupItem></ToggleGroup>}
+      {slug === "hover-card" && <HoverCard><HoverCardTrigger asChild><a className="text-sm font-semibold text-primary underline decoration-primary/30 underline-offset-4" href="#">@rivelle/ui</a></HoverCardTrigger><HoverCardContent><div className="flex gap-3"><Avatar><AvatarFallback>RV</AvatarFallback></Avatar><div className="space-y-1"><p className="font-semibold">Rivelle UI</p><p className="text-sm leading-5 text-muted-foreground">Editable React components for interfaces with a point of view.</p><p className="pt-1 text-xs text-muted-foreground">33 primitives · MIT licensed</p></div></div></HoverCardContent></HoverCard>}
+      {slug === "context-menu" && <ContextMenu><ContextMenuTrigger className="grid h-44 w-full max-w-md place-items-center rounded-2xl border border-dashed border-foreground/18 bg-background/70 text-sm text-muted-foreground">Right-click this surface</ContextMenuTrigger><ContextMenuContent><ContextMenuLabel>Component</ContextMenuLabel><ContextMenuItem>View source<ContextMenuShortcut>⌘S</ContextMenuShortcut></ContextMenuItem><ContextMenuItem>Duplicate<ContextMenuShortcut>⌘D</ContextMenuShortcut></ContextMenuItem><ContextMenuSeparator /><ContextMenuItem variant="destructive">Delete</ContextMenuItem></ContextMenuContent></ContextMenu>}
+      {slug === "scroll-area" && <ScrollArea className="h-56 w-full max-w-sm rounded-2xl border bg-background"><div className="p-4"><p className="mb-3 text-sm font-semibold">Release activity</p>{Array.from({ length: 12 }, (_, index) => <div className="flex items-center justify-between border-b py-3 text-sm last:border-0" key={index}><span>Component update #{12 - index}</span><span className="text-xs text-muted-foreground">{index + 1}h</span></div>)}</div></ScrollArea>}
+      {slug === "aspect-ratio" && <div className="w-full max-w-md overflow-hidden rounded-2xl border bg-background shadow-sm"><AspectRatio ratio={16 / 9}><div className="flex size-full items-end bg-[radial-gradient(circle_at_20%_20%,color-mix(in_oklch,var(--primary)_35%,transparent),transparent_45%),linear-gradient(135deg,var(--foreground),color-mix(in_oklch,var(--foreground)_72%,var(--primary)))] p-6"><div><Badge className="mb-2" variant="secondary">16 / 9</Badge><p className="text-lg font-semibold text-background">Predictable media, every time.</p></div></div></AspectRatio></div>}
+      {slug === "sonner" && <div className="flex flex-wrap gap-3"><Toaster position="bottom-right" /><Button onClick={() => toast.success("Component published", { description: "The registry is ready to install." })}>Show toast</Button><Button onClick={() => toast("Draft saved", { description: "Your local changes are safe." })} variant="outline">Show neutral</Button></div>}
     </div>
   )
 }
