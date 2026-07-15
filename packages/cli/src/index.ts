@@ -34,7 +34,7 @@ const registryItemSchema = z.object({ name: z.string(), dependencies: z.array(z.
 
 type InitAnswers = { css: string; font: FontName; baseColor: NeutralName; accent: AccentName; radius: string; rsc: boolean; tsx: boolean; install: boolean; sourceRoot: string; framework: RivelleConfig["framework"] }
 
-const program = new Command().name("rivelle").description("Add editable UI component source code to your application.").version("0.1.0")
+const program = new Command().name("rivelle").description("Add editable UI component source code to your application.").version("0.1.1")
 
 program.command("init")
   .description("Configure a React, Vite or Next.js project for Rivelle.")
@@ -71,10 +71,9 @@ program.command("init")
     await writeText(resolveWithin(cwd, answers.sourceRoot, `lib/utils.${answers.tsx ? "ts" : "js"}`), answers.tsx ? utilsSource : utilsSourceJs, options.force)
     await mergeTheme(resolveWithin(cwd, answers.css), answers)
 
-    if (answers.install) {
-      const fontPackage = answers.font === "geist" ? "@fontsource-variable/geist" : "@fontsource-variable/inter"
-      await install(cwd, ["clsx", "tailwind-merge", "tw-animate-css", fontPackage])
-    }
+    const requiredThemePackages = themeDependencies(answers.font)
+    if (answers.install) await install(cwd, requiredThemePackages)
+    else printInstallHint(cwd, requiredThemePackages)
     if (!options.yes && process.stdin.isTTY) p.outro("Rivelle is ready. Try: rivelle add button")
     else success("Rivelle is configured. Try: rivelle add button")
   })
@@ -91,7 +90,7 @@ program.command("add")
     const rivelle = await readRivelleConfig(cwd, config)
     const installed = new Set<string>()
     const resolving = new Set<string>()
-    const packages = new Set<string>()
+    const packages = new Set<string>(options.skipInstall ? [] : await missingDependencies(cwd, themeDependencies(rivelle.theme.font)))
     for (const component of components) await addItem(component, { cwd, config, rivelle, overwrite: options.overwrite, installed, resolving, packages })
     if (!options.skipInstall && packages.size > 0) await install(cwd, [...packages])
     success(`Added ${[...installed].join(", ")}.`)
@@ -239,9 +238,26 @@ async function ensureViteAlias(cwd: string, sourceRoot: string) {
 }
 
 async function install(cwd: string, dependencies: string[]) {
+  if (dependencies.length === 0) return
   const manager = detectPackageManager(cwd)
   const args = manager === "npm" ? ["install", ...dependencies] : ["add", ...dependencies]
   console.log(pc.dim(`${manager} ${args.join(" ")}`)); await execa(manager, args, { cwd, stdio: "inherit" })
+}
+
+function themeDependencies(font: FontName) {
+  return ["clsx", "tailwind-merge", "tw-animate-css", font === "geist" ? "@fontsource-variable/geist" : "@fontsource-variable/inter"]
+}
+
+async function missingDependencies(cwd: string, dependencies: string[]) {
+  const packageJson = await readJsonIfExists(join(cwd, "package.json")) as { dependencies?: Record<string, string>; devDependencies?: Record<string, string> } | undefined
+  const declared = { ...packageJson?.dependencies, ...packageJson?.devDependencies }
+  return dependencies.filter((dependency) => !declared[dependency])
+}
+
+function printInstallHint(cwd: string, dependencies: string[]) {
+  const manager = detectPackageManager(cwd)
+  const verb = manager === "npm" ? "install" : "add"
+  console.warn(pc.yellow(`Dependencies were not installed. Run: ${manager} ${verb} ${dependencies.join(" ")}`))
 }
 
 function detectPackageManager(cwd: string) {
