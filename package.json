@@ -28,6 +28,6 @@
   "devDependencies": {
     "prettier": "^3.6.2",
     "shadcn": "latest",
-    "typescript": "^5.9.2"
+    "typescript": "^7.0.2"
   }
 }
