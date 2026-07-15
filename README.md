@@ -13,7 +13,7 @@ An editable, shadcn-compatible component registry for React and Next.js. Rivelle
 - Tailwind CSS v4 semantic tokens powered by OKLCH colors and light/dark themes.
 - Server Component-safe primitives by default; `"use client"` exists only where interaction requires it.
 - CVA variants, `className` overrides, Radix composition, accessible states, and subtle motion.
-- 21 initial primitives, from Button and form controls to Dialog, Sheet, Command, Select, Tooltip, and menus.
+- 33 primitives, from Button and form controls to Dialog, Accordion, Slider, Context Menu, Toast, and navigation.
 
 ## Consumer usage
 

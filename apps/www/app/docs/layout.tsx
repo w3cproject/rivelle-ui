@@ -3,6 +3,7 @@ import { Github, Search } from "lucide-react"
 
 import { DocsSidebar } from "@/components/docs-sidebar"
 import { DocsToc } from "@/components/docs-toc"
+import { RivelleLogo } from "@/components/rivelle-logo"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Button } from "@/components/ui/button"
 
@@ -18,7 +19,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
     <div className="docs-shell min-h-screen">
       <header className="docs-header">
         <div className="docs-header-inner">
-          <Link className="docs-brand" href="/"><span className="logo-mark logo-mark-small"><span /></span><span>Rivelle</span></Link>
+          <Link className="docs-brand" href="/"><RivelleLogo markClassName="size-5" /></Link>
           <nav className="docs-top-nav">
             {topLinks.map((link) => <Link href={link.href} key={link.href}>{link.label}</Link>)}
             <span>Blocks</span><span>Examples</span>

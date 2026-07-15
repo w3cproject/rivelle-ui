@@ -19,8 +19,19 @@ export default function OpenGraphImage() {
         width: "100%",
       }}
     >
-      <div style={{ alignItems: "center", display: "flex", fontSize: 30, fontWeight: 650, letterSpacing: "-0.04em" }}>
-        Rivelle
+      <div style={{ alignItems: "center", display: "flex", fontSize: 30, fontWeight: 650, gap: 14, letterSpacing: "-0.04em" }}>
+        <svg fill="none" height="44" viewBox="0 0 32 32" width="44">
+          <defs>
+            <linearGradient id="rivelle-og-fill" x1="7" x2="26" y1="27" y2="5" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#6d5dfc" />
+              <stop offset="0.52" stopColor="#895cff" />
+              <stop offset="1" stopColor="#b477ff" />
+            </linearGradient>
+          </defs>
+          <path d="M6 27V16.25C6 9.49 10.94 4.75 17.65 4.75h5.1L27 9l-4.25 4.25H18c-2.42 0-4 1.58-4 4V27H6Z" fill="url(#rivelle-og-fill)" />
+          <path d="M14 17.25c0-2.42 1.58-4 4-4h4.75L27 9H17.65C10.94 9 6 12.1 6 18.85v-2.6C6 9.49 10.94 4.75 17.65 4.75h5.1L27 9l-4.25 4.25H18c-2.42 0-4 1.58-4 4v2.6c0-1.01.27-1.88.76-2.6H14Z" fill="white" fillOpacity="0.13" />
+        </svg>
+        rivelle
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 22, maxWidth: 900 }}>
         <div style={{ fontSize: 82, fontWeight: 650, letterSpacing: "-0.055em", lineHeight: 1 }}>
