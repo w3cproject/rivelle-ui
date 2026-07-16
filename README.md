@@ -94,7 +94,7 @@ node packages/cli/dist/index.js --help
 
 ## Publishing
 
-Publishing is automated from `.github/workflows/publish.yml`. A version tag such as `v0.2.0` must match `packages/cli/package.json`; GitHub Actions verifies the workspace and publishes through npm trusted publishing with provenance.
+Publishing is automated from `.github/workflows/publish.yml`. A version tag such as `v0.3.0` must match `packages/cli/package.json`; GitHub Actions verifies the workspace and publishes through npm trusted publishing with provenance.
 
 Deployment and first-release setup are documented in [`docs/DEPLOYMENT.md`](./docs/DEPLOYMENT.md).
 

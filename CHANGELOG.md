@@ -4,6 +4,8 @@ All notable changes to Rivelle will be documented here. The project follows Sema
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-07-16
+
 ### Fixed
 
 - `add` now repairs missing font and motion dependencies when installation was skipped during `init`.
