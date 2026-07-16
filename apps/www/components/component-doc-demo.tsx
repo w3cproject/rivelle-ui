@@ -246,6 +246,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { DatePicker } from "@/components/ui/date-picker";
+import { StylePreview } from "@/components/style-preview";
+import { cn } from "@/lib/utils";
 
 function CalendarPreview() {
   const [date, setDate] = useState<Date | undefined>(new Date(2026, 6, 15));
@@ -288,7 +290,13 @@ function FormPreview() {
 
 export function ComponentDocDemo({ slug }: { slug: string }) {
   return (
-    <div className="docs-demo showcase-grid">
+    <StylePreview
+      canvasClassName="docs-demo-canvas showcase-grid"
+      className={cn(
+        "docs-demo",
+        slug === "navigation-menu" && "docs-demo-navigation-menu",
+      )}
+    >
       {slug === "button" && (
         <div className="flex max-w-xl flex-wrap items-center justify-center gap-3">
           <Button>
@@ -296,6 +304,9 @@ export function ComponentDocDemo({ slug }: { slug: string }) {
           </Button>
           <Button variant="signature">
             Rivelle signature <ArrowUpRight />
+          </Button>
+          <Button variant="prism">
+            Prism action <ArrowUpRight />
           </Button>
           <Button variant="outline">Explore system</Button>
           <Button variant="secondary">Join waitlist</Button>
@@ -316,6 +327,23 @@ export function ComponentDocDemo({ slug }: { slug: string }) {
       )}
       {slug === "input" && (
         <div className="w-full max-w-sm space-y-5">
+          <div className="grid gap-2">
+            <Label
+              className="text-xs font-semibold tracking-[0.08em] text-muted-foreground uppercase"
+              htmlFor="rivelle-prism-email"
+            >
+              Prism surface
+            </Label>
+            <Input
+              id="rivelle-prism-email"
+              placeholder="studio@rivelle.dev"
+              type="email"
+              variant="prism"
+            />
+            <p className="text-xs text-muted-foreground">
+              Crisp border, layered depth and a soft focus halo.
+            </p>
+          </div>
           <div className="grid gap-2">
             <Label
               className="text-xs font-semibold tracking-[0.08em] text-muted-foreground uppercase"
@@ -1228,6 +1256,6 @@ export function ComponentDocDemo({ slug }: { slug: string }) {
           </Button>
         </div>
       )}
-    </div>
+    </StylePreview>
   );
 }

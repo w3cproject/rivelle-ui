@@ -28,6 +28,9 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
+import { blockDocs } from "@/lib/block-docs";
+import { componentDocs } from "@/lib/component-docs";
+import { siteConfig } from "@/lib/site";
 
 const features = [
   {
@@ -64,7 +67,7 @@ export default function Home() {
           >
             <RivelleLogo />
             <Badge className="hidden sm:inline-flex" variant="secondary">
-              v0.2
+              v{siteConfig.version}
             </Badge>
           </a>
           <nav className="ml-auto hidden items-center gap-7 text-sm text-muted-foreground md:flex">
@@ -82,8 +85,13 @@ export default function Home() {
             </a>
           </nav>
           <div className="ml-auto flex items-center gap-1 md:ml-6">
-            <Button aria-label="GitHub" asChild size="icon-sm" variant="ghost">
-              <a href="#">
+            <Button
+              aria-label="Open Rivelle on GitHub"
+              asChild
+              size="icon-sm"
+              variant="ghost"
+            >
+              <a href={siteConfig.github} rel="noreferrer" target="_blank">
                 <Github />
               </a>
             </Button>
@@ -107,8 +115,9 @@ export default function Home() {
             <span className="gradient-text block">Shape every detail.</span>
           </h1>
           <p className="reveal-up delay-2 mx-auto mt-7 max-w-2xl text-balance text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Rivelle is a curated set of editable React components for teams who
-            care about craft, speed and complete control.
+            Rivelle is an open-source registry of {componentDocs.length}{" "}
+            editable React and Next.js components for teams who care about
+            craft, speed and complete control.
           </p>
           <div className="reveal-up delay-3 mx-auto mt-9 flex max-w-xl flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Button asChild className="w-full sm:w-auto" size="lg">
@@ -128,7 +137,7 @@ export default function Home() {
             </Button>
           </div>
           <div className="reveal-up delay-4 mx-auto mt-7 max-w-md">
-            <CopyCommand command="pnpm dlx rivelle@latest add button" />
+            <CopyCommand command="pnpm dlx rivelle@latest init" />
           </div>
         </div>
 
@@ -224,13 +233,15 @@ export default function Home() {
               composed and changed.
             </p>
           </div>
-          <Badge variant="secondary">53 components · growing</Badge>
+          <Badge variant="secondary">
+            {componentDocs.length} components · {blockDocs.length} blocks
+          </Badge>
         </div>
 
         <div className="grid gap-5 lg:grid-cols-2">
           <ComponentPreview
             command="rivelle add button"
-            description="Six variants, six sizes and full composition through asChild."
+            description="Eight variants, six sizes and full composition through asChild."
             title="Button"
           >
             <Button>Primary</Button>
@@ -370,7 +381,25 @@ export default function Home() {
       <footer className="border-t border-border/70">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <RivelleLogo markClassName="size-5" wordmarkClassName="text-sm" />
-          <p>Built for interfaces worth remembering.</p>
+          <p>MIT licensed · Built for interfaces worth remembering.</p>
+          <div className="flex items-center gap-4">
+            <a
+              className="hover:text-foreground"
+              href={siteConfig.github}
+              rel="noreferrer"
+              target="_blank"
+            >
+              GitHub
+            </a>
+            <a
+              className="hover:text-foreground"
+              href={siteConfig.npm}
+              rel="noreferrer"
+              target="_blank"
+            >
+              npm
+            </a>
+          </div>
         </div>
       </footer>
     </main>

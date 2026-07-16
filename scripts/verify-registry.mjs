@@ -77,6 +77,8 @@ async function verifyTypeScriptProject(cwd) {
     "--skip-install",
     "--registry",
     registry,
+    "--style",
+    "prism",
     "--accent",
     "violet",
   ]);
@@ -103,6 +105,15 @@ async function verifyTypeScriptProject(cwd) {
     css.includes('@import "tw-animate-css";'),
     "motion utilities import is missing",
   );
+  assert(
+    css.includes("--action-background: linear-gradient") &&
+      css.includes("--control-focus-shadow:"),
+    "Prism design tokens are missing",
+  );
+  const initialSettings = JSON.parse(
+    await readFile(join(cwd, "rivelle.json"), "utf8"),
+  );
+  assert(initialSettings.style === "prism", "Prism style was not persisted");
 
   await run([
     "init",
@@ -113,6 +124,8 @@ async function verifyTypeScriptProject(cwd) {
     "--skip-install",
     "--registry",
     registry,
+    "--style",
+    "nova",
     "--font",
     "inter",
     "--accent",
@@ -133,7 +146,9 @@ async function verifyTypeScriptProject(cwd) {
     await readFile(join(cwd, "rivelle.json"), "utf8"),
   );
   assert(
-    settings.theme.accent === "rose" && settings.theme.radius === "0.75rem",
+    settings.style === "nova" &&
+      settings.theme.accent === "rose" &&
+      settings.theme.radius === "0.75rem",
     "forced init did not persist theme settings",
   );
 }

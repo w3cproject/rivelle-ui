@@ -4,6 +4,7 @@ import { Github } from "lucide-react";
 import { RivelleLogo } from "@/components/rivelle-logo";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/lib/site";
 
 export default function BlocksLayout({
   children,
@@ -31,12 +32,19 @@ export default function BlocksLayout({
               Blocks
             </Link>
             <span className="rounded-lg px-3 py-2 text-muted-foreground/55">
-              Examples
+              Examples · soon
             </span>
           </nav>
           <div className="ml-auto flex items-center gap-1">
-            <Button aria-label="GitHub" size="icon-sm" variant="ghost">
-              <Github />
+            <Button
+              aria-label="Open Rivelle on GitHub"
+              asChild
+              size="icon-sm"
+              variant="ghost"
+            >
+              <a href={siteConfig.github} rel="noreferrer" target="_blank">
+                <Github />
+              </a>
             </Button>
             <ThemeToggle />
           </div>

@@ -1,11 +1,15 @@
 import Link from "next/link";
-import { Github, Search } from "lucide-react";
+import { Github } from "lucide-react";
 
 import { DocsSidebar } from "@/components/docs-sidebar";
+import { DocsSearch, type DocsSearchItem } from "@/components/docs-search";
 import { DocsToc } from "@/components/docs-toc";
 import { RivelleLogo } from "@/components/rivelle-logo";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
+import { blockDocs } from "@/lib/block-docs";
+import { componentDocs } from "@/lib/component-docs";
+import { siteConfig } from "@/lib/site";
 
 const topLinks = [
   { href: "/docs", label: "Docs" },
@@ -13,6 +17,39 @@ const topLinks = [
   { href: "/docs/theming", label: "Themes" },
   { href: "/docs/foundations/typography", label: "Typeset" },
   { href: "/blocks", label: "Blocks" },
+];
+
+const searchItems: DocsSearchItem[] = [
+  {
+    name: "Documentation",
+    description: "Installation and CLI overview",
+    href: "/docs",
+    kind: "Guide",
+  },
+  {
+    name: "Theme Studio",
+    description: "Nova, Prism and semantic tokens",
+    href: "/docs/theming",
+    kind: "Guide",
+  },
+  {
+    name: "Typography",
+    description: "Geist, Inter and the type scale",
+    href: "/docs/foundations/typography",
+    kind: "Guide",
+  },
+  ...componentDocs.map((item) => ({
+    name: item.name,
+    description: item.description,
+    href: `/docs/components/${item.slug}`,
+    kind: "Component" as const,
+  })),
+  ...blockDocs.map((item) => ({
+    name: item.name,
+    description: item.description,
+    href: `/blocks/${item.slug}`,
+    kind: "Block" as const,
+  })),
 ];
 
 export default function DocsLayout({
@@ -33,16 +70,19 @@ export default function DocsLayout({
                 {link.label}
               </Link>
             ))}
-            <span>Examples</span>
+            <span title="Examples are coming next">Examples · soon</span>
           </nav>
           <div className="docs-header-actions">
-            <button className="docs-global-search" type="button">
-              <Search />
-              <span>Search documentation...</span>
-              <kbd>⌘ K</kbd>
-            </button>
-            <Button aria-label="GitHub" size="icon-sm" variant="ghost">
-              <Github />
+            <DocsSearch items={searchItems} />
+            <Button
+              aria-label="Open Rivelle on GitHub"
+              asChild
+              size="icon-sm"
+              variant="ghost"
+            >
+              <a href={siteConfig.github} rel="noreferrer" target="_blank">
+                <Github />
+              </a>
             </Button>
             <ThemeToggle />
           </div>

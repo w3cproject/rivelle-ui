@@ -7,6 +7,7 @@ import { Settings01 } from "@/blocks/settings-01";
 import { Sidebar01 } from "@/blocks/sidebar-01";
 import { Signup01 } from "@/blocks/signup-01";
 import type { BlockSlug } from "@/lib/block-docs";
+import { StylePreview } from "@/components/style-preview";
 
 const previews = {
   "login-01": Login01,
@@ -19,7 +20,22 @@ const previews = {
   "pricing-01": Pricing01,
 };
 
-export function BlockPreview({ slug }: { slug: BlockSlug }) {
+export function BlockPreview({
+  slug,
+  controls = false,
+}: {
+  slug: BlockSlug;
+  controls?: boolean;
+}) {
   const Preview = previews[slug];
-  return <Preview />;
+  if (!controls) return <Preview />;
+  return (
+    <StylePreview
+      canvasClassName="block-style-preview-canvas"
+      className="block-style-preview"
+      label="Block style"
+    >
+      <Preview />
+    </StylePreview>
+  );
 }

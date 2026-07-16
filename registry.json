@@ -38,6 +38,7 @@
       "type": "registry:ui",
       "title": "Input",
       "description": "A refined input surface with an inset focus baseline and validation states.",
+      "dependencies": ["class-variance-authority"],
       "registryDependencies": ["@rivelle/utils"],
       "files": [{ "path": "registry/nova/ui/input.tsx", "type": "registry:ui" }]
     },
