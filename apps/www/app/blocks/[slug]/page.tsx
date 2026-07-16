@@ -56,7 +56,7 @@ export default async function BlockPage({
         </div>
       </div>
       <div className="mt-10 rounded-[2.25rem] border border-foreground/10 bg-foreground/[.02] p-2 shadow-[0_32px_100px_-70px_var(--foreground)] sm:p-4">
-        <BlockPreview slug={block.slug} />
+        <BlockPreview controls slug={block.slug} />
       </div>
     </main>
   );

@@ -1,8 +1,8 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
   "group relative isolate inline-flex shrink-0 items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-xl text-sm font-semibold tracking-[-0.012em] outline-none transition-[color,background-color,border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(.16,1,.3,1)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[.985] disabled:pointer-events-none disabled:opacity-45 disabled:shadow-none focus-visible:ring-2 focus-visible:ring-ring/55 focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transform-none motion-reduce:transition-none aria-invalid:ring-destructive/35 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:transition-transform [&_svg]:duration-300 group-hover:[&_svg]:translate-x-0.5",
@@ -10,9 +10,11 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-foreground text-background shadow-[0_1px_0_0_color-mix(in_oklch,var(--background)_28%,transparent),0_8px_24px_-14px_var(--foreground)] hover:bg-foreground/92 hover:shadow-[0_1px_0_0_color-mix(in_oklch,var(--background)_32%,transparent),0_14px_30px_-16px_var(--foreground)]",
+          "[background:var(--action-background)] [color:var(--action-foreground)] [box-shadow:var(--action-shadow)] hover:[background:var(--action-background-hover)] hover:[box-shadow:var(--action-shadow-hover)]",
         signature:
           "rounded-[0.9rem_0.9rem_0.9rem_0.35rem] bg-primary text-primary-foreground shadow-[0_10px_28px_-16px_var(--primary)] hover:bg-primary/90",
+        prism:
+          "rounded-lg border border-white/14 bg-[linear-gradient(112deg,color-mix(in_oklch,var(--primary)_88%,oklch(.58_.24_292)),var(--primary)_48%,color-mix(in_oklch,var(--primary)_80%,oklch(.68_.2_245)))] text-white shadow-[inset_0_1px_0_oklch(1_0_0/.22),0_10px_24px_-13px_var(--primary),0_2px_5px_-2px_color-mix(in_oklch,var(--primary)_70%,black)] before:absolute before:inset-x-2 before:top-0 before:-z-10 before:h-px before:bg-white/45 after:absolute after:inset-y-0 after:-left-1/2 after:-z-10 after:w-1/3 after:skew-x-[-22deg] after:bg-white/18 after:blur-sm after:transition-[left] after:duration-700 hover:brightness-105 hover:shadow-[inset_0_1px_0_oklch(1_0_0/.28),0_16px_32px_-15px_var(--primary),0_3px_7px_-3px_color-mix(in_oklch,var(--primary)_70%,black)] hover:after:left-[125%]",
         destructive:
           "bg-destructive text-destructive-foreground shadow-[0_8px_24px_-16px_var(--destructive)] hover:bg-destructive/90 focus-visible:ring-destructive/35",
         outline:
@@ -33,7 +35,7 @@ const buttonVariants = cva(
     },
     defaultVariants: { variant: "default", size: "default" },
   },
-)
+);
 
 function Button({
   className,
@@ -43,7 +45,7 @@ function Button({
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & { asChild?: boolean }) {
-  const Comp = asChild ? Slot : "button"
+  const Comp = asChild ? Slot : "button";
 
   return (
     <Comp
@@ -51,7 +53,7 @@ function Button({
       className={cn(buttonVariants({ variant, size }), className)}
       {...props}
     />
-  )
+  );
 }
 
-export { Button, buttonVariants }
+export { Button, buttonVariants };

@@ -32,7 +32,7 @@ npx rivelle@latest init
 npx rivelle@latest add button
 ```
 
-`init` detects Next.js, Vite or React plus `src/`, the global CSS entry, TypeScript and RSC. Its arrow-key wizard configures Geist or Inter, neutral and accent palettes, radius, CSS, TypeScript, RSC and dependency installation. It also creates the `@/*` path alias and the matching Vite runtime alias when applicable. For CI, use `rivelle init --yes`; overrides include `--font inter`, `--base-color zinc`, `--accent violet`, `--radius 0.75rem`, `--javascript`, and `--no-rsc`.
+`init` detects Next.js, Vite or React plus `src/`, the global CSS entry, TypeScript and RSC. Its arrow-key wizard configures the Nova or Prism component style, Geist or Inter, neutral and accent palettes, radius, CSS, TypeScript, RSC and dependency installation. It also creates the `@/*` path alias and the matching Vite runtime alias when applicable. For CI, use `rivelle init --yes`; overrides include `--style prism`, `--font inter`, `--base-color zinc`, `--accent violet`, `--radius 0.75rem`, `--javascript`, and `--no-rsc`.
 
 Then use the editable source directly:
 
@@ -94,7 +94,7 @@ node packages/cli/dist/index.js --help
 
 ## Publishing
 
-Publishing is automated from `.github/workflows/publish.yml`. A version tag such as `v0.1.0` must match `packages/cli/package.json`; GitHub Actions verifies the workspace and publishes through npm trusted publishing with provenance.
+Publishing is automated from `.github/workflows/publish.yml`. A version tag such as `v0.2.0` must match `packages/cli/package.json`; GitHub Actions verifies the workspace and publishes through npm trusted publishing with provenance.
 
 Deployment and first-release setup are documented in [`docs/DEPLOYMENT.md`](./docs/DEPLOYMENT.md).
 

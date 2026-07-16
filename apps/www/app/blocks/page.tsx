@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight, Blocks } from "lucide-react";
 
 import { BlockPreview } from "@/components/block-preview";
+import { StyleSwitch } from "@/components/style-preview";
 import { Badge } from "@/components/ui/badge";
 import { blockDocs } from "@/lib/block-docs";
 
@@ -20,7 +21,11 @@ export default function BlocksPage() {
           the source, connect your data and make every detail yours.
         </p>
       </div>
-      <div className="mt-16 grid gap-8 lg:grid-cols-2">
+      <StyleSwitch
+        className="block-gallery-style-switch mt-12"
+        label="Gallery style"
+      />
+      <div className="mt-8 grid gap-8 lg:grid-cols-2">
         {blockDocs.map((block) => (
           <article className="group relative min-w-0" key={block.slug}>
             <div className="block-card-preview">

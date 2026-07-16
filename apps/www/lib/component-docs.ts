@@ -45,10 +45,10 @@ export function ButtonDemo() {
     props: [
       {
         name: "variant",
-        type: '"default" | "signature" | "destructive" | "outline" | "secondary" | "ghost" | "link"',
+        type: '"default" | "signature" | "prism" | "destructive" | "outline" | "secondary" | "ghost" | "link"',
         defaultValue: '"default"',
         description:
-          "Controls the visual treatment. Signature enables Rivelle’s asymmetric corner.",
+          "Controls the visual treatment. Signature adds Rivelle’s asymmetric corner; Prism adds a luminous high-contrast action.",
       },
       {
         name: "size",
@@ -106,7 +106,7 @@ export function BadgeDemo() {
     slug: "input",
     name: "Input",
     description:
-      "A refined field with an inset accent baseline instead of a generic focus halo.",
+      "A refined field with inset and luminous Prism surface options.",
     install: "input",
     client: false,
     code: `import { Input } from "@/components/ui/input"
@@ -115,6 +115,13 @@ export function InputDemo() {
   return <Input placeholder="you@example.com" type="email" />
 }`,
     props: [
+      {
+        name: "variant",
+        type: '"default" | "prism"',
+        defaultValue: '"default"',
+        description:
+          "Switches between the soft inset field and the crisp luminous surface.",
+      },
       {
         name: "type",
         type: "React.HTMLInputTypeAttribute",

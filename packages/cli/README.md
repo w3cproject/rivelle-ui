@@ -5,6 +5,9 @@ Rivelle installs editable, themeable React and Next.js component source into you
 ```bash
 pnpm dlx rivelle@latest init
 pnpm dlx rivelle@latest add button
+
+# Non-interactive Prism setup
+pnpm dlx rivelle@latest init --yes --style prism
 ```
 
 Components are written to `components/ui` and remain fully owned by the consuming project. Read the [documentation](https://rivelle.dev) or contribute at [w3cproject/rivelle-ui](https://github.com/w3cproject/rivelle-ui).
