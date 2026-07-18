@@ -1,6 +1,6 @@
 # Rivelle architecture
 
-Rivelle is a source registry, not a runtime component package. Consumers receive editable files under `components/ui`, while Rivelle owns the generation, contracts, defaults and documentation.
+Rivelle is a source registry, not a runtime component package. Consumers receive editable primitives under `components/ui`, expressive interactions under `components/effects`, composed sections under `components/blocks`, and complete interfaces under `components/templates`, while Rivelle owns the generation, contracts, defaults and documentation.
 
 ## System boundaries
 

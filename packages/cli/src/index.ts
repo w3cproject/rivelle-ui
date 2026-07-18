@@ -28,6 +28,7 @@ import { execa } from "execa";
 import pc from "picocolors";
 import ts from "typescript";
 import { z } from "zod";
+import packageJson from "../package.json" with { type: "json" };
 
 const DEFAULT_REGISTRY = "https://rivelle.dev/r";
 const THEME_START = "/* rivelle:theme:start */";
@@ -100,7 +101,7 @@ type InitAnswers = {
 const program = new Command()
   .name("rivelle")
   .description("Add editable UI component source code to your application.")
-  .version("0.2.0");
+  .version(packageJson.version);
 
 program
   .command("init")
@@ -443,6 +444,20 @@ function resolveTarget(
       "components/ui",
       `${basename(file.target.slice(4), extname(file.target))}${extension}`,
     );
+  if (file.target?.startsWith("@effects/"))
+    return resolveWithin(
+      context.cwd,
+      context.rivelle.sourceRoot,
+      "components/effects",
+      `${basename(file.target.slice(9), extname(file.target))}${extension}`,
+    );
+  if (file.target?.startsWith("@templates/"))
+    return resolveWithin(
+      context.cwd,
+      context.rivelle.sourceRoot,
+      "components/templates",
+      `${basename(file.target.slice(11), extname(file.target))}${extension}`,
+    );
   if (file.type === "registry:lib")
     return resolveWithin(
       context.cwd,
@@ -455,6 +470,13 @@ function resolveTarget(
       context.cwd,
       context.rivelle.sourceRoot,
       "components/blocks",
+      filename,
+    );
+  if (file.type === "registry:page")
+    return resolveWithin(
+      context.cwd,
+      context.rivelle.sourceRoot,
+      "components/templates",
       filename,
     );
   return resolveWithin(
@@ -736,7 +758,12 @@ const themeBridgeSource = `@theme inline {
 
 @layer base {
   * { @apply border-border outline-ring/50; }
-  body { @apply bg-background font-sans text-foreground antialiased; }
   h1, h2, h3 { text-wrap: balance; }
   p { text-wrap: pretty; }
+}
+
+/* Unlayered so starter-template body styles cannot override the selected font. */
+body {
+  @apply bg-background text-foreground antialiased;
+  font-family: var(--font-family-sans);
 }`;

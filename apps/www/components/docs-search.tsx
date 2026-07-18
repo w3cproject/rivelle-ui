@@ -2,13 +2,21 @@
 
 import * as React from "react";
 import { useRouter } from "next/navigation";
-import { Blocks, Component, FileText, Search, X } from "lucide-react";
+import {
+  Blocks,
+  Component,
+  FileText,
+  LayoutTemplate,
+  Orbit,
+  Search,
+  X,
+} from "lucide-react";
 
 export type DocsSearchItem = {
   name: string;
   description: string;
   href: string;
-  kind: "Guide" | "Component" | "Block";
+  kind: "Guide" | "Component" | "Effect" | "Block" | "Template";
 };
 
 export function DocsSearch({ items }: { items: DocsSearchItem[] }) {
@@ -73,7 +81,7 @@ export function DocsSearch({ items }: { items: DocsSearchItem[] }) {
               <input
                 autoFocus
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search components, blocks and guides..."
+                placeholder="Search components, effects, blocks, templates and guides..."
                 value={query}
               />
               <button
@@ -95,8 +103,12 @@ export function DocsSearch({ items }: { items: DocsSearchItem[] }) {
                     <span className="docs-search-result-icon">
                       {item.kind === "Component" ? (
                         <Component />
+                      ) : item.kind === "Effect" ? (
+                        <Orbit />
                       ) : item.kind === "Block" ? (
                         <Blocks />
+                      ) : item.kind === "Template" ? (
+                        <LayoutTemplate />
                       ) : (
                         <FileText />
                       )}

@@ -1,7 +1,7 @@
 {
   "name": "rivelle",
-  "version": "0.3.0",
-  "description": "Ownable, shadcn-compatible UI components for React and Next.js.",
+  "version": "0.5.0",
+  "description": "Ownable UI components, effects, blocks and templates for React and Next.js.",
   "homepage": "https://rivelle.dev",
   "repository": {
     "type": "git",
@@ -51,6 +51,8 @@
     "nextjs",
     "ui",
     "components",
+    "effects",
+    "animations",
     "shadcn",
     "tailwindcss"
   ],

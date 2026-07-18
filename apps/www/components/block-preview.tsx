@@ -6,6 +6,12 @@ import { Pricing01 } from "@/blocks/pricing-01";
 import { Settings01 } from "@/blocks/settings-01";
 import { Sidebar01 } from "@/blocks/sidebar-01";
 import { Signup01 } from "@/blocks/signup-01";
+import { ContactForm01 } from "@/blocks/contact-form-01";
+import { FeatureSection01 } from "@/blocks/feature-section-01";
+import { Footer01 } from "@/blocks/footer-01";
+import { ProfileCard01 } from "@/blocks/profile-card-01";
+import { SiteHeader01 } from "@/blocks/site-header-01";
+import { TestimonialSection01 } from "@/blocks/testimonial-section-01";
 import type { BlockSlug } from "@/lib/block-docs";
 import { StylePreview } from "@/components/style-preview";
 
@@ -18,6 +24,12 @@ const previews = {
   "empty-project-01": EmptyProject01,
   "hero-01": Hero01,
   "pricing-01": Pricing01,
+  "site-header-01": SiteHeader01,
+  "profile-card-01": ProfileCard01,
+  "feature-section-01": FeatureSection01,
+  "testimonial-section-01": TestimonialSection01,
+  "contact-form-01": ContactForm01,
+  "footer-01": Footer01,
 };
 
 export function BlockPreview({

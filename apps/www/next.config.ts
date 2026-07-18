@@ -1,8 +1,8 @@
-import type { NextConfig } from "next"
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  transpilePackages: ["@rivelle/registry-source"],
-}
+  transpilePackages: ["@rivelle/registry-source", "motion"],
+};
 
-export default nextConfig
+export default nextConfig;

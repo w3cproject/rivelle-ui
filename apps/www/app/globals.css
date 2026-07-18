@@ -4,6 +4,8 @@
 @import "tw-animate-css";
 @source "../../../registry/nova/ui";
 @source "../../../registry/nova/blocks";
+@source "../../../registry/nova/effects";
+@source "../../../registry/nova/templates";
 
 @custom-variant dark (&:is(.dark *));
 

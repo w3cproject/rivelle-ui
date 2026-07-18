@@ -21,7 +21,10 @@
     "paths": {
       "@/*": ["./*"],
       "@/components/ui/*": ["../../registry/nova/ui/*"],
+      "@/components/blocks/*": ["../../registry/nova/blocks/*"],
+      "@/effects/*": ["../../registry/nova/effects/*"],
       "@/blocks/*": ["../../registry/nova/blocks/*"],
+      "@/templates/*": ["../../registry/nova/templates/*"],
       "@/lib/utils": ["../../registry/nova/lib/utils.ts"]
     }
   },

@@ -4,7 +4,7 @@
 [![npm](https://img.shields.io/npm/v/rivelle?color=111111)](https://www.npmjs.com/package/rivelle)
 [![License: MIT](https://img.shields.io/badge/license-MIT-111111.svg)](./LICENSE)
 
-An editable, shadcn-compatible component registry for React and Next.js. Rivelle installs source code into the consumer's project instead of hiding it inside `node_modules`. Explore the documentation at [rivelle.dev](https://rivelle.dev).
+An editable component, effect and block registry for React and Next.js. Rivelle installs source code into the consumer's project instead of hiding it inside `node_modules`. Explore the documentation at [rivelle.dev](https://rivelle.dev).
 
 ## What is included
 
@@ -13,7 +13,8 @@ An editable, shadcn-compatible component registry for React and Next.js. Rivelle
 - Tailwind CSS v4 semantic tokens powered by OKLCH colors and light/dark themes.
 - Server Component-safe primitives by default; `"use client"` exists only where interaction requires it.
 - CVA variants, `className` overrides, Radix composition, accessible states, and subtle motion.
-- 53 primitives, from Button and form controls to Calendar, Carousel, Drawer, Table, Toast, and navigation.
+- 55 primitives, from Button and form controls to Calendar, Carousel, Tag Input, Multi Select, Table, Toast, and navigation.
+- 11 focused effects spanning comparison, directional reveal, magnification, drag physics, cursor fields, buttons, typography and 3D depth.
 - 8 editable application blocks for authentication, marketing, dashboards and settings.
 
 ## Consumer usage
@@ -23,6 +24,7 @@ After the `rivelle` package and registry are published:
 ```bash
 pnpm dlx rivelle@latest init
 pnpm dlx rivelle@latest add button card input
+pnpm dlx rivelle@latest add compare-slider cursor-lens draggable-stack
 ```
 
 or:
@@ -52,6 +54,22 @@ Every component accepts `className`, so local overrides remain straightforward:
 </Button>
 ```
 
+Effects use the same command, but install into a separate owned directory:
+
+```tsx
+import { CompareSlider } from "@/components/effects/compare-slider";
+
+export default function Signal() {
+  return (
+    <CompareSlider
+      after={<div className="h-full bg-black" />}
+      before={<div className="h-full bg-white" />}
+      className="h-80"
+    />
+  );
+}
+```
+
 Components can also be installed with the upstream CLI:
 
 ```bash
@@ -77,6 +95,8 @@ Generated registry payloads and CLI bundles are intentionally ignored by Git. CI
 
 The system boundaries, RSC policy and component acceptance contract are documented in [`ARCHITECTURE.md`](./ARCHITECTURE.md).
 
+Possible future directions for project diagnostics, safer upgrades, a visual theme studio, MCP integration, editor tooling and community registries are tracked in [`ROADMAP.md`](./ROADMAP.md).
+
 For local CLI development:
 
 ```bash
@@ -89,12 +109,13 @@ node packages/cli/dist/index.js --help
 1. Keep display-only components server-safe; add `"use client"` only for hooks, browser APIs, or interactive client primitives.
 2. Export the component and its CVA recipe when variants should be reusable.
 3. Use semantic tokens (`bg-primary`, `text-muted-foreground`) instead of fixed palette colors.
-4. Merge public `className` last through `cn()` so the consumer owns the final styling.
-5. Add the source file and exact dependency metadata to `registry.json`, then run `pnpm verify`.
+4. Put foundational primitives in `components/ui`, expressive effects in `components/effects`, composed sections in `components/blocks`, and full interfaces in `components/templates`.
+5. Merge public `className` last through `cn()` so the consumer owns the final styling.
+6. Add the source file and exact dependency metadata to `registry.json`, then run `pnpm verify`.
 
 ## Publishing
 
-Publishing is automated from `.github/workflows/publish.yml`. A version tag such as `v0.3.0` must match `packages/cli/package.json`; GitHub Actions verifies the workspace and publishes through npm trusted publishing with provenance.
+Publishing is automated from `.github/workflows/publish.yml`. The `v<version>` tag must match `packages/cli/package.json`; GitHub Actions verifies the workspace and publishes through npm trusted publishing with provenance.
 
 Deployment and first-release setup are documented in [`docs/DEPLOYMENT.md`](./docs/DEPLOYMENT.md).
 

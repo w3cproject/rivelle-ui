@@ -12,12 +12,13 @@ export const metadata: Metadata = {
     template: "%s | Rivelle",
   },
   description:
-    "Open-source, editable React and Next.js components with Nova and Prism styles.",
+    "Open-source, editable React and Next.js components, effects and blocks with Nova and Prism styles.",
   applicationName: "Rivelle",
   keywords: [
     "React",
     "Next.js",
     "UI components",
+    "animated React components",
     "design system",
     "shadcn",
     "Tailwind CSS",
@@ -29,13 +30,13 @@ export const metadata: Metadata = {
     siteName: "Rivelle",
     title: "Rivelle — Own your interface",
     description:
-      "Open-source, editable React and Next.js components with Nova and Prism styles.",
+      "Open-source, editable React and Next.js components, effects and blocks with Nova and Prism styles.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Rivelle — Own your interface",
     description:
-      "Open-source, editable React and Next.js components with Nova and Prism styles.",
+      "Open-source, editable React and Next.js components, effects and blocks with Nova and Prism styles.",
   },
 };
 
