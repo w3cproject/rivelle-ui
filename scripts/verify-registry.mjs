@@ -1,20 +1,33 @@
 import { createServer } from "node:http";
+import { execFile, spawn } from "node:child_process";
 import { mkdtemp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, extname, join, resolve } from "node:path";
-import { spawn } from "node:child_process";
+import { promisify } from "node:util";
 
 const root = resolve(import.meta.dirname, "..");
 const registryDirectory = join(root, "apps/www/public/r");
 const cli = join(root, "packages/cli/dist/index.js");
+const execFileAsync = promisify(execFile);
 const manifest = JSON.parse(
   await readFile(join(root, "registry.json"), "utf8"),
 );
-const componentNames = manifest.items
-  .filter((item) => item.type === "registry:ui")
+const uiItems = manifest.items.filter((item) => item.type === "registry:ui");
+const effectNames = uiItems
+  .filter((item) =>
+    item.files.some((file) => file.target?.startsWith("@effects/")),
+  )
+  .map((item) => item.name);
+const componentNames = uiItems
+  .filter(
+    (item) => !item.files.some((file) => file.target?.startsWith("@effects/")),
+  )
   .map((item) => item.name);
 const blockNames = manifest.items
   .filter((item) => item.type === "registry:block")
+  .map((item) => item.name);
+const templateNames = manifest.items
+  .filter((item) => item.type === "registry:page")
   .map((item) => item.name);
 
 const server = createServer(async (request, response) => {
@@ -45,10 +58,22 @@ const registry = `http://127.0.0.1:${address.port}/r`;
 const temporaryRoot = await mkdtemp(join(tmpdir(), "rivelle-verify-"));
 
 try {
+  const packageVersion = JSON.parse(
+    await readFile(join(root, "packages/cli/package.json"), "utf8"),
+  ).version;
+  const { stdout: cliVersion } = await execFileAsync(
+    process.execPath,
+    [cli, "--version"],
+    { cwd: root },
+  );
+  assert(
+    cliVersion.trim() === packageVersion,
+    `CLI reports ${cliVersion.trim()} but package.json contains ${packageVersion}`,
+  );
   await verifyTypeScriptProject(join(temporaryRoot, "next-ts"));
   await verifyJavaScriptProject(join(temporaryRoot, "vite-js"));
   console.log(
-    `✓ Registry verified over HTTP: ${componentNames.length} components, ${blockNames.length} blocks, TypeScript and JavaScript.`,
+    `✓ Registry verified over HTTP: ${componentNames.length} components, ${effectNames.length} effects, ${blockNames.length} blocks, ${templateNames.length} templates, TypeScript and JavaScript.`,
   );
 } finally {
   server.close();
@@ -67,7 +92,14 @@ async function verifyTypeScriptProject(cwd) {
       null,
       2,
     ),
-    "src/app/globals.css": '@import "tailwindcss";\n',
+    "src/app/globals.css": `@import "tailwindcss";
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+`,
   });
   await run([
     "init",
@@ -82,14 +114,28 @@ async function verifyTypeScriptProject(cwd) {
     "--accent",
     "violet",
   ]);
-  await run(["add", ...componentNames, "--cwd", cwd, "--skip-install"]);
+  await run([
+    "add",
+    ...componentNames,
+    ...effectNames,
+    "--cwd",
+    cwd,
+    "--skip-install",
+  ]);
   await run(["add", ...blockNames, "--cwd", cwd, "--skip-install"]);
+  await run(["add", ...templateNames, "--cwd", cwd, "--skip-install"]);
 
   for (const name of componentNames) {
     await assertFile(join(cwd, "src/components/ui", `${name}.tsx`));
   }
+  for (const name of effectNames) {
+    await assertFile(join(cwd, "src/components/effects", `${name}.tsx`));
+  }
   for (const name of blockNames) {
     await assertFile(join(cwd, "src/components/blocks", `${name}.tsx`));
+  }
+  for (const name of templateNames) {
+    await assertFile(join(cwd, "src/components/templates", `${name}.tsx`));
   }
   await assertFile(join(cwd, "src/lib/utils.ts"));
   const css = await readFile(join(cwd, "src/app/globals.css"), "utf8");
@@ -104,6 +150,12 @@ async function verifyTypeScriptProject(cwd) {
   assert(
     css.includes('@import "tw-animate-css";'),
     "motion utilities import is missing",
+  );
+  assert(
+    css.includes("font-family: Arial, Helvetica, sans-serif;") &&
+      css.lastIndexOf("font-family: var(--font-family-sans);") >
+        css.indexOf("font-family: Arial, Helvetica, sans-serif;"),
+    "Rivelle font must override an unlayered Next.js starter body rule",
   );
   assert(
     css.includes("--action-background: linear-gradient") &&
@@ -183,12 +235,56 @@ async function verifyJavaScriptProject(cwd) {
     "button",
     "dialog",
     "select",
+    "compare-slider",
+    "cursor-lens",
+    "direction-reveal",
+    "draggable-stack",
+    "gradient-mesh",
+    "magnetic-button",
+    "perspective-grid",
+    "ripple-grid",
+    "shimmer-button",
+    "tilt-card",
+    "text-scramble",
+    ...templateNames,
     "--cwd",
     cwd,
     "--skip-install",
   ]);
   for (const name of ["button", "dialog", "select"]) {
     const filename = join(cwd, "src/components/ui", `${name}.jsx`);
+    const source = await readFile(filename, "utf8");
+    assert(
+      !/React\.ComponentProps|VariantProps<|\binterface\s+|\btype\s+[A-Z]/.test(
+        source,
+      ),
+      `${name}.jsx still contains TypeScript syntax`,
+    );
+  }
+  for (const name of [
+    "compare-slider",
+    "cursor-lens",
+    "direction-reveal",
+    "draggable-stack",
+    "gradient-mesh",
+    "magnetic-button",
+    "perspective-grid",
+    "ripple-grid",
+    "shimmer-button",
+    "tilt-card",
+    "text-scramble",
+  ]) {
+    const filename = join(cwd, "src/components/effects", `${name}.jsx`);
+    const source = await readFile(filename, "utf8");
+    assert(
+      !/React\.ComponentProps|VariantProps<|\binterface\s+|\btype\s+[A-Z]/.test(
+        source,
+      ),
+      `${name}.jsx still contains TypeScript syntax`,
+    );
+  }
+  for (const name of templateNames) {
+    const filename = join(cwd, "src/components/templates", `${name}.jsx`);
     const source = await readFile(filename, "utf8");
     assert(
       !/React\.ComponentProps|VariantProps<|\binterface\s+|\btype\s+[A-Z]/.test(

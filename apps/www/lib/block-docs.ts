@@ -6,12 +6,20 @@ export type BlockSlug =
   | "settings-01"
   | "empty-project-01"
   | "hero-01"
-  | "pricing-01";
+  | "pricing-01"
+  | "site-header-01"
+  | "profile-card-01"
+  | "feature-section-01"
+  | "testimonial-section-01"
+  | "contact-form-01"
+  | "footer-01";
+
+export type BlockCategory = "Authentication" | "Application" | "Marketing";
 
 export type BlockDoc = {
   slug: BlockSlug;
   name: string;
-  category: "Authentication" | "Application" | "Marketing";
+  category: BlockCategory;
   description: string;
 };
 
@@ -66,6 +74,43 @@ export const blockDocs: BlockDoc[] = [
     name: "Pricing",
     category: "Marketing",
     description: "Three responsive tiers with a highlighted plan.",
+  },
+  {
+    slug: "site-header-01",
+    name: "Site Header",
+    category: "Marketing",
+    description: "Responsive navigation, mobile menu and profile actions.",
+  },
+  {
+    slug: "profile-card-01",
+    name: "Profile Card",
+    category: "Application",
+    description: "Professional identity, availability and social actions.",
+  },
+  {
+    slug: "feature-section-01",
+    name: "Feature Section",
+    category: "Marketing",
+    description:
+      "Narrative product introduction with responsive feature cards.",
+  },
+  {
+    slug: "testimonial-section-01",
+    name: "Testimonial Section",
+    category: "Marketing",
+    description: "High-contrast customer proof with quotes and identities.",
+  },
+  {
+    slug: "contact-form-01",
+    name: "Contact Form",
+    category: "Marketing",
+    description: "Complete inquiry section with a responsive form.",
+  },
+  {
+    slug: "footer-01",
+    name: "Site Footer",
+    category: "Marketing",
+    description: "Newsletter, navigation groups, social and legal links.",
   },
 ];
 

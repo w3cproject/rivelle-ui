@@ -9,14 +9,18 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { blockDocs } from "@/lib/block-docs";
 import { componentDocs } from "@/lib/component-docs";
+import { effectDocs } from "@/lib/effect-docs";
+import { templateDocs } from "@/lib/template-docs";
 import { siteConfig } from "@/lib/site";
 
 const topLinks = [
   { href: "/docs", label: "Docs" },
   { href: "/docs/components", label: "Components" },
+  { href: "/effects", label: "Effects" },
   { href: "/docs/theming", label: "Themes" },
   { href: "/docs/foundations/typography", label: "Typeset" },
   { href: "/blocks", label: "Blocks" },
+  { href: "/templates", label: "Templates" },
 ];
 
 const searchItems: DocsSearchItem[] = [
@@ -44,11 +48,23 @@ const searchItems: DocsSearchItem[] = [
     href: `/docs/components/${item.slug}`,
     kind: "Component" as const,
   })),
+  ...effectDocs.map((item) => ({
+    name: item.name,
+    description: item.description,
+    href: `/effects/${item.slug}`,
+    kind: "Effect" as const,
+  })),
   ...blockDocs.map((item) => ({
     name: item.name,
     description: item.description,
     href: `/blocks/${item.slug}`,
     kind: "Block" as const,
+  })),
+  ...templateDocs.map((item) => ({
+    name: item.name,
+    description: item.description,
+    href: `/templates/${item.slug}`,
+    kind: "Template" as const,
   })),
 ];
 
@@ -70,7 +86,6 @@ export default function DocsLayout({
                 {link.label}
               </Link>
             ))}
-            <span title="Examples are coming next">Examples · soon</span>
           </nav>
           <div className="docs-header-actions">
             <DocsSearch items={searchItems} />

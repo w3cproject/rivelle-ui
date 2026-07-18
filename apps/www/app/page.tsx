@@ -6,11 +6,13 @@ import {
   Github,
   Layers3,
   MousePointer2,
+  Orbit,
   Sparkles,
   Zap,
 } from "lucide-react";
 
 import { ComponentPreview } from "@/components/component-preview";
+import { EffectPreview } from "@/components/effect-preview";
 import { CopyCommand } from "@/components/copy-command";
 import { RivelleLogo } from "@/components/rivelle-logo";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -30,6 +32,8 @@ import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { blockDocs } from "@/lib/block-docs";
 import { componentDocs } from "@/lib/component-docs";
+import { effectDocs } from "@/lib/effect-docs";
+import { templateDocs } from "@/lib/template-docs";
 import { siteConfig } from "@/lib/site";
 
 const features = [
@@ -74,8 +78,14 @@ export default function Home() {
             <a className="nav-link" href="/docs/components">
               Components
             </a>
+            <a className="nav-link" href="/effects">
+              Effects
+            </a>
             <a className="nav-link" href="/blocks">
               Blocks
+            </a>
+            <a className="nav-link" href="/templates">
+              Templates
             </a>
             <a className="nav-link" href="#principles">
               Principles
@@ -116,8 +126,8 @@ export default function Home() {
           </h1>
           <p className="reveal-up delay-2 mx-auto mt-7 max-w-2xl text-balance text-base leading-relaxed text-muted-foreground sm:text-lg">
             Rivelle is an open-source registry of {componentDocs.length}{" "}
-            editable React and Next.js components for teams who care about
-            craft, speed and complete control.
+            foundations and {effectDocs.length} expressive effects for teams who
+            care about craft, speed and complete control.
           </p>
           <div className="reveal-up delay-3 mx-auto mt-9 flex max-w-xl flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Button asChild className="w-full sm:w-auto" size="lg">
@@ -197,6 +207,36 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-7xl px-5 pb-24 sm:px-8 sm:pb-32">
+        <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <Badge variant="outline">
+              <Orbit /> Rivelle Effects
+            </Badge>
+            <h2 className="mt-5 max-w-3xl text-4xl font-semibold tracking-[-.055em] sm:text-6xl">
+              The foundation is quiet. The moments can be unforgettable.
+            </h2>
+            <p className="mt-5 max-w-2xl leading-7 text-muted-foreground">
+              Pointer-aware surfaces, kinetic type and atmospheric scenes that
+              install as editable source and inherit the same semantic theme.
+            </p>
+          </div>
+          <Button asChild size="lg" variant="outline">
+            <a href="/effects">
+              Explore {effectDocs.length} effects <ArrowRight />
+            </a>
+          </Button>
+        </div>
+        <div className="grid gap-5 lg:grid-cols-[.9fr_1.1fr]">
+          <div className="overflow-hidden rounded-[2.25rem] border border-foreground/10 bg-foreground/[.02] p-2">
+            <EffectPreview compact slug="compare-slider" />
+          </div>
+          <div className="overflow-hidden rounded-[2.25rem] border border-foreground/10 bg-foreground/[.02] p-2">
+            <EffectPreview compact slug="gradient-mesh" />
+          </div>
+        </div>
+      </section>
+
       <section className="border-y border-border/70 bg-card/35" id="principles">
         <div className="mx-auto grid max-w-7xl divide-y divide-border/70 px-5 sm:px-8 md:grid-cols-3 md:divide-x md:divide-y-0">
           {features.map(({ icon: Icon, title, description }) => (
@@ -234,7 +274,8 @@ export default function Home() {
             </p>
           </div>
           <Badge variant="secondary">
-            {componentDocs.length} components · {blockDocs.length} blocks
+            {componentDocs.length} components · {effectDocs.length} effects ·{" "}
+            {blockDocs.length} blocks · {templateDocs.length} templates
           </Badge>
         </div>
 

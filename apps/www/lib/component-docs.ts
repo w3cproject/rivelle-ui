@@ -1118,6 +1118,107 @@ const form = useForm({ defaultValues: { email: "" } })
     ],
   },
   {
+    slug: "tag-input",
+    name: "Tag Input",
+    description:
+      "A token field for creating, validating and removing free-form values with the keyboard.",
+    install: "tag-input",
+    client: true,
+    code: `import { TagInput } from "@/components/ui/tag-input"
+
+<TagInput
+  defaultValue={["React", "TypeScript"]}
+  maxTags={5}
+  name="technologies"
+  placeholder="Add technology..."
+/>`,
+    props: [
+      {
+        name: "value",
+        type: "string[]",
+        defaultValue: "—",
+        description: "Controlled collection of tags.",
+      },
+      {
+        name: "onValueChange",
+        type: "(value: string[]) => void",
+        defaultValue: "—",
+        description: "Runs whenever a tag is added or removed.",
+      },
+      {
+        name: "maxTags",
+        type: "number",
+        defaultValue: "—",
+        description: "Maximum number of accepted tags.",
+      },
+      {
+        name: "validateTag",
+        type: "(value: string) => boolean",
+        defaultValue: "—",
+        description: "Validates a candidate before it is added.",
+      },
+      {
+        name: "delimiters",
+        type: "string[]",
+        defaultValue: '[","]',
+        description: "Keys and pasted separators that create a tag.",
+      },
+      ...primitiveProps,
+    ],
+  },
+  {
+    slug: "multi-select",
+    name: "Multi Select",
+    description:
+      "A searchable multiple-value picker with selection limits and compact summaries.",
+    install: "multi-select",
+    client: true,
+    code: `import { MultiSelect } from "@/components/ui/multi-select"
+
+<MultiSelect
+  defaultValue={["design"]}
+  options={[
+    { value: "design", label: "Design" },
+    { value: "engineering", label: "Engineering" },
+    { value: "product", label: "Product" },
+  ]}
+  placeholder="Select teams"
+/>`,
+    props: [
+      {
+        name: "options",
+        type: "MultiSelectOption[]",
+        defaultValue: "—",
+        description: "Searchable values, display labels and disabled states.",
+      },
+      {
+        name: "value",
+        type: "string[]",
+        defaultValue: "—",
+        description: "Controlled selected values.",
+      },
+      {
+        name: "onValueChange",
+        type: "(value: string[]) => void",
+        defaultValue: "—",
+        description: "Runs whenever the selection changes.",
+      },
+      {
+        name: "maxSelected",
+        type: "number",
+        defaultValue: "—",
+        description: "Maximum number of simultaneously selected options.",
+      },
+      {
+        name: "maxCount",
+        type: "number",
+        defaultValue: "2",
+        description: "Visible chips before the remaining count is collapsed.",
+      },
+      ...primitiveProps,
+    ],
+  },
+  {
     slug: "calendar",
     name: "Calendar",
     description:

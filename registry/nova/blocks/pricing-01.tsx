@@ -18,7 +18,7 @@ const plans = [
     description: "For makers shipping real products.",
     features: [
       "Unlimited projects",
-      "All blocks and examples",
+      "All blocks and templates",
       "Priority support",
     ],
     featured: true,

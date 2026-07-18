@@ -461,6 +461,33 @@
       ]
     },
     {
+      "name": "tag-input",
+      "type": "registry:ui",
+      "title": "Tag Input",
+      "description": "An accessible token field for creating, validating and removing free-form values.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [
+        { "path": "registry/nova/ui/tag-input.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "multi-select",
+      "type": "registry:ui",
+      "title": "Multi Select",
+      "description": "A searchable multiple-value picker with limits, select-all and compact value summaries.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "@rivelle/utils",
+        "@rivelle/button",
+        "@rivelle/command",
+        "@rivelle/popover"
+      ],
+      "files": [
+        { "path": "registry/nova/ui/multi-select.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
       "name": "calendar",
       "type": "registry:ui",
       "title": "Calendar",
@@ -725,6 +752,327 @@
         {
           "path": "registry/nova/blocks/empty-project-01.tsx",
           "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "site-header-01",
+      "type": "registry:block",
+      "title": "Site Header",
+      "description": "A responsive product header with desktop navigation, mobile menu and profile actions.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "@rivelle/utils",
+        "@rivelle/avatar",
+        "@rivelle/button",
+        "@rivelle/dropdown-menu",
+        "@rivelle/sheet"
+      ],
+      "files": [
+        {
+          "path": "registry/nova/blocks/site-header-01.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "profile-card-01",
+      "type": "registry:block",
+      "title": "Profile Card",
+      "description": "A polished professional profile with availability, location and social actions.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "@rivelle/utils",
+        "@rivelle/avatar",
+        "@rivelle/badge",
+        "@rivelle/button"
+      ],
+      "files": [
+        {
+          "path": "registry/nova/blocks/profile-card-01.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "feature-section-01",
+      "type": "registry:block",
+      "title": "Feature Section",
+      "description": "A product feature section with a narrative introduction and three responsive cards.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "@rivelle/utils",
+        "@rivelle/badge",
+        "@rivelle/button"
+      ],
+      "files": [
+        {
+          "path": "registry/nova/blocks/feature-section-01.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "testimonial-section-01",
+      "type": "registry:block",
+      "title": "Testimonial Section",
+      "description": "A high-contrast social proof section with customer quotes and identities.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "@rivelle/utils",
+        "@rivelle/avatar",
+        "@rivelle/badge"
+      ],
+      "files": [
+        {
+          "path": "registry/nova/blocks/testimonial-section-01.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "contact-form-01",
+      "type": "registry:block",
+      "title": "Contact Form",
+      "description": "A complete contact section with supporting details and a responsive inquiry form.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "@rivelle/utils",
+        "@rivelle/badge",
+        "@rivelle/button",
+        "@rivelle/input",
+        "@rivelle/label",
+        "@rivelle/textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/nova/blocks/contact-form-01.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "footer-01",
+      "type": "registry:block",
+      "title": "Site Footer",
+      "description": "A responsive multi-column footer with newsletter, navigation and legal links.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "@rivelle/utils",
+        "@rivelle/button",
+        "@rivelle/input"
+      ],
+      "files": [
+        {
+          "path": "registry/nova/blocks/footer-01.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "saas-landing-01",
+      "type": "registry:page",
+      "title": "SaaS Landing",
+      "description": "A complete software landing page with product hero, dashboard preview, features, proof, pricing, contact and footer.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "@rivelle/utils",
+        "@rivelle/avatar",
+        "@rivelle/badge",
+        "@rivelle/button",
+        "@rivelle/card",
+        "@rivelle/progress",
+        "@rivelle/site-header-01",
+        "@rivelle/feature-section-01",
+        "@rivelle/testimonial-section-01",
+        "@rivelle/pricing-01",
+        "@rivelle/contact-form-01",
+        "@rivelle/footer-01"
+      ],
+      "files": [
+        {
+          "path": "registry/nova/templates/saas-landing-01.tsx",
+          "type": "registry:page",
+          "target": "@templates/saas-landing-01.tsx"
+        }
+      ]
+    },
+    {
+      "name": "creative-portfolio-01",
+      "type": "registry:page",
+      "title": "Creative Portfolio",
+      "description": "A bold studio portfolio with selected work, profile, process, inquiry form and footer.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "@rivelle/utils",
+        "@rivelle/badge",
+        "@rivelle/button",
+        "@rivelle/site-header-01",
+        "@rivelle/profile-card-01",
+        "@rivelle/contact-form-01",
+        "@rivelle/footer-01"
+      ],
+      "files": [
+        {
+          "path": "registry/nova/templates/creative-portfolio-01.tsx",
+          "type": "registry:page",
+          "target": "@templates/creative-portfolio-01.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gradient-mesh",
+      "type": "registry:ui",
+      "title": "Cursor Gradient",
+      "description": "An animated color mesh with a luminous pointer-following field.",
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [
+        {
+          "path": "registry/nova/effects/gradient-mesh.tsx",
+          "type": "registry:ui",
+          "target": "@effects/gradient-mesh.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-scramble",
+      "type": "registry:ui",
+      "title": "Text Scramble",
+      "description": "An accessible decoding text effect that respects reduced motion.",
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [
+        {
+          "path": "registry/nova/effects/text-scramble.tsx",
+          "type": "registry:ui",
+          "target": "@effects/text-scramble.tsx"
+        }
+      ]
+    },
+    {
+      "name": "magnetic-button",
+      "type": "registry:ui",
+      "title": "Magnetic Button",
+      "description": "A tactile action that leans toward the pointer and snaps back.",
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [
+        {
+          "path": "registry/nova/effects/magnetic-button.tsx",
+          "type": "registry:ui",
+          "target": "@effects/magnetic-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "perspective-grid",
+      "type": "registry:ui",
+      "title": "Perspective Grid",
+      "description": "A pointer-reactive perspective horizon grid without canvas or WebGL.",
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [
+        {
+          "path": "registry/nova/effects/perspective-grid.tsx",
+          "type": "registry:ui",
+          "target": "@effects/perspective-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ripple-grid",
+      "type": "registry:ui",
+      "title": "Ripple Grid",
+      "description": "A field of cells that contracts and illuminates around the pointer.",
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [
+        {
+          "path": "registry/nova/effects/ripple-grid.tsx",
+          "type": "registry:ui",
+          "target": "@effects/ripple-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shimmer-button",
+      "type": "registry:ui",
+      "title": "Shimmer Button",
+      "description": "A luminous action with looping shimmer and pointer-following glow.",
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [
+        {
+          "path": "registry/nova/effects/shimmer-button.tsx",
+          "type": "registry:ui",
+          "target": "@effects/shimmer-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tilt-card",
+      "type": "registry:ui",
+      "title": "Tilt Card",
+      "description": "A pointer-driven 3D surface with perspective depth and glare.",
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [
+        {
+          "path": "registry/nova/effects/tilt-card.tsx",
+          "type": "registry:ui",
+          "target": "@effects/tilt-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "compare-slider",
+      "type": "registry:ui",
+      "title": "Compare Slider",
+      "description": "A before-and-after stage with drag, hover and keyboard interaction.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [
+        {
+          "path": "registry/nova/effects/compare-slider.tsx",
+          "type": "registry:ui",
+          "target": "@effects/compare-slider.tsx"
+        }
+      ]
+    },
+    {
+      "name": "direction-reveal",
+      "type": "registry:ui",
+      "title": "Direction Reveal",
+      "description": "A reveal overlay that enters and exits from the pointer direction.",
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [
+        {
+          "path": "registry/nova/effects/direction-reveal.tsx",
+          "type": "registry:ui",
+          "target": "@effects/direction-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cursor-lens",
+      "type": "registry:ui",
+      "title": "Cursor Lens",
+      "description": "A circular pointer magnifier for arbitrary React content.",
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [
+        {
+          "path": "registry/nova/effects/cursor-lens.tsx",
+          "type": "registry:ui",
+          "target": "@effects/cursor-lens.tsx"
+        }
+      ]
+    },
+    {
+      "name": "draggable-stack",
+      "type": "registry:ui",
+      "title": "Draggable Stack",
+      "description": "A spring-driven stack with threshold-based card promotion.",
+      "dependencies": ["motion"],
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [
+        {
+          "path": "registry/nova/effects/draggable-stack.tsx",
+          "type": "registry:ui",
+          "target": "@effects/draggable-stack.tsx"
         }
       ]
     },

@@ -26,14 +26,23 @@ export default function BlocksLayout({
               Components
             </Link>
             <Link
+              className="rounded-lg px-3 py-2 text-muted-foreground hover:bg-muted hover:text-foreground"
+              href="/effects"
+            >
+              Effects
+            </Link>
+            <Link
               className="rounded-lg bg-muted px-3 py-2 font-semibold"
               href="/blocks"
             >
               Blocks
             </Link>
-            <span className="rounded-lg px-3 py-2 text-muted-foreground/55">
-              Examples · soon
-            </span>
+            <Link
+              className="rounded-lg px-3 py-2 text-muted-foreground hover:bg-muted hover:text-foreground"
+              href="/templates"
+            >
+              Templates
+            </Link>
           </nav>
           <div className="ml-auto flex items-center gap-1">
             <Button

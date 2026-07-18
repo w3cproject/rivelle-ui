@@ -67,6 +67,7 @@ import {
 } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Combobox } from "@/components/ui/combobox";
+import { MultiSelect } from "@/components/ui/multi-select";
 import {
   Collapsible,
   CollapsibleContent,
@@ -228,6 +229,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { Toaster, toast } from "@/components/ui/sonner";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { TagInput } from "@/components/ui/tag-input";
 import {
   Table,
   TableBody,
@@ -1009,6 +1011,44 @@ export function ComponentDocDemo({ slug }: { slug: string }) {
           />
         </div>
       )}
+      {slug === "tag-input" && (
+        <div className="grid w-full max-w-lg gap-2.5">
+          <Label htmlFor="technology-tags">Technology stack</Label>
+          <TagInput
+            defaultValue={["React", "TypeScript", "Tailwind CSS"]}
+            id="technology-tags"
+            maxTags={6}
+            name="technologies"
+            placeholder="Add technology..."
+          />
+          <p className="text-xs text-muted-foreground">
+            Press Enter or comma to create a tag. Backspace removes the last
+            one.
+          </p>
+        </div>
+      )}
+      {slug === "multi-select" && (
+        <div className="grid w-full max-w-md gap-2.5">
+          <Label>Project teams</Label>
+          <MultiSelect
+            defaultValue={["design", "engineering"]}
+            maxSelected={4}
+            options={[
+              { value: "design", label: "Design" },
+              { value: "engineering", label: "Engineering" },
+              { value: "product", label: "Product" },
+              { value: "marketing", label: "Marketing" },
+              { value: "operations", label: "Operations" },
+              { value: "archive", label: "Archived team", disabled: true },
+            ]}
+            placeholder="Select teams"
+            searchPlaceholder="Search teams..."
+          />
+          <p className="text-xs text-muted-foreground">
+            Search and select up to four teams.
+          </p>
+        </div>
+      )}
       {slug === "calendar" && <CalendarPreview />}
       {slug === "date-picker" && (
         <div className="w-full max-w-sm">
@@ -1049,7 +1089,7 @@ export function ComponentDocDemo({ slug }: { slug: string }) {
                     ["Components", "Editable interface primitives."],
                     ["Blocks", "Production-ready compositions."],
                     ["Themes", "Semantic design foundations."],
-                    ["Examples", "Interfaces built with Rivelle."],
+                    ["Templates", "Complete interfaces built with Rivelle."],
                   ].map(([title, description]) => (
                     <NavigationMenuLink href="#" key={title}>
                       <div className="font-semibold">{title}</div>
