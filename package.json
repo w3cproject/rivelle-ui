@@ -26,7 +26,7 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
-    "motion": "^12.42.2",
+    "motion": "^12.43.0",
     "prettier": "^3.6.2",
     "shadcn": "latest",
     "typescript": "^5.9.2"
