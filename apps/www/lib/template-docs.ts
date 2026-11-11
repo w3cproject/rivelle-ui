@@ -1,6 +1,11 @@
-export type TemplateSlug = "saas-landing-01" | "creative-portfolio-01";
+export type TemplateSlug =
+  | "saas-landing-01"
+  | "creative-portfolio-01"
+  | "workspace-01"
+  | "product-launch-01"
+  | "ai-chat-workspace-01";
 
-export type TemplateCategory = "SaaS" | "Portfolio";
+export type TemplateCategory = "SaaS" | "Portfolio" | "Application" | "AI";
 
 export type TemplateDoc = {
   slug: TemplateSlug;
@@ -11,6 +16,45 @@ export type TemplateDoc = {
 };
 
 export const templateDocs: TemplateDoc[] = [
+  {
+    slug: "workspace-01",
+    name: "Workspace",
+    category: "Application",
+    description:
+      "An interactive project workspace with connected local flows, ready for your data layer.",
+    includes: [
+      "Project search, status filters and details",
+      "Task completion and team invitations",
+      "Files, activity and billing",
+      "Workspace onboarding and quick actions",
+    ],
+  },
+  {
+    slug: "product-launch-01",
+    name: "Product Launch",
+    category: "SaaS",
+    description:
+      "A considered product launch site with scroll storytelling, release notes and pricing.",
+    includes: [
+      "Product hero and responsive navigation",
+      "Three scroll-linked product scenes",
+      "Release notes and billing period toggle",
+      "Local signup demo ready for a mailing service",
+    ],
+  },
+  {
+    slug: "ai-chat-workspace-01",
+    name: "AI Chat Workspace",
+    category: "AI",
+    description:
+      "A provider-independent conversation interface with a local demo and an optional response handler.",
+    includes: [
+      "Conversation history and new chats",
+      "Attachments, keyboard composer and cancellation",
+      "Sources, code preview and copy actions",
+      "Demo responses or your own async handler",
+    ],
+  },
   {
     slug: "saas-landing-01",
     name: "SaaS Landing",

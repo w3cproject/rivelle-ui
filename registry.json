@@ -4,6 +4,289 @@
   "homepage": "https://rivelle.dev",
   "items": [
     {
+      "name": "scroll-stage",
+      "title": "Scroll Stage",
+      "description": "Scroll-linked product scenes with a sticky preview.",
+      "type": "registry:ui",
+      "dependencies": ["motion"],
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [
+        {
+          "path": "registry/nova/effects/scroll-stage.tsx",
+          "type": "registry:ui",
+          "target": "@effects/scroll-stage.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pixel-displacement",
+      "title": "Pixel Displacement",
+      "description": "A local pointer-driven image displacement field.",
+      "type": "registry:ui",
+      "dependencies": ["motion"],
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [
+        {
+          "path": "registry/nova/effects/pixel-displacement.tsx",
+          "type": "registry:ui",
+          "target": "@effects/pixel-displacement.tsx"
+        }
+      ]
+    },
+    {
+      "name": "morphing-surface",
+      "title": "Morphing Surface",
+      "description": "A connected card-to-dialog layout transition.",
+      "type": "registry:ui",
+      "dependencies": ["motion"],
+      "registryDependencies": ["@rivelle/utils", "@rivelle/dialog"],
+      "files": [
+        {
+          "path": "registry/nova/effects/morphing-surface.tsx",
+          "type": "registry:ui",
+          "target": "@effects/morphing-surface.tsx"
+        }
+      ]
+    },
+    {
+      "name": "image-trail",
+      "title": "Image Trail",
+      "description": "An ephemeral image trail that follows pointer movement.",
+      "type": "registry:ui",
+      "dependencies": ["motion"],
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [
+        {
+          "path": "registry/nova/effects/image-trail.tsx",
+          "type": "registry:ui",
+          "target": "@effects/image-trail.tsx"
+        }
+      ]
+    },
+    {
+      "name": "elastic-dock",
+      "title": "Elastic Dock",
+      "description": "Proximity-aware navigation with spring-driven item sizes.",
+      "type": "registry:ui",
+      "dependencies": ["motion"],
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [
+        {
+          "path": "registry/nova/effects/elastic-dock.tsx",
+          "type": "registry:ui",
+          "target": "@effects/elastic-dock.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rolling-number",
+      "title": "Rolling Number",
+      "description": "Animated digit columns with locale-aware number formatting.",
+      "type": "registry:ui",
+      "dependencies": ["motion"],
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [
+        {
+          "path": "registry/nova/effects/rolling-number.tsx",
+          "type": "registry:ui",
+          "target": "@effects/rolling-number.tsx"
+        }
+      ]
+    },
+    {
+      "name": "file-upload",
+      "title": "File Upload",
+      "description": "Validated file queues with progress, cancellation and retry.",
+      "type": "registry:ui",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["@rivelle/utils", "@rivelle/button"],
+      "files": [
+        { "path": "registry/nova/ui/file-upload.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "stepper",
+      "title": "Stepper",
+      "description": "Accessible horizontal and vertical step progress.",
+      "type": "registry:ui",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [
+        { "path": "registry/nova/ui/stepper.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "tree-view",
+      "title": "Tree View",
+      "description": "Nested file navigation with keyboard selection and expansion.",
+      "type": "registry:ui",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [
+        { "path": "registry/nova/ui/tree-view.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "data-table",
+      "title": "Data Table",
+      "description": "Typed tables with search, sorting, selection and pagination.",
+      "type": "registry:ui",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "@rivelle/utils",
+        "@rivelle/button",
+        "@rivelle/input"
+      ],
+      "files": [
+        { "path": "registry/nova/ui/data-table.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "onboarding-01",
+      "title": "Onboarding",
+      "description": "Workspace setup with focus selection and team invitations.",
+      "type": "registry:block",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "@rivelle/utils",
+        "@rivelle/button",
+        "@rivelle/input",
+        "@rivelle/stepper"
+      ],
+      "files": [
+        {
+          "path": "registry/nova/blocks/onboarding-01.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "billing-settings-01",
+      "title": "Billing Settings",
+      "description": "Plans, billing periods, payment settings and invoices.",
+      "type": "registry:block",
+      "registryDependencies": [
+        "@rivelle/utils",
+        "@rivelle/button",
+        "@rivelle/data-table"
+      ],
+      "files": [
+        {
+          "path": "registry/nova/blocks/billing-settings-01.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "activity-feed-01",
+      "title": "Activity Feed",
+      "description": "Filterable workspace events with actors and timestamps.",
+      "type": "registry:block",
+      "registryDependencies": ["@rivelle/utils"],
+      "files": [
+        {
+          "path": "registry/nova/blocks/activity-feed-01.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "file-manager-01",
+      "title": "File Manager",
+      "description": "Searchable file grid and list with upload and selection.",
+      "type": "registry:block",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "@rivelle/utils",
+        "@rivelle/button",
+        "@rivelle/input",
+        "@rivelle/file-upload"
+      ],
+      "files": [
+        {
+          "path": "registry/nova/blocks/file-manager-01.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "command-center-01",
+      "title": "Command Center",
+      "description": "Keyboard workspace search with recent actions.",
+      "type": "registry:block",
+      "registryDependencies": [
+        "@rivelle/button",
+        "@rivelle/command",
+        "@rivelle/dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/nova/blocks/command-center-01.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "workspace-01",
+      "title": "Workspace",
+      "description": "A complete interactive project workspace.",
+      "type": "registry:page",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "@rivelle/utils",
+        "@rivelle/button",
+        "@rivelle/input",
+        "@rivelle/dialog",
+        "@rivelle/onboarding-01",
+        "@rivelle/billing-settings-01",
+        "@rivelle/activity-feed-01",
+        "@rivelle/file-manager-01",
+        "@rivelle/command-center-01"
+      ],
+      "files": [
+        {
+          "path": "registry/nova/templates/workspace-01.tsx",
+          "type": "registry:page",
+          "target": "@templates/workspace-01.tsx"
+        }
+      ]
+    },
+    {
+      "name": "product-launch-01",
+      "title": "Product Launch",
+      "description": "A product story with scroll scenes, release notes and signup.",
+      "type": "registry:page",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "@rivelle/button",
+        "@rivelle/input",
+        "@rivelle/scroll-stage",
+        "@rivelle/rolling-number"
+      ],
+      "files": [
+        {
+          "path": "registry/nova/templates/product-launch-01.tsx",
+          "type": "registry:page",
+          "target": "@templates/product-launch-01.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ai-chat-workspace-01",
+      "title": "AI Chat Workspace",
+      "description": "Conversation history, attachments, sources and response integration.",
+      "type": "registry:page",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["@rivelle/utils", "@rivelle/button"],
+      "files": [
+        {
+          "path": "registry/nova/templates/ai-chat-workspace-01.tsx",
+          "type": "registry:page",
+          "target": "@templates/ai-chat-workspace-01.tsx"
+        }
+      ]
+    },
+    {
       "name": "utils",
       "type": "registry:lib",
       "title": "Class name utility",

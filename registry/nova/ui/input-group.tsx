@@ -7,7 +7,7 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="input-group"
       className={cn(
-        "group/input-group relative flex min-h-11.5 w-full min-w-0 items-center overflow-hidden rounded-xl border [background:var(--control-background)] [border-color:var(--control-border)] [box-shadow:var(--control-shadow)] transition-[border-color,box-shadow,background-color] duration-300 ease-[cubic-bezier(.16,1,.3,1)] hover:[background:var(--control-background-hover)] hover:[border-color:var(--control-border-hover)] hover:[box-shadow:var(--control-shadow-hover)] focus-within:[background:var(--control-background)] focus-within:[border-color:var(--control-focus-border)] focus-within:[box-shadow:var(--control-focus-shadow)] has-[[aria-invalid=true]]:![border-color:color-mix(in_oklch,var(--destructive)_55%,transparent)] has-[[data-align=block-start]]:flex-wrap has-[[data-align=block-end]]:flex-wrap",
+        "group/input-group relative flex min-h-11 w-full min-w-0 items-center overflow-hidden rounded-lg border [background:var(--control-background)] [border-color:var(--control-border)] [box-shadow:var(--control-shadow)] transition-[border-color,box-shadow,background-color] duration-150 ease-[cubic-bezier(.22,1,.36,1)] hover:[background:var(--control-background-hover)] hover:[border-color:var(--control-border-hover)] focus-within:[background:var(--control-background)] focus-within:[border-color:var(--control-focus-border)] focus-within:[box-shadow:var(--control-focus-shadow)] has-[[aria-invalid=true]]:![border-color:color-mix(in_oklch,var(--destructive)_55%,transparent)] has-[[data-align=block-start]]:flex-wrap has-[[data-align=block-end]]:flex-wrap",
         className,
       )}
       {...props}

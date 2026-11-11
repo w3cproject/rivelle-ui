@@ -3,22 +3,22 @@ import { Badge } from "@/components/ui/badge";
 const specimens = [
   {
     label: "Display",
-    className: "text-display font-semibold",
+    className: "text-display font-medium",
     text: "Interface with intent.",
   },
   {
     label: "Heading 1",
-    className: "text-h1 font-semibold",
+    className: "text-h1 font-medium",
     text: "A clear visual voice.",
   },
   {
     label: "Heading 2",
-    className: "text-h2 font-semibold",
+    className: "text-h2 font-medium",
     text: "Designed for hierarchy.",
   },
   {
     label: "Heading 3",
-    className: "text-h3 font-semibold",
+    className: "text-h3 font-medium",
     text: "Reusable by default.",
   },
   {
@@ -60,7 +60,7 @@ export default function TypographyPage() {
               className="grid gap-5 border-b border-border p-6 last:border-b-0 md:grid-cols-[110px_1fr] md:p-8"
               key={specimen.label}
             >
-              <span className="pt-1 font-mono text-[11px] uppercase tracking-[.14em] text-muted-foreground">
+              <span className="pt-1 font-mono text-[11px] text-muted-foreground">
                 {specimen.label}
               </span>
               <p className={specimen.className}>{specimen.text}</p>
@@ -76,7 +76,7 @@ export default function TypographyPage() {
           selected family lives in one replaceable semantic token.
         </p>
         <pre className="docs-code-block overflow-x-auto p-5 text-sm leading-7 text-white">
-          <code>{`--font-family-sans: "Geist Variable", "Geist", ui-sans-serif, system-ui;\n--text-display: clamp(3.5rem, 8vw, 7rem);\n--text-h1: clamp(2.5rem, 5vw, 4.5rem);\n\n<h1 className="text-h1 font-semibold">...</h1>`}</code>
+          <code>{`--font-family-sans: "Geist Variable", "Geist", ui-sans-serif, system-ui;\n--text-display: clamp(3.5rem, 8vw, 7rem);\n--text-h1: clamp(2.5rem, 5vw, 4.5rem);\n\n<h1 className="text-h1 font-medium">...</h1>`}</code>
         </pre>
       </section>
 

@@ -22,7 +22,7 @@ function FieldLegend({
       data-slot="field-legend"
       data-variant={variant}
       className={cn(
-        "mb-1 font-semibold tracking-[-0.025em] data-[variant=legend]:text-lg data-[variant=label]:text-sm",
+        "mb-1 font-medium data-[variant=legend]:text-lg data-[variant=label]:text-sm",
         className,
       )}
       {...props}
@@ -65,7 +65,7 @@ function FieldLabel({ className, ...props }: React.ComponentProps<"label">) {
     <label
       data-slot="field-label"
       className={cn(
-        "flex w-fit items-center gap-2 text-sm font-semibold tracking-[-0.012em] group-has-[:disabled]/field:opacity-45",
+        "flex w-fit items-center gap-2 text-sm font-medium group-has-[:disabled]/field:opacity-45",
         className,
       )}
       {...props}
@@ -87,7 +87,7 @@ function FieldTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="field-title"
-      className={cn("text-sm font-semibold tracking-[-0.012em]", className)}
+      className={cn("text-sm font-medium", className)}
       {...props}
     />
   );

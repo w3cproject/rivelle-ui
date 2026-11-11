@@ -31,8 +31,8 @@ Do not add `"use client"` to documentation demos as a workaround for a component
 - Neutral and accent palettes, font and radius are foundations generated from one theme engine.
 - Geist is the default; Inter is the supported alternative.
 - Rivelle's default language uses calm rounded geometry, low-contrast inset surfaces and an accent edge for focus. Asymmetric geometry is opt-in through explicit variants such as `Button`'s `signature`; it is never a global default.
-- Floating surfaces share the same border, translucent background, blur, depth and entrance curve so Select, Dialog, Sheet, Popover, Command and menus feel related.
-- Motion uses CSS transitions and `tw-animate-css`. Reduced-motion behavior must remain usable and no interaction may depend on animation to communicate state.
+- Floating surfaces share quiet borders, opaque semantic surfaces, restrained depth and a consistent entrance curve so Select, Dialog, Sheet, Popover, Command and menus feel related.
+- Motion uses CSS transitions, `tw-animate-css` and locally installed `motion` for effects that need springs or shared layout transitions. Reduced-motion behavior must remain usable and no interaction may depend on animation to communicate state.
 - Fixed palette utilities are reserved for genuinely semantic states that are not part of the main accent system; otherwise use tokens.
 
 ## Component acceptance contract

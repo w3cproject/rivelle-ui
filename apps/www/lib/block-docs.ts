@@ -1,4 +1,9 @@
 export type BlockSlug =
+  | "onboarding-01"
+  | "billing-settings-01"
+  | "activity-feed-01"
+  | "file-manager-01"
+  | "command-center-01"
   | "login-01"
   | "signup-01"
   | "dashboard-shell-01"
@@ -24,6 +29,41 @@ export type BlockDoc = {
 };
 
 export const blockDocs: BlockDoc[] = [
+  {
+    slug: "onboarding-01",
+    name: "Onboarding",
+    category: "Application",
+    description:
+      "Workspace creation, project focus and optional team invitations.",
+  },
+  {
+    slug: "billing-settings-01",
+    name: "Billing Settings",
+    category: "Application",
+    description:
+      "Plans, billing periods, payment settings and searchable invoices.",
+  },
+  {
+    slug: "activity-feed-01",
+    name: "Activity Feed",
+    category: "Application",
+    description:
+      "Filterable project, team and file events with UTC timestamps.",
+  },
+  {
+    slug: "file-manager-01",
+    name: "File Manager",
+    category: "Application",
+    description:
+      "Searchable file grid and list with uploads and selection actions.",
+  },
+  {
+    slug: "command-center-01",
+    name: "Command Center",
+    category: "Application",
+    description:
+      "Keyboard workspace search, grouped actions and recently selected items.",
+  },
   {
     slug: "login-01",
     name: "Login",

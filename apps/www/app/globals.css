@@ -9,27 +9,34 @@
 
 @custom-variant dark (&:is(.dark *));
 
+[data-preview-reduced] *, [data-preview-reduced] *::before, [data-preview-reduced] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
 /* --rivelle-theme: semantic tokens consumed by every Rivelle component. */
 :root {
-  --background: oklch(0.985 0.004 260);
-  --foreground: oklch(0.18 0.02 265);
+  --background: oklch(0.975 0.006 255);
+  --foreground: oklch(0.18 0.018 258);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.02 265);
+  --card-foreground: var(--foreground);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.02 265);
-  --primary: oklch(0.54 0.22 265);
-  --primary-foreground: oklch(0.985 0.005 260);
-  --secondary: oklch(0.95 0.012 260);
-  --secondary-foreground: oklch(0.27 0.03 265);
-  --muted: oklch(0.955 0.009 260);
-  --muted-foreground: oklch(0.52 0.025 265);
-  --accent: oklch(0.93 0.035 260);
-  --accent-foreground: oklch(0.3 0.08 265);
+  --popover-foreground: var(--foreground);
+  --primary: oklch(0.56 0.2 255);
+  --primary-foreground: oklch(0.985 0.004 255);
+  --secondary: oklch(0.935 0.009 255);
+  --secondary-foreground: oklch(0.29 0.022 258);
+  --muted: oklch(0.945 0.007 255);
+  --muted-foreground: oklch(0.48 0.022 258);
+  --accent: oklch(0.91 0.028 255);
+  --accent-foreground: oklch(0.31 0.08 255);
   --destructive: oklch(0.61 0.22 25);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.89 0.016 260);
-  --input: oklch(0.89 0.016 260);
-  --ring: oklch(0.61 0.19 265);
+  --border: oklch(0.84 0.012 255 / 72%);
+  --input: oklch(0.84 0.012 255 / 82%);
+  --ring: oklch(0.61 0.17 255);
   --action-background: var(--foreground);
   --action-foreground: var(--background);
   --action-background-hover: color-mix(
@@ -37,12 +44,10 @@
     var(--foreground) 92%,
     transparent
   );
-  --action-shadow:
-    0 1px 0 color-mix(in oklch, var(--background) 28%, transparent),
-    0 8px 24px -14px var(--foreground);
-  --action-shadow-hover:
-    0 1px 0 color-mix(in oklch, var(--background) 32%, transparent),
-    0 14px 30px -16px var(--foreground);
+  --action-shadow: 0 1px 2px
+    color-mix(in oklch, var(--foreground) 12%, transparent);
+  --action-shadow-hover: 0 1px 2px
+    color-mix(in oklch, var(--foreground) 16%, transparent);
   --control-background: color-mix(
     in oklch,
     var(--foreground) 4.5%,
@@ -64,52 +69,48 @@
     var(--foreground) 14%,
     transparent
   );
-  --control-shadow:
-    inset 0 1px 0 color-mix(in oklch, var(--background) 72%, transparent),
-    inset 0 -1px 0 color-mix(in oklch, var(--foreground) 7%, transparent);
-  --control-shadow-hover:
-    inset 0 1px 0 color-mix(in oklch, var(--background) 72%, transparent),
-    inset 0 -1px 0 color-mix(in oklch, var(--foreground) 9%, transparent);
-  --control-focus-shadow:
-    inset 0 -2px 0 var(--primary), 0 14px 34px -24px var(--foreground);
+  --control-shadow: inset 0 1px 0
+    color-mix(in oklch, var(--background) 72%, transparent);
+  --control-shadow-hover: inset 0 1px 0
+    color-mix(in oklch, var(--background) 78%, transparent);
+  --control-focus-shadow: 0 0 0 3px
+    color-mix(in oklch, var(--primary) 13%, transparent);
   --surface-background: color-mix(
     in oklch,
     var(--foreground) 2.5%,
     transparent
   );
   --surface-border: color-mix(in oklch, var(--foreground) 10%, transparent);
-  --surface-shadow:
-    inset 0 1px 0 color-mix(in oklch, var(--background) 72%, transparent),
-    0 18px 50px -38px var(--foreground);
-  --surface-shadow-hover:
-    inset 0 1px 0 color-mix(in oklch, var(--background) 76%, transparent),
-    0 24px 60px -38px var(--foreground);
-  --radius: 0.625rem;
+  --surface-shadow: 0 1px 2px
+    color-mix(in oklch, var(--foreground) 6%, transparent);
+  --surface-shadow-hover: 0 1px 3px
+    color-mix(in oklch, var(--foreground) 8%, transparent);
+  --radius: 0.5rem;
   --font-family-sans:
     "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
   --font-family-mono: "SFMono-Regular", Consolas, monospace;
 }
 
 .dark {
-  --background: oklch(0.145 0.018 265);
-  --foreground: oklch(0.96 0.008 260);
-  --card: oklch(0.185 0.022 265);
-  --card-foreground: oklch(0.96 0.008 260);
-  --popover: oklch(0.19 0.022 265);
-  --popover-foreground: oklch(0.96 0.008 260);
-  --primary: oklch(0.7 0.17 265);
-  --primary-foreground: oklch(0.16 0.025 265);
-  --secondary: oklch(0.24 0.025 265);
-  --secondary-foreground: oklch(0.94 0.01 260);
-  --muted: oklch(0.24 0.02 265);
-  --muted-foreground: oklch(0.69 0.025 260);
-  --accent: oklch(0.28 0.055 265);
-  --accent-foreground: oklch(0.94 0.015 260);
+  --background: oklch(0.135 0.014 258);
+  --foreground: oklch(0.955 0.006 255);
+  --card: oklch(0.17 0.014 258);
+  --card-foreground: var(--foreground);
+  --popover: oklch(0.18 0.014 258);
+  --popover-foreground: var(--foreground);
+  --primary: oklch(0.7 0.145 252);
+  --primary-foreground: oklch(0.13 0.018 258);
+  --secondary: oklch(0.225 0.014 258);
+  --secondary-foreground: oklch(0.94 0.007 255);
+  --muted: oklch(0.215 0.012 258);
+  --muted-foreground: oklch(0.7 0.018 255);
+  --accent: oklch(0.255 0.04 255);
+  --accent-foreground: oklch(0.94 0.01 255);
   --destructive: oklch(0.66 0.2 25);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 14%);
-  --ring: oklch(0.7 0.15 265);
+  --border: oklch(1 0 0 / 9%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.72 0.13 252);
 }
 
 @theme inline {
@@ -136,16 +137,16 @@
   --font-mono: var(--font-family-mono);
   --text-display: clamp(3.5rem, 8vw, 7rem);
   --text-display--line-height: 0.92;
-  --text-display--letter-spacing: -0.065em;
+  --text-display--letter-spacing: -0.03em;
   --text-h1: clamp(2.5rem, 5vw, 4.5rem);
   --text-h1--line-height: 0.98;
-  --text-h1--letter-spacing: -0.055em;
+  --text-h1--letter-spacing: -0.025em;
   --text-h2: clamp(2rem, 3.5vw, 3rem);
   --text-h2--line-height: 1.05;
-  --text-h2--letter-spacing: -0.04em;
+  --text-h2--letter-spacing: -0.02em;
   --text-h3: 1.5rem;
   --text-h3--line-height: 1.2;
-  --text-h3--letter-spacing: -0.025em;
+  --text-h3--letter-spacing: -0.015em;
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -188,12 +189,12 @@
   width: 1.7rem;
   height: 1.7rem;
   flex: none;
-  filter: drop-shadow(0 6px 12px oklch(0.58 0.22 282 / 18%));
+  color: var(--primary);
 }
 .rivelle-wordmark {
   font-size: 1.08rem;
-  font-weight: 620;
-  letter-spacing: -0.055em;
+  font-weight: 600;
+  letter-spacing: -0.035em;
   line-height: 1;
 }
 
@@ -205,26 +206,45 @@
   color: var(--foreground);
 }
 .nav-link::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: -7px;
-  left: 0;
-  height: 1px;
-  background: var(--foreground);
-  transform: scaleX(0);
-  transition: transform 180ms ease;
+  display: none;
 }
-.nav-link:hover::after {
-  transform: scaleX(1);
+
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted-foreground);
+  font-family: var(--font-family-mono);
+  font-size: 0.72rem;
+  line-height: 1rem;
+}
+.section-kicker::before {
+  content: "";
+  width: 0.2rem;
+  height: 1rem;
+  border-radius: 0.05rem 0.2rem 0.2rem 0.05rem;
+  background: var(--primary);
+}
+.section-kicker svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  color: var(--primary);
+}
+.rivelle-cut {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.rivelle-cut::before {
+  content: "";
+  width: 0.2rem;
+  height: 0.8rem;
+  border-radius: 0.05rem 0.18rem 0.18rem 0.05rem;
+  background: var(--primary);
 }
 
 .ambient {
-  pointer-events: none;
-  position: absolute;
-  border-radius: 999px;
-  filter: blur(100px);
-  opacity: 0.16;
+  display: none;
 }
 .ambient-one {
   top: 5rem;
@@ -253,38 +273,55 @@
 .showcase-grid {
   background-size: 24px 24px;
   mask-image: none;
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in oklch, var(--border) 65%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklch, var(--border) 65%, transparent) 1px,
+      transparent 1px
+    );
 }
 .gradient-text {
   color: var(--primary);
-  text-shadow: 0 12px 42px color-mix(in oklch, var(--primary) 20%, transparent);
+  text-shadow: none;
 }
 
 .float-panel,
 .preview-card {
   border: 1px solid var(--border);
-  border-radius: 1.15rem;
-  background: color-mix(in oklch, var(--card) 86%, transparent);
-  box-shadow:
-    0 30px 80px oklch(0.18 0.03 265 / 8%),
-    0 2px 8px oklch(0.18 0.03 265 / 4%);
+  border-radius: 1rem;
+  background: var(--card);
+  box-shadow: 0 1px 2px color-mix(in oklch, var(--foreground) 6%, transparent);
   overflow: hidden;
-  backdrop-filter: blur(20px);
 }
 .float-panel {
-  animation: float-in 900ms cubic-bezier(0.16, 1, 0.3, 1) 300ms both;
+  animation: float-in 480ms cubic-bezier(0.22, 1, 0.36, 1) 120ms both;
 }
 .preview-card {
   transition:
-    transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 300ms ease;
+    border-color 160ms ease,
+    background-color 160ms ease;
 }
 .preview-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 32px 80px oklch(0.18 0.03 265 / 11%);
+  border-color: color-mix(in oklch, var(--foreground) 18%, var(--border));
 }
 .code-window {
-  background: color-mix(in oklch, var(--muted) 50%, transparent);
+  background: color-mix(in oklch, var(--muted) 58%, var(--background));
   color: var(--muted-foreground);
+}
+.hero-workbench {
+  background: var(--card);
+}
+.effect-frame {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 0.35rem;
+  background: var(--card);
 }
 .code-purple {
   color: oklch(0.6 0.2 305);
@@ -315,8 +352,8 @@
   transition: background-color 250ms ease;
 }
 .install-panel {
-  background: oklch(0.16 0.025 265);
-  box-shadow: 0 35px 90px oklch(0.2 0.08 270 / 22%);
+  background: oklch(0.16 0.014 258);
+  box-shadow: none;
 }
 .install-panel button {
   border-color: oklch(1 0 0 / 12%);
@@ -330,14 +367,7 @@
   color: white;
 }
 .install-glow {
-  position: absolute;
-  top: -70%;
-  right: -5%;
-  width: 36rem;
-  height: 36rem;
-  border-radius: 999px;
-  background: oklch(0.59 0.23 270 / 32%);
-  filter: blur(80px);
+  display: none;
 }
 
 .docs-shell {
@@ -714,14 +744,13 @@
   position: relative;
   z-index: 30;
   display: flex;
-  min-height: 3.5rem;
+  min-height: 3rem;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
   border-bottom: 1px solid color-mix(in oklch, var(--border) 80%, transparent);
   padding: 0.6rem 0.75rem 0.6rem 1rem;
-  background: color-mix(in oklch, var(--background) 86%, transparent);
-  backdrop-filter: blur(18px);
+  background: var(--card);
 }
 .style-preview-label {
   display: inline-flex;
@@ -729,8 +758,7 @@
   gap: 0.45rem;
   color: var(--muted-foreground);
   font-size: 0.7rem;
-  font-weight: 650;
-  letter-spacing: 0.025em;
+  font-weight: 500;
 }
 .style-preview-label svg {
   width: 0.85rem;
@@ -742,11 +770,9 @@
   align-items: center;
   gap: 0.2rem;
   border: 1px solid color-mix(in oklch, var(--border) 88%, transparent);
-  border-radius: 0.7rem;
+  border-radius: 0.55rem;
   padding: 0.2rem;
   background: color-mix(in oklch, var(--muted) 62%, transparent);
-  box-shadow: inset 0 1px 0
-    color-mix(in oklch, var(--background) 70%, transparent);
 }
 .style-preview-switch button {
   display: inline-flex;
@@ -755,10 +781,10 @@
   align-items: center;
   justify-content: center;
   gap: 0.35rem;
-  border-radius: 0.5rem;
+  border-radius: 0.35rem;
   color: var(--muted-foreground);
   font-size: 0.68rem;
-  font-weight: 650;
+  font-weight: 500;
   transition:
     color 160ms ease,
     background-color 160ms ease,
@@ -770,9 +796,7 @@
 .style-preview-switch button.is-active {
   background: var(--background);
   color: var(--foreground);
-  box-shadow:
-    0 1px 3px color-mix(in oklch, var(--foreground) 12%, transparent),
-    inset 0 1px 0 color-mix(in oklch, white 65%, transparent);
+  box-shadow: 0 1px 2px color-mix(in oklch, var(--foreground) 10%, transparent);
 }
 .style-preview-switch button.is-active:last-child {
   color: var(--primary);
@@ -783,12 +807,12 @@
 }
 .block-style-preview {
   overflow: hidden;
-  border-radius: 1.7rem;
+  border-radius: 0.85rem;
 }
 .block-style-preview-canvas {
   position: relative;
   min-width: 0;
-  background: color-mix(in oklch, var(--background) 94%, var(--primary));
+  background: var(--background);
 }
 .block-style-preview-canvas > * {
   width: 100%;
@@ -917,7 +941,6 @@
 }
 .config-toggle[data-active="true"] > span {
   background: var(--primary);
-  box-shadow: 0 0 10px color-mix(in oklch, var(--primary) 55%, transparent);
 }
 .docs-table-wrap {
   overflow-x: auto;
@@ -935,10 +958,9 @@
   background: color-mix(in oklch, var(--muted) 55%, transparent);
   color: var(--muted-foreground);
   font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font-weight: 500;
+  letter-spacing: 0;
   text-align: left;
-  text-transform: uppercase;
 }
 .docs-table td {
   border-top: 1px solid var(--border);
@@ -1015,25 +1037,25 @@
 }
 
 .reveal-up {
-  animation: reveal-up 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: reveal-up 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 .delay-1 {
-  animation-delay: 80ms;
+  animation-delay: 50ms;
 }
 .delay-2 {
-  animation-delay: 150ms;
+  animation-delay: 100ms;
 }
 .delay-3 {
-  animation-delay: 220ms;
+  animation-delay: 150ms;
 }
 .delay-4 {
-  animation-delay: 290ms;
+  animation-delay: 200ms;
 }
 
 @keyframes reveal-up {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -1043,11 +1065,11 @@
 @keyframes float-in {
   from {
     opacity: 0;
-    transform: translateY(28px) scale(0.985);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 
@@ -1071,8 +1093,7 @@
   top: 0;
   z-index: 50;
   border-bottom: 1px solid color-mix(in oklch, var(--border) 78%, transparent);
-  background: color-mix(in oklch, var(--background) 92%, transparent);
-  backdrop-filter: blur(14px);
+  background: var(--background);
 }
 .docs-header-inner {
   display: flex;
@@ -1089,15 +1110,17 @@
   align-items: center;
   gap: 0.55rem;
   font-size: 0.86rem;
-  font-weight: 680;
+  font-weight: 600;
   letter-spacing: -0.02em;
 }
 .docs-top-nav {
   display: flex;
+  min-width: 0;
+  overflow-x: auto;
   align-items: center;
   gap: 0.2rem;
   font-size: 0.76rem;
-  font-weight: 560;
+  font-weight: 500;
 }
 .docs-top-nav a,
 .docs-top-nav > span {
@@ -1117,6 +1140,7 @@
 }
 .docs-header-actions {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   gap: 0.15rem;
   margin-left: auto;
@@ -1165,18 +1189,16 @@
   position: absolute;
   inset: 0;
   background: color-mix(in oklch, var(--background) 50%, transparent);
-  backdrop-filter: blur(10px);
 }
 .docs-search-dialog {
   position: relative;
   width: min(42rem, 100%);
   overflow: hidden;
-  border: 1px solid color-mix(in oklch, var(--primary) 20%, var(--border));
-  border-radius: 1.25rem;
-  background: color-mix(in oklch, var(--popover) 97%, var(--primary));
-  box-shadow:
-    0 32px 100px -28px color-mix(in oklch, var(--foreground) 40%, transparent),
-    inset 0 1px 0 color-mix(in oklch, white 55%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  background: var(--popover);
+  box-shadow: 0 16px 48px
+    color-mix(in oklch, var(--foreground) 18%, transparent);
 }
 .docs-search-input-row {
   display: flex;
@@ -1246,10 +1268,10 @@
   width: 2rem;
   height: 2rem;
   place-items: center;
-  border: 1px solid color-mix(in oklch, var(--primary) 16%, var(--border));
-  border-radius: 0.65rem;
-  background: color-mix(in oklch, var(--primary) 7%, var(--background));
-  color: var(--primary);
+  border: 1px solid var(--border);
+  border-radius: 0.45rem;
+  background: var(--muted);
+  color: var(--muted-foreground);
 }
 .docs-search-result-icon svg {
   width: 0.85rem;
@@ -1261,7 +1283,7 @@
 }
 .docs-search-results strong {
   font-size: 0.78rem;
-  font-weight: 650;
+  font-weight: 500;
 }
 .docs-search-results small {
   overflow: hidden;
@@ -1358,17 +1380,24 @@
 }
 .docs-nav-link-active,
 .docs-nav-link-active:hover {
-  background: color-mix(in oklch, var(--foreground) 13%, var(--background));
+  background: var(--muted);
   color: var(--foreground);
   box-shadow: none;
-  font-weight: 650;
+  font-weight: 500;
+}
+.docs-nav-link-active::before {
+  content: "";
+  width: 0.2rem;
+  height: 0.85rem;
+  margin-right: 0.15rem;
+  border-radius: 0.05rem 0.18rem 0.18rem 0.05rem;
+  background: var(--primary);
 }
 .docs-new-dot {
-  width: 0.35rem;
-  height: 0.35rem;
-  border-radius: 999px;
+  width: 0.2rem;
+  height: 0.75rem;
+  border-radius: 0.05rem 0.15rem 0.15rem 0.05rem;
   background: var(--primary);
-  box-shadow: 0 0 8px color-mix(in oklch, var(--primary) 50%, transparent);
 }
 
 .docs-main {
@@ -1394,15 +1423,14 @@
   color: var(--muted-foreground);
   font-family: var(--font-family-mono);
   font-size: 0.66rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0;
 }
 .docs-content > h1,
 .docs-page-intro h1 {
   margin-top: 0.55rem;
   font-size: clamp(2rem, 4vw, 2.65rem);
-  font-weight: 690;
-  letter-spacing: -0.045em;
+  font-weight: 500;
+  letter-spacing: -0.025em;
   line-height: 1.05;
 }
 .docs-lead {
@@ -1423,7 +1451,7 @@
   background: var(--muted);
   color: var(--foreground);
   font-size: 0.68rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 .docs-copy-page svg {
   width: 0.75rem;
@@ -1436,8 +1464,8 @@
 .docs-section > h2 {
   margin-bottom: 0.55rem;
   font-size: 1.18rem;
-  font-weight: 670;
-  letter-spacing: -0.025em;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 .docs-section > p {
   margin-bottom: 1.15rem;
@@ -1451,7 +1479,7 @@
   gap: 0.4rem;
   color: var(--foreground);
   font-size: 0.8rem;
-  font-weight: 620;
+  font-weight: 500;
 }
 .docs-inline-link svg {
   width: 0.8rem;
@@ -1478,7 +1506,7 @@
   padding: 0.62rem 0;
   color: var(--foreground);
   font-size: 0.83rem;
-  font-weight: 590;
+  font-weight: 500;
   transition:
     color 140ms ease,
     border-color 140ms ease;
@@ -1534,14 +1562,15 @@
   flex-direction: column;
   margin-top: 2rem;
   border: 1px solid var(--border);
-  border-radius: 0.8rem;
+  border-radius: 0.65rem;
   padding: 1rem;
-  background: color-mix(in oklch, var(--muted) 55%, transparent);
+  background: var(--card);
+  box-shadow: inset 0.2rem 0 0 var(--primary);
 }
 .docs-toc-card span {
   color: var(--primary);
   font-size: 0.62rem;
-  font-weight: 650;
+  font-weight: 500;
 }
 .docs-toc-card strong {
   margin-top: 0.4rem;
@@ -1647,19 +1676,12 @@
   height: 390px;
   overflow: hidden;
   border: 1px solid var(--border);
-  border-radius: 1.25rem;
+  border-radius: 1rem;
   background: color-mix(in oklch, var(--muted) 35%, var(--background));
-  box-shadow: inset 0 1px 0
-    color-mix(in oklch, var(--background) 75%, transparent);
-  transition:
-    border-color 220ms ease,
-    box-shadow 220ms ease,
-    transform 220ms ease;
+  transition: border-color 150ms ease;
 }
 .group:hover .block-card-preview {
-  border-color: color-mix(in oklch, var(--primary) 28%, var(--border));
-  box-shadow: 0 24px 70px -55px var(--foreground);
-  transform: translateY(-2px);
+  border-color: color-mix(in oklch, var(--foreground) 18%, var(--border));
 }
 .block-card-canvas {
   width: 200%;
@@ -1816,7 +1838,7 @@
     box-shadow 140ms ease;
 }
 .theme-accent-row button:hover {
-  transform: scale(1.08);
+  border-color: var(--foreground);
 }
 .theme-accent-row button.is-active {
   box-shadow: 0 0 0 2px var(--foreground);
@@ -1912,7 +1934,6 @@
   height: 0.42rem;
   border-radius: 999px;
   background: var(--primary);
-  box-shadow: 0 0 8px color-mix(in oklch, var(--primary) 55%, transparent);
 }
 .theme-preview-bar small {
   color: var(--muted-foreground);

@@ -7,7 +7,7 @@ function Empty({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="empty"
       className={cn(
-        "relative flex min-h-72 w-full flex-col items-center justify-center overflow-hidden rounded-3xl border border-dashed border-foreground/16 bg-foreground/[.018] px-6 py-12 text-center before:pointer-events-none before:absolute before:inset-x-1/4 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-primary/65 before:to-transparent",
+        "relative flex min-h-72 w-full flex-col items-center justify-center overflow-hidden rounded-xl border border-dashed border-foreground/16 bg-foreground/[.018] px-6 py-12 text-center",
         className,
       )}
       {...props}
@@ -35,7 +35,7 @@ function EmptyMedia({
       data-slot="empty-media"
       data-variant={variant}
       className={cn(
-        "mb-3 flex items-center justify-center text-muted-foreground data-[variant=icon]:size-13 data-[variant=icon]:rounded-2xl data-[variant=icon]:border data-[variant=icon]:border-foreground/10 data-[variant=icon]:bg-background data-[variant=icon]:text-foreground data-[variant=icon]:shadow-[0_12px_30px_-20px_var(--foreground),inset_0_1px_0_color-mix(in_oklch,var(--background)_80%,transparent)] data-[variant=icon]:[&_svg]:size-5",
+        "mb-3 flex items-center justify-center text-muted-foreground data-[variant=icon]:size-11 data-[variant=icon]:rounded-lg data-[variant=icon]:border data-[variant=icon]:border-foreground/10 data-[variant=icon]:bg-background data-[variant=icon]:text-foreground data-[variant=icon]:[&_svg]:size-5",
         className,
       )}
       {...props}
@@ -47,7 +47,7 @@ function EmptyTitle({ className, ...props }: React.ComponentProps<"h3">) {
   return (
     <h3
       data-slot="empty-title"
-      className={cn("text-lg font-semibold tracking-[-0.03em]", className)}
+      className={cn("text-lg font-medium tracking-[-0.01em]", className)}
       {...props}
     />
   );

@@ -20,7 +20,7 @@ function DrawerOverlay({
     <DrawerPrimitive.Overlay
       data-slot="drawer-overlay"
       className={cn(
-        "fixed inset-0 z-50 bg-black/52 backdrop-blur-[5px] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+        "fixed inset-0 z-50 bg-black/52 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
         className,
       )}
       {...props}
@@ -39,7 +39,7 @@ function DrawerContent({
       <DrawerPrimitive.Content
         data-slot="drawer-content"
         className={cn(
-          "group/drawer fixed inset-x-0 bottom-0 z-50 flex max-h-[92svh] flex-col rounded-t-[2rem] border border-b-0 border-foreground/12 bg-background/97 shadow-[0_-28px_90px_-34px_color-mix(in_oklch,var(--foreground)_38%,transparent),inset_0_1px_0_color-mix(in_oklch,var(--background)_80%,transparent)] backdrop-blur-xl outline-none",
+          "group/drawer fixed inset-x-0 bottom-0 z-50 flex max-h-[92svh] flex-col rounded-t-2xl border border-b-0 border-foreground/10 bg-background shadow-xl outline-none",
           className,
         )}
         {...props}
@@ -76,7 +76,7 @@ function DrawerTitle({
   return (
     <DrawerPrimitive.Title
       data-slot="drawer-title"
-      className={cn("text-xl font-semibold tracking-[-0.035em]", className)}
+      className={cn("text-xl font-medium tracking-[-0.015em]", className)}
       {...props}
     />
   );

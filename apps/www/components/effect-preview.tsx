@@ -22,6 +22,7 @@ import { TextScramble } from "@/effects/text-scramble";
 import { TiltCard } from "@/effects/tilt-card";
 import type { EffectSlug } from "@/lib/effect-docs";
 import { cn } from "@/lib/utils";
+import { ExpansionEffectDemo } from "@/components/expansion-demos";
 
 export function EffectPreview({
   className,
@@ -35,11 +36,12 @@ export function EffectPreview({
   return (
     <div
       className={cn(
-        "relative flex min-h-[440px] items-center justify-center overflow-hidden rounded-[2rem] bg-foreground/[.025] p-5 sm:p-10",
+        "relative flex min-h-[440px] items-center justify-center overflow-hidden rounded-xl bg-foreground/[.025] p-5 sm:p-10",
         compact && "min-h-[350px] p-5",
         className,
       )}
     >
+      <ExpansionEffectDemo slug={slug} compact={compact} />
       {slug === "compare-slider" ? <CompareDemo /> : null}
       {slug === "direction-reveal" ? <DirectionDemo /> : null}
       {slug === "cursor-lens" ? <LensDemo /> : null}

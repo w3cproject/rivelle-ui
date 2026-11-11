@@ -19,7 +19,7 @@ function SelectTrigger({
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       className={cn(
-        "flex h-11.5 w-full items-center justify-between gap-2 rounded-xl border [background:var(--control-background)] [border-color:var(--control-border)] px-4 text-sm font-medium tracking-[-0.006em] [box-shadow:var(--control-shadow)] outline-none transition-[border-color,box-shadow,background-color] duration-300 ease-[cubic-bezier(.16,1,.3,1)] data-[placeholder]:font-normal data-[placeholder]:text-muted-foreground/70 hover:[background:var(--control-background-hover)] hover:[border-color:var(--control-border-hover)] hover:[box-shadow:var(--control-shadow-hover)] focus-visible:[background:var(--control-background)] focus-visible:[border-color:var(--control-focus-border)] focus-visible:[box-shadow:var(--control-focus-shadow)] disabled:cursor-not-allowed disabled:opacity-45 [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground [&_svg]:transition-transform data-[state=open]:[&_svg]:rotate-180",
+        "flex h-11 w-full items-center justify-between gap-2 rounded-lg border [background:var(--control-background)] [border-color:var(--control-border)] px-3.5 text-sm font-normal [box-shadow:var(--control-shadow)] outline-none transition-[border-color,box-shadow,background-color] duration-150 ease-[cubic-bezier(.22,1,.36,1)] data-[placeholder]:text-muted-foreground hover:[background:var(--control-background-hover)] hover:[border-color:var(--control-border-hover)] focus-visible:[background:var(--control-background)] focus-visible:[border-color:var(--control-focus-border)] focus-visible:[box-shadow:var(--control-focus-shadow)] disabled:cursor-not-allowed disabled:opacity-45 [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground [&_svg]:transition-transform data-[state=open]:[&_svg]:rotate-180",
         className,
       )}
       {...props}
@@ -44,7 +44,7 @@ function SelectContent({
         data-slot="select-content"
         position={position}
         className={cn(
-          "relative z-50 max-h-80 min-w-[8rem] overflow-hidden rounded-2xl border border-foreground/12 bg-popover/96 text-popover-foreground shadow-[0_24px_70px_-24px_color-mix(in_oklch,var(--foreground)_28%,transparent),inset_0_1px_0_color-mix(in_oklch,var(--background)_65%,transparent)] backdrop-blur-xl data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
+          "relative z-50 max-h-80 min-w-[8rem] overflow-hidden rounded-xl border border-foreground/10 bg-popover text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
           position === "popper" &&
             "data-[side=bottom]:translate-y-1.5 data-[side=top]:-translate-y-1.5",
           className,
@@ -89,7 +89,7 @@ function SelectItem({
   return (
     <SelectPrimitive.Item
       className={cn(
-        "relative flex w-full cursor-default select-none items-center rounded-xl py-2 pl-3 pr-9 text-sm font-medium outline-none transition-colors data-[disabled]:pointer-events-none data-[highlighted]:bg-primary/10 data-[highlighted]:text-primary data-[state=checked]:text-primary data-[disabled]:opacity-45",
+        "relative flex w-full cursor-default select-none items-center rounded-md py-2 pl-3 pr-9 text-sm font-normal outline-none transition-colors data-[disabled]:pointer-events-none data-[highlighted]:bg-muted data-[highlighted]:text-foreground data-[state=checked]:text-primary data-[disabled]:opacity-45",
         className,
       )}
       {...props}

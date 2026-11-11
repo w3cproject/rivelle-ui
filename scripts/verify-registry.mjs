@@ -137,6 +137,7 @@ body {
   for (const name of templateNames) {
     await assertFile(join(cwd, "src/components/templates", `${name}.tsx`));
   }
+  await verifyOwnedImports(cwd, "tsx");
   await assertFile(join(cwd, "src/lib/utils.ts"));
   const css = await readFile(join(cwd, "src/app/globals.css"), "utf8");
   assert(
@@ -232,26 +233,15 @@ async function verifyJavaScriptProject(cwd) {
   ]);
   await run([
     "add",
-    "button",
-    "dialog",
-    "select",
-    "compare-slider",
-    "cursor-lens",
-    "direction-reveal",
-    "draggable-stack",
-    "gradient-mesh",
-    "magnetic-button",
-    "perspective-grid",
-    "ripple-grid",
-    "shimmer-button",
-    "tilt-card",
-    "text-scramble",
+    ...componentNames,
+    ...effectNames,
+    ...blockNames,
     ...templateNames,
     "--cwd",
     cwd,
     "--skip-install",
   ]);
-  for (const name of ["button", "dialog", "select"]) {
+  for (const name of componentNames) {
     const filename = join(cwd, "src/components/ui", `${name}.jsx`);
     const source = await readFile(filename, "utf8");
     assert(
@@ -261,19 +251,7 @@ async function verifyJavaScriptProject(cwd) {
       `${name}.jsx still contains TypeScript syntax`,
     );
   }
-  for (const name of [
-    "compare-slider",
-    "cursor-lens",
-    "direction-reveal",
-    "draggable-stack",
-    "gradient-mesh",
-    "magnetic-button",
-    "perspective-grid",
-    "ripple-grid",
-    "shimmer-button",
-    "tilt-card",
-    "text-scramble",
-  ]) {
+  for (const name of effectNames) {
     const filename = join(cwd, "src/components/effects", `${name}.jsx`);
     const source = await readFile(filename, "utf8");
     assert(
@@ -294,6 +272,7 @@ async function verifyJavaScriptProject(cwd) {
     );
   }
   await assertFile(join(cwd, "src/lib/utils.js"));
+  await verifyOwnedImports(cwd, "jsx");
   const jsconfig = JSON.parse(
     await readFile(join(cwd, "jsconfig.json"), "utf8"),
   );
@@ -330,6 +309,45 @@ async function run(args) {
 
 async function assertFile(filename) {
   await readFile(filename, "utf8");
+}
+
+async function verifyOwnedImports(cwd, extension) {
+  const groups = [
+    ["ui", componentNames],
+    ["effects", effectNames],
+    ["blocks", blockNames],
+    ["templates", templateNames],
+  ];
+  for (const [directory, names] of groups) {
+    for (const name of names) {
+      const source = await readFile(
+        join(cwd, "src/components", directory, `${name}.${extension}`),
+        "utf8",
+      );
+      for (const match of source.matchAll(/from\s+["'](@\/[^"']+)["']/g)) {
+        const base = join(cwd, "src", match[1].slice(2));
+        const candidates = [
+          base,
+          `${base}.${extension}`,
+          `${base}.${extension === "tsx" ? "ts" : "js"}`,
+        ];
+        let found = false;
+        for (const candidate of candidates) {
+          try {
+            await readFile(candidate);
+            found = true;
+            break;
+          } catch {
+            /* Try the next supported source extension. */
+          }
+        }
+        assert(
+          found,
+          `${name}: missing owned import ${match[1]} after CLI installation`,
+        );
+      }
+    }
+  }
 }
 
 function count(value, needle) {

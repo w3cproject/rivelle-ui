@@ -1,4 +1,10 @@
 export type EffectSlug =
+  | "scroll-stage"
+  | "pixel-displacement"
+  | "morphing-surface"
+  | "image-trail"
+  | "elastic-dock"
+  | "rolling-number"
   | "gradient-mesh"
   | "text-scramble"
   | "magnetic-button"
@@ -12,7 +18,14 @@ export type EffectSlug =
   | "draggable-stack";
 
 export type EffectCategory =
-  "Cursor" | "Background" | "Text" | "Button" | "3D" | "Media" | "Motion";
+  | "Cursor"
+  | "Background"
+  | "Text"
+  | "Button"
+  | "3D"
+  | "Media"
+  | "Motion"
+  | "Scroll";
 
 export type EffectDoc = {
   slug: EffectSlug;
@@ -25,6 +38,88 @@ export type EffectDoc = {
 };
 
 export const effectDocs: EffectDoc[] = [
+  {
+    slug: "scroll-stage",
+    name: "Scroll Stage",
+    category: "Scroll",
+    description:
+      "Scroll through a sequence of product scenes with a connected sticky preview.",
+    client: true,
+    interaction: "Scroll through the scenes",
+    usage: `import { ScrollStage } from "@/components/effects/scroll-stage"
+
+<ScrollStage scenes={[
+  { id: "plan", title: "Make a plan", description: "Give your work a clear direction.", content: <div>Plan preview</div> },
+  { id: "ship", title: "Ship the work", description: "Move from idea to release.", content: <div>Release preview</div> },
+]} />`,
+  },
+  {
+    slug: "pixel-displacement",
+    name: "Pixel Displacement",
+    category: "Media",
+    description:
+      "An image breaks into displaced tiles around the pointer and settles back into place.",
+    client: true,
+    interaction: "Move across the image",
+    usage: `import { PixelDisplacement } from "@/components/effects/pixel-displacement"
+
+<PixelDisplacement src="/your-image.webp" alt="Project cover" columns={18} strength={26} />`,
+  },
+  {
+    slug: "morphing-surface",
+    name: "Morphing Surface",
+    category: "Motion",
+    description:
+      "Open a card into a connected detail surface with shared media and title transitions.",
+    client: true,
+    interaction: "Open the card, then close with Escape",
+    usage: `import { MorphingSurface } from "@/components/effects/morphing-surface"
+
+<MorphingSurface title="Field study" description="A closer look at the project" media={<img src="/cover.webp" alt="Field study" />}>
+  <p>The full project story goes here.</p>
+</MorphingSurface>`,
+  },
+  {
+    slug: "image-trail",
+    name: "Image Trail",
+    category: "Cursor",
+    description:
+      "Pointer movement leaves a short-lived sequence of images with rotation and inertia.",
+    client: true,
+    interaction: "Draw a path across the surface",
+    usage: `import { ImageTrail } from "@/components/effects/image-trail"
+
+<ImageTrail images={["/work-01.webp", "/work-02.webp"]}>
+  <h2>Selected work</h2>
+</ImageTrail>`,
+  },
+  {
+    slug: "elastic-dock",
+    name: "Elastic Dock",
+    category: "Motion",
+    description:
+      "Navigation items grow with pointer proximity and move their neighbors with spring motion.",
+    client: true,
+    interaction: "Move across the dock or tab through its actions",
+    usage: `import { ElasticDock } from "@/components/effects/elastic-dock"
+
+<ElasticDock items={[
+  { label: "Home", icon: <span>H</span>, href: "/" },
+  { label: "Projects", icon: <span>P</span>, href: "/projects" },
+]} />`,
+  },
+  {
+    slug: "rolling-number",
+    name: "Rolling Number",
+    category: "Text",
+    description:
+      "Independent digit columns roll into place whenever a formatted number changes.",
+    client: true,
+    interaction: "Change the value or billing period",
+    usage: `import { RollingNumber } from "@/components/effects/rolling-number"
+
+<RollingNumber value={1248.5} options={{ style: "currency", currency: "USD" }} />`,
+  },
   {
     slug: "compare-slider",
     name: "Compare Slider",
@@ -204,6 +299,7 @@ export function Demo() {
 
 export const effectCategories = [
   "All",
+  "Scroll",
   "Cursor",
   "Background",
   "Text",

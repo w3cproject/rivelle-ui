@@ -2,8 +2,14 @@ import { CreativePortfolio01 } from "@/templates/creative-portfolio-01";
 import { SaasLanding01 } from "@/templates/saas-landing-01";
 import type { TemplateSlug } from "@/lib/template-docs";
 import { cn } from "@/lib/utils";
+import { Workspace01 } from "@/templates/workspace-01";
+import { ProductLaunch01 } from "@/templates/product-launch-01";
+import { AiChatWorkspace01 } from "@/templates/ai-chat-workspace-01";
 
 const previews = {
+  "workspace-01": Workspace01,
+  "product-launch-01": ProductLaunch01,
+  "ai-chat-workspace-01": AiChatWorkspace01,
   "saas-landing-01": SaasLanding01,
   "creative-portfolio-01": CreativePortfolio01,
 };

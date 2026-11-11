@@ -7,18 +7,18 @@ import { templateDocs } from "@/lib/template-docs";
 
 export function TemplatesGallery() {
   return (
-    <div className="mt-12 grid gap-12 xl:grid-cols-2">
+    <div className="mt-12 grid gap-x-10 gap-y-14 xl:grid-cols-2">
       {templateDocs.map((template) => (
         <article className="group relative min-w-0" key={template.slug}>
-          <div className="overflow-hidden rounded-[2rem] border border-foreground/10 bg-foreground/[.025] p-2 shadow-[0_30px_100px_-75px_var(--foreground)]">
-            <div className="overflow-hidden rounded-[1.5rem] border border-foreground/8">
+          <div className="overflow-hidden rounded-2xl border border-foreground/10 bg-card p-1.5">
+            <div className="overflow-hidden rounded-xl border border-foreground/8">
               <TemplatePreview compact slug={template.slug} />
             </div>
           </div>
           <div className="mt-5 flex items-start justify-between gap-5 px-1">
             <div>
               <div className="flex items-center gap-2.5">
-                <h2 className="text-xl font-semibold tracking-[-.03em]">
+                <h2 className="text-xl font-medium tracking-[-.015em]">
                   <Link
                     className="after:absolute after:inset-0"
                     href={`/templates/${template.slug}`}
@@ -42,7 +42,7 @@ export function TemplatesGallery() {
                 ))}
               </div>
             </div>
-            <ArrowUpRight className="mt-1 size-5 shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
+            <ArrowUpRight className="mt-1 size-5 shrink-0 text-muted-foreground transition-colors group-hover:text-foreground" />
           </div>
         </article>
       ))}

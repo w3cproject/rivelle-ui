@@ -50,8 +50,8 @@ function MultiSelect({
   defaultValue = [],
   onValueChange,
   placeholder = "Select options",
-  searchPlaceholder = "Search options...",
-  emptyText = "No results found.",
+  searchPlaceholder = "Search",
+  emptyText = "No results",
   maxSelected,
   maxCount = 2,
   selectAllText = "Select all",
@@ -126,7 +126,7 @@ function MultiSelect({
           aria-expanded={open}
           aria-haspopup="listbox"
           className={cn(
-            "h-auto min-h-11.5 w-full justify-between gap-3 px-3.5 py-2 font-medium hover:-translate-y-0",
+            "h-auto min-h-11 w-full justify-between gap-3 px-3.5 py-2 font-normal",
             !selectedOptions.length && "text-muted-foreground",
             className,
           )}
@@ -140,14 +140,14 @@ function MultiSelect({
               <>
                 {selectedOptions.slice(0, maxCount).map((option) => (
                   <span
-                    className="inline-flex h-7 max-w-44 items-center rounded-lg border border-primary/12 bg-primary/9 px-2.5 text-xs font-semibold text-primary"
+                    className="inline-flex h-7 max-w-44 items-center rounded-md border border-primary/12 bg-primary/9 px-2 text-xs font-medium text-primary"
                     key={option.value}
                   >
                     <span className="truncate">{option.label}</span>
                   </span>
                 ))}
                 {selectedOptions.length > maxCount ? (
-                  <span className="inline-flex h-7 items-center rounded-lg border border-foreground/10 bg-muted/70 px-2.5 text-xs font-semibold text-muted-foreground">
+                  <span className="inline-flex h-7 items-center rounded-md border border-foreground/10 bg-muted/70 px-2 text-xs font-medium text-muted-foreground">
                     +{selectedOptions.length - maxCount}
                   </span>
                 ) : null}

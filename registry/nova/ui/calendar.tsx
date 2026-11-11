@@ -22,7 +22,7 @@ function Calendar({
     <DayPicker
       showOutsideDays={showOutsideDays}
       className={cn(
-        "w-fit rounded-2xl border border-foreground/10 bg-background/80 p-3 shadow-[inset_0_1px_0_color-mix(in_oklch,var(--background)_75%,transparent)]",
+        "w-fit rounded-xl border border-foreground/10 bg-background p-3",
         className,
       )}
       classNames={{
@@ -47,7 +47,7 @@ function Calendar({
         month_grid: "w-full border-collapse",
         weekdays: "flex",
         weekday:
-          "w-9 rounded-md text-center text-[0.68rem] font-semibold uppercase tracking-[0.06em] text-muted-foreground",
+          "w-9 rounded-md text-center text-xs font-medium text-muted-foreground",
         week: "mt-1 flex w-full",
         day: "relative size-9 p-0 text-center text-sm [&:has([aria-selected].range-end)]:rounded-r-xl [&:has([aria-selected].range-start)]:rounded-l-xl [&:has([aria-selected])]:bg-primary/10",
         day_button: cn(
@@ -59,7 +59,7 @@ function Calendar({
           "aria-selected:bg-primary/10 aria-selected:text-foreground aria-selected:rounded-none",
         range_end: "range-end",
         selected:
-          "[&>button]:bg-primary [&>button]:text-primary-foreground [&>button]:shadow-[0_8px_20px_-12px_var(--primary)]",
+          "[&>button]:bg-primary [&>button]:text-primary-foreground",
         today:
           "[&>button]:border [&>button]:border-primary/35 [&>button]:text-primary",
         outside: "text-muted-foreground/45 opacity-60",

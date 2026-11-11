@@ -4,6 +4,15 @@ This document collects possible directions for Rivelle after the core component 
 
 ## Near-term foundations
 
+### 0.6.0 catalog expansion (in progress)
+
+- Six effects: Scroll Stage, Pixel Displacement, Morphing Surface, Image Trail, Elastic Dock and Rolling Number.
+- File Upload, Stepper, Tree View and Data Table primitives.
+- Onboarding, Billing Settings, Activity Feed, File Manager and Command Center blocks.
+- Workspace, Product Launch and AI Chat Workspace templates.
+- Responsive, isolated previews with replay, full-screen and reduced-motion controls.
+- Local demos expose integration callbacks; provider APIs, payment processing and persistent storage remain application responsibilities.
+
 ### Project diagnostics
 
 - Add `rivelle doctor` to validate aliases, dependencies, theme tokens, CSS setup and React Server Component boundaries.

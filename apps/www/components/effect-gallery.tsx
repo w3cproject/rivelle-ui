@@ -24,16 +24,16 @@ export function EffectGallery() {
     <>
       <div
         aria-label="Filter effects by category"
-        className="mt-8 flex flex-wrap gap-2"
+        className="mt-7 flex flex-wrap gap-1.5"
         role="group"
       >
         {effectCategories.map((item) => (
           <button
             aria-pressed={category === item}
             className={cn(
-              "rounded-full border border-foreground/10 px-3.5 py-2 text-xs font-semibold text-muted-foreground transition-colors hover:text-foreground",
+              "rounded-md border border-transparent px-3 py-2 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground",
               category === item &&
-                "border-primary/25 bg-primary/10 text-primary",
+                "border-border bg-card text-foreground shadow-sm",
             )}
             key={item}
             onClick={() => setCategory(item)}
@@ -43,16 +43,16 @@ export function EffectGallery() {
           </button>
         ))}
       </div>
-      <div className="mt-8 grid gap-8 lg:grid-cols-2">
+      <div className="mt-8 grid gap-x-8 gap-y-12 lg:grid-cols-2">
         {effects.map((effect) => (
           <article className="group min-w-0" key={effect.slug}>
-            <div className="overflow-hidden rounded-[2.25rem] border border-foreground/10 bg-foreground/[.02] p-2 shadow-[0_30px_90px_-70px_var(--foreground)]">
+            <div className="overflow-hidden rounded-2xl border border-foreground/10 bg-card p-1.5">
               <EffectPreview compact slug={effect.slug} />
             </div>
             <div className="mt-4 flex items-start justify-between gap-4 px-1">
               <div>
                 <div className="flex flex-wrap items-center gap-2">
-                  <h3 className="font-semibold tracking-tight">
+                  <h3 className="font-medium">
                     <Link href={`/effects/${effect.slug}`}>{effect.name}</Link>
                   </h3>
                   <Badge variant="secondary">{effect.category}</Badge>
@@ -66,7 +66,7 @@ export function EffectGallery() {
               </div>
               <Link
                 aria-label={`Open ${effect.name}`}
-                className="grid size-9 shrink-0 place-items-center rounded-full border border-foreground/10 text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary/25 hover:text-primary"
+                className="grid size-9 shrink-0 place-items-center rounded-md border border-foreground/10 text-muted-foreground transition-[border-color,color,background-color] duration-150 hover:border-foreground/20 hover:bg-muted hover:text-foreground"
                 href={`/effects/${effect.slug}`}
               >
                 <ArrowUpRight className="size-4" />
