@@ -14,7 +14,7 @@ function Menubar({
     <MenubarPrimitive.Root
       data-slot="menubar"
       className={cn(
-        "flex h-11 items-center gap-1 rounded-2xl border border-foreground/10 bg-background/75 p-1.5 shadow-[inset_0_1px_0_color-mix(in_oklch,var(--background)_75%,transparent)]",
+        "flex h-10 items-center gap-1 rounded-xl border border-foreground/10 bg-background p-1",
         className,
       )}
       {...props}
@@ -59,7 +59,7 @@ function MenubarContent({
         alignOffset={alignOffset}
         sideOffset={sideOffset}
         className={cn(
-          "z-50 min-w-52 overflow-hidden rounded-2xl border border-foreground/10 bg-popover/96 p-1.5 text-popover-foreground shadow-[0_24px_60px_-22px_color-mix(in_oklch,var(--foreground)_30%,transparent),inset_0_1px_0_color-mix(in_oklch,var(--background)_72%,transparent)] backdrop-blur-xl data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
+          "z-50 min-w-52 overflow-hidden rounded-xl border border-foreground/10 bg-popover p-1.5 text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
           className,
         )}
         {...props}
@@ -151,7 +151,7 @@ function MenubarLabel({
       data-slot="menubar-label"
       data-inset={inset}
       className={cn(
-        "px-3 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground data-[inset=true]:pl-9",
+        "px-3 py-2 text-xs font-medium text-muted-foreground data-[inset=true]:pl-9",
         className,
       )}
       {...props}
@@ -220,7 +220,7 @@ function MenubarSubContent({
     <MenubarPrimitive.SubContent
       data-slot="menubar-sub-content"
       className={cn(
-        "z-50 min-w-44 overflow-hidden rounded-2xl border border-foreground/10 bg-popover/96 p-1.5 text-popover-foreground shadow-[0_18px_50px_-20px_color-mix(in_oklch,var(--foreground)_30%,transparent)] backdrop-blur-xl data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
+        "z-50 min-w-44 overflow-hidden rounded-xl border border-foreground/10 bg-popover p-1.5 text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
         className,
       )}
       {...props}

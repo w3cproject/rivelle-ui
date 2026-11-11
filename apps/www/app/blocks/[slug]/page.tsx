@@ -7,6 +7,11 @@ import { BlockPreview } from "@/components/block-preview";
 import { CopyCommand } from "@/components/copy-command";
 import { Badge } from "@/components/ui/badge";
 import { blockDocs, getBlockDoc } from "@/lib/block-docs";
+import { CodeBlock } from "@/components/code-block";
+import {
+  integrationNotes,
+  registryExportName,
+} from "@/lib/catalog-integration";
 
 export function generateStaticParams() {
   return blockDocs.map(({ slug }) => ({ slug }));
@@ -44,7 +49,7 @@ export default async function BlockPage({
       <div className="mt-8 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
         <div>
           <Badge variant="secondary">{block.category}</Badge>
-          <h1 className="mt-4 text-4xl font-semibold tracking-[-.045em] sm:text-5xl">
+          <h1 className="mt-4 text-4xl font-medium tracking-[-.025em] sm:text-5xl">
             {block.name}
           </h1>
           <p className="mt-3 max-w-2xl text-muted-foreground">
@@ -55,9 +60,27 @@ export default async function BlockPage({
           <CopyCommand command={`pnpm dlx rivelle@latest add ${block.slug}`} />
         </div>
       </div>
-      <div className="mt-10 rounded-[2.25rem] border border-foreground/10 bg-foreground/[.02] p-2 shadow-[0_32px_100px_-70px_var(--foreground)] sm:p-4">
+      <div className="mt-10 rounded-2xl border border-foreground/10 bg-card p-1.5 sm:p-2">
         <BlockPreview controls slug={block.slug} />
       </div>
+      <section className="mt-12 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(280px,420px)]">
+        <div className="min-w-0">
+          <h2 className="mb-4 text-xl font-medium">Usage</h2>
+          <CodeBlock
+            code={`import { ${registryExportName(block.slug)} } from "@/components/blocks/${block.slug}"\n\nexport default function Page() {\n  return <${registryExportName(block.slug)} />\n}`}
+          />
+        </div>
+        {integrationNotes[block.slug] && (
+          <div>
+            <h2 className="text-xl font-medium">Connect your application</h2>
+            <div className="mt-4 space-y-4 text-sm leading-7 text-muted-foreground">
+              {integrationNotes[block.slug].map((note) => (
+                <p key={note}>{note}</p>
+              ))}
+            </div>
+          </div>
+        )}
+      </section>
     </main>
   );
 }

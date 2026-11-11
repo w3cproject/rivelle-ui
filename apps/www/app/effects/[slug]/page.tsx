@@ -9,6 +9,7 @@ import { EffectPreview } from "@/components/effect-preview";
 import { StylePreview } from "@/components/style-preview";
 import { Badge } from "@/components/ui/badge";
 import { effectDocs, getEffectDoc } from "@/lib/effect-docs";
+import { effectApi } from "@/lib/catalog-integration";
 
 export function generateStaticParams() {
   return effectDocs.map(({ slug }) => ({ slug }));
@@ -52,7 +53,7 @@ export default async function EffectPage({
               <Badge variant="outline">Server safe</Badge>
             )}
           </div>
-          <h1 className="mt-5 text-4xl font-semibold tracking-[-.055em] sm:text-6xl">
+          <h1 className="mt-5 text-4xl font-medium tracking-[-.025em] sm:text-6xl">
             {effect.name}
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
@@ -67,23 +68,55 @@ export default async function EffectPage({
 
       <StylePreview
         canvasClassName="!min-h-0 !border-0 !bg-transparent !p-0"
-        className="mt-10 overflow-hidden rounded-[2.5rem] border border-foreground/10 bg-foreground/[.018] p-2"
+        className="mt-10 overflow-hidden rounded-2xl border border-foreground/10 bg-card p-1.5"
         label="Effect style"
+        previewSrc={`/preview/effect/${effect.slug}`}
       >
         <EffectPreview slug={effect.slug} />
       </StylePreview>
 
       <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
         <section>
-          <h2 className="text-xl font-semibold tracking-tight">Usage</h2>
+          <h2 className="text-xl font-medium">Usage</h2>
           <div className="mt-4">
             <CodeBlock code={effect.usage} />
           </div>
+          {effectApi[effect.slug] && (
+            <div className="mt-10">
+              <h2 className="text-xl font-medium">API reference</h2>
+              <div className="mt-4 overflow-x-auto rounded-lg border">
+                <table className="w-full text-left text-sm">
+                  <caption className="sr-only">{effect.name} props</caption>
+                  <thead>
+                    <tr className="border-b bg-muted/30">
+                      <th className="p-3 font-medium">Prop</th>
+                      <th className="p-3 font-medium">Type / default</th>
+                      <th className="p-3 font-medium">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {effectApi[effect.slug].map((prop) => (
+                      <tr key={prop.name} className="border-b last:border-0">
+                        <td className="p-3 font-mono text-xs">{prop.name}</td>
+                        <td className="p-3 font-mono text-xs">{prop.type}</td>
+                        <td className="p-3 leading-6 text-muted-foreground">
+                          {prop.description}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-4 text-xs leading-6 text-muted-foreground">
+                Use className to adjust layout and styling. New effects respect
+                system reduced-motion preferences and the preview motion
+                setting.
+              </p>
+            </div>
+          )}
         </section>
         <aside>
-          <h2 className="text-xl font-semibold tracking-tight">
-            Built for production
-          </h2>
+          <h2 className="text-xl font-medium">Built for production</h2>
           <div className="mt-4 grid gap-3">
             {[
               [
@@ -105,13 +138,11 @@ export default async function EffectPage({
               const FeatureIcon = Icon as typeof MousePointer2;
               return (
                 <div
-                  className="rounded-2xl border border-foreground/10 bg-card p-4"
+                  className="rounded-xl border border-foreground/10 bg-card p-4"
                   key={title as string}
                 >
                   <FeatureIcon className="size-4 text-primary" />
-                  <p className="mt-3 text-sm font-semibold">
-                    {title as string}
-                  </p>
+                  <p className="mt-3 text-sm font-medium">{title as string}</p>
                   <p className="mt-1 text-xs leading-5 text-muted-foreground">
                     {description as string}
                   </p>

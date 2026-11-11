@@ -22,6 +22,7 @@
       "@/*": ["./*"],
       "@/components/ui/*": ["../../registry/nova/ui/*"],
       "@/components/blocks/*": ["../../registry/nova/blocks/*"],
+      "@/components/effects/*": ["../../registry/nova/effects/*"],
       "@/effects/*": ["../../registry/nova/effects/*"],
       "@/blocks/*": ["../../registry/nova/blocks/*"],
       "@/templates/*": ["../../registry/nova/templates/*"],

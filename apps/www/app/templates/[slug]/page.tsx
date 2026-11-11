@@ -8,6 +8,11 @@ import { StylePreview } from "@/components/style-preview";
 import { TemplatePreview } from "@/components/template-preview";
 import { Badge } from "@/components/ui/badge";
 import { getTemplateDoc, templateDocs } from "@/lib/template-docs";
+import { CodeBlock } from "@/components/code-block";
+import {
+  integrationNotes,
+  registryExportName,
+} from "@/lib/catalog-integration";
 
 export function generateStaticParams() {
   return templateDocs.map(({ slug }) => ({ slug }));
@@ -45,7 +50,7 @@ export default async function TemplatePage({
       <div className="mt-8 grid grid-cols-[minmax(0,1fr)] gap-8 lg:grid-cols-[minmax(0,1fr)_480px] lg:items-end">
         <div className="min-w-0">
           <Badge variant="secondary">{template.category}</Badge>
-          <h1 className="mt-4 text-4xl font-semibold tracking-[-.045em] sm:text-6xl">
+          <h1 className="mt-4 text-4xl font-medium tracking-[-.025em] sm:text-6xl">
             {template.name}
           </h1>
           <p className="mt-4 max-w-2xl text-muted-foreground">
@@ -65,11 +70,35 @@ export default async function TemplatePage({
         </div>
         <CopyCommand command={`pnpm dlx rivelle@latest add ${template.slug}`} />
       </div>
-      <StylePreview className="mt-10" label="Template style">
-        <div className="max-h-[1000px] overflow-y-auto rounded-[1.75rem] border border-foreground/10 bg-background">
+      <StylePreview
+        className="mt-10"
+        label="Template style"
+        previewSrc={`/preview/template/${template.slug}`}
+      >
+        <div className="max-h-[1000px] overflow-y-auto rounded-xl border border-foreground/10 bg-background">
           <TemplatePreview slug={template.slug} />
         </div>
       </StylePreview>
+      <section className="mt-12 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(280px,420px)]">
+        <div className="min-w-0">
+          <h2 className="mb-4 text-xl font-medium">Usage</h2>
+          <CodeBlock
+            code={`import { ${registryExportName(template.slug)} } from "@/components/templates/${template.slug}"\n\nexport default function Page() {\n  return <${registryExportName(template.slug)} />\n}`}
+          />
+        </div>
+        <div>
+          <h2 className="text-xl font-medium">Connect your application</h2>
+          <div className="mt-4 space-y-4 text-sm leading-7 text-muted-foreground">
+            {(
+              integrationNotes[template.slug] ?? [
+                "Replace the sample content and connect the forms to your application services.",
+              ]
+            ).map((note) => (
+              <p key={note}>{note}</p>
+            ))}
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

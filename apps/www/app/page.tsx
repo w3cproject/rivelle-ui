@@ -1,26 +1,22 @@
 import {
   ArrowRight,
-  Blocks,
   Check,
   Code2,
   Github,
   Layers3,
   MousePointer2,
   Orbit,
-  Sparkles,
-  Zap,
 } from "lucide-react";
 
 import { ComponentPreview } from "@/components/component-preview";
-import { EffectPreview } from "@/components/effect-preview";
 import { CopyCommand } from "@/components/copy-command";
+import { EffectPreview } from "@/components/effect-preview";
 import { RivelleLogo } from "@/components/rivelle-logo";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -36,45 +32,39 @@ import { effectDocs } from "@/lib/effect-docs";
 import { templateDocs } from "@/lib/template-docs";
 import { siteConfig } from "@/lib/site";
 
-const features = [
+const principles = [
   {
-    icon: Code2,
-    title: "Source, not a dependency",
+    number: "01",
+    title: "The source is the product",
     description:
-      "Every component lands in your codebase. Read it, reshape it, make it unmistakably yours.",
+      "Components are copied into your repository, so the final abstraction belongs to your application.",
   },
   {
-    icon: Layers3,
-    title: "Server-first by default",
+    number: "02",
+    title: "Server-first boundaries",
     description:
-      "No client boundary unless interaction truly needs one. Built for modern Next.js applications.",
+      "A client boundary appears only when interaction needs one. Static primitives stay server-safe.",
   },
   {
-    icon: Sparkles,
-    title: "Quietly expressive",
+    number: "03",
+    title: "Expression by choice",
     description:
-      "Purposeful motion, tactile states and strong defaults without visual noise.",
+      "Nova handles product UI. Prism and Effects add stronger visual moments when the interface calls for them.",
   },
 ];
 
 export default function Home() {
   return (
-    <main className="relative overflow-hidden">
-      <div className="ambient ambient-one" />
-      <div className="ambient ambient-two" />
-
-      <header className="sticky top-0 z-50 border-b border-border/60 bg-background/75 backdrop-blur-xl">
+    <main className="overflow-hidden">
+      <header className="sticky top-0 z-50 border-b border-border bg-background/95">
         <div className="mx-auto flex h-16 max-w-7xl items-center px-5 sm:px-8">
-          <a
-            className="group flex items-center gap-2.5 font-semibold tracking-tight"
-            href="#top"
-          >
+          <a className="flex items-center gap-3" href="#top">
             <RivelleLogo />
-            <Badge className="hidden sm:inline-flex" variant="secondary">
-              v{siteConfig.version}
-            </Badge>
+            <span className="hidden font-mono text-[11px] text-muted-foreground sm:inline">
+              {siteConfig.version}
+            </span>
           </a>
-          <nav className="ml-auto hidden items-center gap-7 text-sm text-muted-foreground md:flex">
+          <nav className="ml-auto hidden items-center gap-6 text-sm text-muted-foreground md:flex">
             <a className="nav-link" href="/docs/components">
               Components
             </a>
@@ -87,14 +77,11 @@ export default function Home() {
             <a className="nav-link" href="/templates">
               Templates
             </a>
-            <a className="nav-link" href="#principles">
-              Principles
-            </a>
-            <a className="nav-link" href="#install">
-              Install
+            <a className="nav-link" href="/docs">
+              Docs
             </a>
           </nav>
-          <div className="ml-auto flex items-center gap-1 md:ml-6">
+          <div className="ml-auto flex items-center gap-1 md:ml-5">
             <Button
               aria-label="Open Rivelle on GitHub"
               asChild
@@ -111,60 +98,52 @@ export default function Home() {
       </header>
 
       <section
-        className="relative mx-auto max-w-7xl px-5 pb-24 pt-20 sm:px-8 sm:pb-32 sm:pt-28"
+        className="mx-auto grid max-w-7xl gap-12 px-5 pb-24 pt-16 sm:px-8 sm:pb-28 sm:pt-24 lg:grid-cols-[0.78fr_1.22fr] lg:items-center"
         id="top"
       >
-        <div className="hero-grid absolute inset-x-0 top-0 -z-10 h-[650px] opacity-60" />
-        <div className="mx-auto max-w-4xl text-center">
-          <div className="reveal-up inline-flex items-center gap-2 rounded-full border border-border/80 bg-card/70 px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur-xl">
-            <Sparkles className="size-3.5 text-primary" />
-            Beautiful components. Entirely yours.
-          </div>
-          <h1 className="reveal-up delay-1 mt-8 text-balance text-5xl font-semibold leading-[0.98] tracking-[-0.055em] sm:text-7xl lg:text-[5.75rem]">
-            Own your interface.
-            <span className="gradient-text block">Shape every detail.</span>
-          </h1>
-          <p className="reveal-up delay-2 mx-auto mt-7 max-w-2xl text-balance text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Rivelle is an open-source registry of {componentDocs.length}{" "}
-            foundations and {effectDocs.length} expressive effects for teams who
-            care about craft, speed and complete control.
+        <div className="max-w-xl">
+          <p className="section-kicker reveal-up">
+            Editable React interface source
           </p>
-          <div className="reveal-up delay-3 mx-auto mt-9 flex max-w-xl flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <Button asChild className="w-full sm:w-auto" size="lg">
+          <h1 className="reveal-up delay-1 mt-6 text-balance text-5xl font-medium leading-[1.02] tracking-[-0.03em] sm:text-6xl lg:text-7xl">
+            Start with a system. End with your own.
+          </h1>
+          <p className="reveal-up delay-2 mt-6 max-w-lg text-base leading-7 text-muted-foreground sm:text-lg">
+            Rivelle installs accessible React and Next.js components directly
+            into your codebase, with server-safe defaults, semantic tokens and
+            optional interaction effects.
+          </p>
+          <div className="reveal-up delay-3 mt-8 flex flex-col gap-3 sm:flex-row">
+            <Button asChild size="lg">
               <a href="/docs/components">
-                Explore components <ArrowRight />
+                Browse components <ArrowRight />
               </a>
             </Button>
-            <Button
-              asChild
-              className="w-full sm:w-auto"
-              size="lg"
-              variant="outline"
-            >
-              <a href="#install">
-                <Code2 /> Get started
+            <Button asChild size="lg" variant="outline">
+              <a href="/docs">
+                <Code2 /> Read the docs
               </a>
             </Button>
           </div>
-          <div className="reveal-up delay-4 mx-auto mt-7 max-w-md">
+          <div className="reveal-up delay-4 mt-6 max-w-md">
             <CopyCommand command="pnpm dlx rivelle@latest init" />
           </div>
         </div>
 
-        <div className="float-panel mx-auto mt-20 max-w-5xl">
-          <div className="flex items-center gap-2 border-b border-border/70 px-4 py-3">
-            <span className="size-2.5 rounded-full bg-rose-400/80" />
-            <span className="size-2.5 rounded-full bg-amber-400/80" />
-            <span className="size-2.5 rounded-full bg-emerald-400/80" />
-            <span className="ml-3 text-xs text-muted-foreground">
-              rivelle / button.tsx
+        <div className="float-panel hero-workbench">
+          <div className="flex h-11 items-center justify-between border-b border-border px-4">
+            <span className="font-mono text-[11px] text-muted-foreground">
+              preview / button.tsx
+            </span>
+            <span className="rivelle-cut font-mono text-[11px] text-muted-foreground">
+              server-safe
             </span>
           </div>
-          <div className="grid md:grid-cols-[1.1fr_0.9fr]">
-            <div className="showcase-grid flex min-h-72 items-center justify-center border-b border-border/70 p-8 md:border-b-0 md:border-r">
+          <div className="grid min-h-[430px] md:grid-cols-[0.9fr_1.1fr]">
+            <div className="showcase-grid flex items-center justify-center border-b border-border p-8 md:border-b-0 md:border-r">
               <div className="flex flex-col items-center gap-4">
                 <Button size="lg">
-                  <Sparkles /> Create something
+                  Create project <ArrowRight />
                 </Button>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline">
@@ -184,7 +163,7 @@ export default function Home() {
               <p className="pl-4 code-green">
                 &quot;@/components/ui/button&quot;
               </p>
-              <p className="mt-4">
+              <p className="mt-5">
                 <span className="code-purple">export default function</span>{" "}
                 <span className="code-blue">Page</span>() {"{"}
               </p>
@@ -194,9 +173,9 @@ export default function Home() {
               <p className="pl-8">
                 &lt;<span className="code-blue">Button</span>{" "}
                 <span className="code-amber">variant</span>=
-                <span className="code-green">&quot;outline&quot;</span>&gt;
+                <span className="code-green">&quot;default&quot;</span>&gt;
               </p>
-              <p className="pl-12 text-foreground">Create something</p>
+              <p className="pl-12 text-foreground">Create project</p>
               <p className="pl-8">
                 &lt;/<span className="code-blue">Button</span>&gt;
               </p>
@@ -207,211 +186,201 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 pb-24 sm:px-8 sm:pb-32">
-        <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <div>
-            <Badge variant="outline">
-              <Orbit /> Rivelle Effects
-            </Badge>
-            <h2 className="mt-5 max-w-3xl text-4xl font-semibold tracking-[-.055em] sm:text-6xl">
-              The foundation is quiet. The moments can be unforgettable.
-            </h2>
-            <p className="mt-5 max-w-2xl leading-7 text-muted-foreground">
-              Pointer-aware surfaces, kinetic type and atmospheric scenes that
-              install as editable source and inherit the same semantic theme.
-            </p>
-          </div>
-          <Button asChild size="lg" variant="outline">
-            <a href="/effects">
-              Explore {effectDocs.length} effects <ArrowRight />
-            </a>
-          </Button>
+      <section className="border-y border-border bg-card/40" id="principles">
+        <div className="mx-auto grid max-w-7xl divide-y divide-border px-5 sm:px-8 md:grid-cols-3 md:divide-x md:divide-y-0">
+          {principles.map((item) => (
+            <article
+              className="py-10 md:px-8 md:first:pl-0 md:last:pr-0"
+              key={item.number}
+            >
+              <span className="font-mono text-xs text-primary">
+                {item.number}
+              </span>
+              <h2 className="mt-5 text-lg font-medium">{item.title}</h2>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                {item.description}
+              </p>
+            </article>
+          ))}
         </div>
-        <div className="grid gap-5 lg:grid-cols-[.9fr_1.1fr]">
-          <div className="overflow-hidden rounded-[2.25rem] border border-foreground/10 bg-foreground/[.02] p-2">
+      </section>
+
+      <section className="mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-28">
+        <div className="mb-10 grid gap-6 md:grid-cols-[minmax(0,1fr)_18rem] md:items-end">
+          <div>
+            <p className="section-kicker">
+              <Orbit /> Interaction primitives
+            </p>
+            <h2 className="mt-5 max-w-3xl text-4xl font-medium tracking-[-0.025em] sm:text-5xl">
+              Motion belongs to a mechanic, not to the chrome.
+            </h2>
+          </div>
+          <div>
+            <p className="text-sm leading-6 text-muted-foreground">
+              Pointer-aware fields, spatial surfaces and kinetic actions. Every
+              effect installs as editable source and respects reduced motion.
+            </p>
+            <a
+              className="mt-4 inline-flex items-center gap-2 text-sm font-medium"
+              href="/effects"
+            >
+              View {effectDocs.length} effects <ArrowRight className="size-4" />
+            </a>
+          </div>
+        </div>
+        <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="effect-frame">
             <EffectPreview compact slug="compare-slider" />
           </div>
-          <div className="overflow-hidden rounded-[2.25rem] border border-foreground/10 bg-foreground/[.02] p-2">
+          <div className="effect-frame">
             <EffectPreview compact slug="gradient-mesh" />
           </div>
         </div>
       </section>
 
-      <section className="border-y border-border/70 bg-card/35" id="principles">
-        <div className="mx-auto grid max-w-7xl divide-y divide-border/70 px-5 sm:px-8 md:grid-cols-3 md:divide-x md:divide-y-0">
-          {features.map(({ icon: Icon, title, description }) => (
-            <div
-              className="feature-item py-10 md:px-8 md:first:pl-0 md:last:pr-0"
-              key={title}
-            >
-              <div className="mb-5 flex size-10 items-center justify-center rounded-xl border bg-background shadow-sm">
-                <Icon className="size-4.5 text-primary" />
-              </div>
-              <h2 className="font-semibold tracking-tight">{title}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {description}
+      <section className="border-y border-border bg-card/25" id="components">
+        <div className="mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-28">
+          <div className="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+            <div>
+              <p className="section-kicker">
+                <Layers3 /> Registry
+              </p>
+              <h2 className="mt-5 text-4xl font-medium tracking-[-0.025em] sm:text-5xl">
+                The working set for product UI.
+              </h2>
+              <p className="mt-4 max-w-2xl text-muted-foreground">
+                Composable primitives with readable source, consistent states
+                and no package-level styling lock-in.
               </p>
             </div>
-          ))}
-        </div>
-      </section>
-
-      <section
-        className="mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-32"
-        id="components"
-      >
-        <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
-          <div>
-            <Badge variant="outline">
-              <Blocks /> The collection
-            </Badge>
-            <h2 className="mt-5 text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">
-              Small pieces. Serious polish.
-            </h2>
-            <p className="mt-4 max-w-2xl text-muted-foreground">
-              Accessible primitives with elegant defaults, designed to be
-              composed and changed.
+            <p className="font-mono text-xs leading-6 text-muted-foreground">
+              {componentDocs.length} components
+              <br />
+              {blockDocs.length} blocks · {templateDocs.length} templates
             </p>
           </div>
-          <Badge variant="secondary">
-            {componentDocs.length} components · {effectDocs.length} effects ·{" "}
-            {blockDocs.length} blocks · {templateDocs.length} templates
-          </Badge>
-        </div>
 
-        <div className="grid gap-5 lg:grid-cols-2">
-          <ComponentPreview
-            command="rivelle add button"
-            description="Eight variants, six sizes and full composition through asChild."
-            title="Button"
-          >
-            <Button>Primary</Button>
-            <Button variant="outline">Outline</Button>
-            <Button variant="secondary">Secondary</Button>
-            <Button size="icon">
-              <MousePointer2 />
-            </Button>
-          </ComponentPreview>
-
-          <ComponentPreview
-            command="rivelle add badge"
-            description="Compact signals for status, categories and metadata."
-            title="Badge"
-          >
-            <Badge>
-              <Sparkles /> New
-            </Badge>
-            <Badge variant="secondary">In progress</Badge>
-            <Badge variant="success">
-              <Check /> Ready
-            </Badge>
-            <Badge variant="outline">Draft</Badge>
-          </ComponentPreview>
-
-          <ComponentPreview
-            command="rivelle add input textarea"
-            description="Calm, legible fields with refined focus and invalid states."
-            title="Form controls"
-          >
-            <div className="w-full max-w-sm space-y-3">
-              <Input placeholder="you@example.com" type="email" />
-              <Textarea
-                className="min-h-20"
-                placeholder="Tell us what you are building…"
-              />
-            </div>
-          </ComponentPreview>
-
-          <ComponentPreview
-            command="rivelle add switch separator"
-            description="Accessible Radix interactions with a tactile, responsive feel."
-            title="Switch & separator"
-          >
-            <div className="w-full max-w-xs rounded-xl border bg-background/80 p-4 shadow-sm">
-              <div className="flex items-center justify-between gap-4">
-                <div>
-                  <p className="text-sm font-medium">Product updates</p>
-                  <p className="text-xs text-muted-foreground">
-                    A thoughtful note, occasionally.
-                  </p>
-                </div>
-                <Switch defaultChecked />
+          <div className="grid gap-5 lg:grid-cols-2">
+            <ComponentPreview
+              command="rivelle add button"
+              description="Clear hierarchy, six sizes and composition through asChild."
+              title="Button"
+            >
+              <Button>Primary</Button>
+              <Button variant="outline">Outline</Button>
+              <Button variant="secondary">Secondary</Button>
+              <Button size="icon">
+                <MousePointer2 />
+              </Button>
+            </ComponentPreview>
+            <ComponentPreview
+              command="rivelle add badge"
+              description="Compact metadata and status without decorative glow."
+              title="Badge"
+            >
+              <Badge>Default</Badge>
+              <Badge variant="secondary">In progress</Badge>
+              <Badge variant="success">
+                <Check /> Ready
+              </Badge>
+              <Badge variant="outline">Draft</Badge>
+            </ComponentPreview>
+            <ComponentPreview
+              command="rivelle add input textarea"
+              description="Quiet fields with explicit focus, invalid and disabled states."
+              title="Form controls"
+            >
+              <div className="w-full max-w-sm space-y-3">
+                <Input placeholder="you@example.com" type="email" />
+                <Textarea
+                  className="min-h-20"
+                  placeholder="What are you building?"
+                />
               </div>
-              <Separator className="my-4" />
-              <div className="flex items-center justify-between gap-4">
-                <div>
-                  <p className="text-sm font-medium">Usage insights</p>
-                  <p className="text-xs text-muted-foreground">
-                    Weekly performance digest.
-                  </p>
+            </ComponentPreview>
+            <ComponentPreview
+              command="rivelle add switch separator"
+              description="Accessible interaction with compact, predictable states."
+              title="Settings controls"
+            >
+              <div className="w-full max-w-xs rounded-xl border bg-background p-4">
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-sm font-medium">Product updates</p>
+                    <p className="text-xs text-muted-foreground">
+                      Monthly release notes
+                    </p>
+                  </div>
+                  <Switch defaultChecked />
                 </div>
-                <Switch />
+                <Separator className="my-4" />
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-sm font-medium">Usage report</p>
+                    <p className="text-xs text-muted-foreground">
+                      Weekly project summary
+                    </p>
+                  </div>
+                  <Switch />
+                </div>
               </div>
-            </div>
-          </ComponentPreview>
-
-          <ComponentPreview
-            className="lg:col-span-2"
-            command="rivelle add card button badge"
-            description="Composable structure for products, settings, dashboards and editorial layouts."
-            title="Card"
-          >
-            <Card className="w-full max-w-md hover:-translate-y-1">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <Badge variant="success">Active</Badge>
-                  <Zap className="size-4 text-primary" />
-                </div>
-                <CardTitle className="pt-3 text-xl">
-                  Launch faster, stay in control.
-                </CardTitle>
-                <CardDescription>
-                  Start with a considered foundation and change every detail as
-                  your product evolves.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Separator />
-              </CardContent>
-              <CardFooter className="justify-between">
-                <span className="text-sm text-muted-foreground">
-                  Source included
-                </span>
-                <Button size="sm">
-                  View source <ArrowRight />
-                </Button>
-              </CardFooter>
-            </Card>
-          </ComponentPreview>
+            </ComponentPreview>
+            <ComponentPreview
+              className="lg:col-span-2"
+              command="rivelle add card button badge"
+              description="A neutral surface that lets the content establish hierarchy."
+              title="Card"
+            >
+              <Card className="w-full max-w-md">
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <Badge variant="success">Active</Badge>
+                    <span className="font-mono text-xs text-muted-foreground">
+                      R-104
+                    </span>
+                  </div>
+                  <CardTitle className="pt-3 text-xl">
+                    Component source stays local.
+                  </CardTitle>
+                  <CardDescription>
+                    Install the primitive, inspect the implementation and adapt
+                    the API to your product.
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="justify-between">
+                  <span className="text-sm text-muted-foreground">4 files</span>
+                  <Button size="sm">
+                    View source <ArrowRight />
+                  </Button>
+                </CardFooter>
+              </Card>
+            </ComponentPreview>
+          </div>
         </div>
       </section>
 
       <section
-        className="mx-auto max-w-7xl px-5 pb-24 sm:px-8 sm:pb-32"
+        className="mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-28"
         id="install"
       >
-        <div className="install-panel relative overflow-hidden rounded-3xl border p-7 sm:p-12 lg:p-16">
-          <div className="install-glow" />
-          <div className="relative z-10 grid gap-12 lg:grid-cols-[1fr_0.85fr] lg:items-center">
+        <div className="install-panel overflow-hidden rounded-2xl border border-white/10 p-7 sm:p-10 lg:p-12">
+          <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
             <div>
-              <Badge
-                className="border-white/10 bg-white/10 text-white"
-                variant="outline"
-              >
-                Ready when you are
-              </Badge>
-              <h2 className="mt-6 max-w-xl text-4xl font-semibold tracking-[-0.045em] text-white sm:text-6xl">
-                One command. Your code.
+              <p className="font-mono text-xs text-white/45">
+                CLI / two commands
+              </p>
+              <h2 className="mt-5 max-w-xl text-4xl font-medium tracking-[-0.025em] text-white sm:text-5xl">
+                Install only what the project needs.
               </h2>
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-white/60">
-                Initialize the tokens, add only what you need, then build
-                without fighting someone else&apos;s abstraction.
+              <p className="mt-4 max-w-lg leading-7 text-white/60">
+                Initialize the semantic tokens once, then add individual
+                components, effects, blocks or complete templates as source.
               </p>
             </div>
             <div className="space-y-3">
               <CopyCommand command="pnpm dlx rivelle@latest init" />
               <CopyCommand command="pnpm dlx rivelle@latest add button" />
-              <p className="pt-2 text-center text-xs text-white/40">
+              <p className="pt-2 text-xs text-white/40">
                 React · Next.js · Tailwind CSS v4 · TypeScript
               </p>
             </div>
@@ -419,10 +388,10 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="border-t border-border/70">
+      <footer className="border-t border-border">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <RivelleLogo markClassName="size-5" wordmarkClassName="text-sm" />
-          <p>MIT licensed · Built for interfaces worth remembering.</p>
+          <p>Open source under MIT. Components stay in your repository.</p>
           <div className="flex items-center gap-4">
             <a
               className="hover:text-foreground"

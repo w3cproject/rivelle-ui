@@ -13,9 +13,11 @@ An editable component, effect and block registry for React and Next.js. Rivelle 
 - Tailwind CSS v4 semantic tokens powered by OKLCH colors and light/dark themes.
 - Server Component-safe primitives by default; `"use client"` exists only where interaction requires it.
 - CVA variants, `className` overrides, Radix composition, accessible states, and subtle motion.
-- 55 primitives, from Button and form controls to Calendar, Carousel, Tag Input, Multi Select, Table, Toast, and navigation.
-- 11 focused effects spanning comparison, directional reveal, magnification, drag physics, cursor fields, buttons, typography and 3D depth.
-- 8 editable application blocks for authentication, marketing, dashboards and settings.
+- 59 primitives, including File Upload, Stepper, Tree View and a typed Data Table.
+- 17 effects spanning scroll storytelling, image displacement, connected layout transitions, cursor trails, elastic navigation and animated numbers.
+- 19 editable blocks for authentication, marketing, dashboards, onboarding, billing, activity, files and workspace search.
+- 5 templates: SaaS Landing, Creative Portfolio, Workspace, Product Launch and AI Chat Workspace.
+- Isolated documentation previews with desktop, tablet and mobile viewports, replay, full-screen and reduced-motion controls.
 
 ## Consumer usage
 
@@ -25,6 +27,9 @@ After the `rivelle` package and registry are published:
 pnpm dlx rivelle@latest init
 pnpm dlx rivelle@latest add button card input
 pnpm dlx rivelle@latest add compare-slider cursor-lens draggable-stack
+pnpm dlx rivelle@latest add file-upload stepper tree-view data-table
+pnpm dlx rivelle@latest add scroll-stage pixel-displacement morphing-surface
+pnpm dlx rivelle@latest add workspace-01 product-launch-01 ai-chat-workspace-01
 ```
 
 or:
@@ -92,6 +97,8 @@ pnpm verify
 `pnpm build` compiles the CLI and turns [`registry.json`](./registry.json) into static payloads under `apps/www/public/r`, where Next.js serves them as `/r/*.json`. `pnpm test:registry` serves those payloads over an isolated HTTP server and installs all components into temporary TypeScript and JavaScript projects. `pnpm verify` is the release gate combining type checks, production builds and that installation test.
 
 Generated registry payloads and CLI bundles are intentionally ignored by Git. CI and deployments always rebuild them from `registry.json` and `registry/nova`.
+
+Optional browser regression checks live in `scripts/verify-browser.mjs`. With Playwright available locally, start a production preview on port 3100 (`pnpm --filter @rivelle/www exec next start --port 3100`) and run `node scripts/verify-browser.mjs`. Set `RIVELLE_PREVIEW_URL` for another server or `RIVELLE_PLAYWRIGHT_MODULE` for an existing Playwright installation. The checks cover interactive flows, responsive overflow, theme handoff, reduced motion and browser errors; screenshots are saved to a temporary directory.
 
 The system boundaries, RSC policy and component acceptance contract are documented in [`ARCHITECTURE.md`](./ARCHITECTURE.md).
 

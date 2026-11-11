@@ -37,7 +37,7 @@ const NavigationMenuList = React.forwardRef<
     ref={ref}
     data-slot="navigation-menu-list"
     className={cn(
-      "group flex flex-1 list-none items-center justify-center gap-1 rounded-2xl border border-foreground/10 bg-background/70 p-1.5 shadow-[inset_0_1px_0_color-mix(in_oklch,var(--background)_75%,transparent)]",
+      "group flex flex-1 list-none items-center justify-center gap-1 rounded-xl border border-foreground/10 bg-background p-1.5",
       className,
     )}
     {...props}
@@ -107,7 +107,7 @@ function NavigationMenuViewport({
       <NavigationMenuPrimitive.Viewport
         data-slot="navigation-menu-viewport"
         className={cn(
-          "relative mt-2 h-[var(--radix-navigation-menu-viewport-height)] w-full origin-[top_center] overflow-hidden rounded-2xl border border-foreground/12 bg-popover/97 text-popover-foreground shadow-[0_24px_70px_-24px_color-mix(in_oklch,var(--foreground)_28%,transparent)] backdrop-blur-xl data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 md:w-[var(--radix-navigation-menu-viewport-width)]",
+          "relative mt-2 h-[var(--radix-navigation-menu-viewport-height)] w-full origin-[top_center] overflow-hidden rounded-xl border border-foreground/10 bg-popover text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 md:w-[var(--radix-navigation-menu-viewport-width)]",
           className,
         )}
         {...props}

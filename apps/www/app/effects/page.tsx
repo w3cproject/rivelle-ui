@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Orbit, Sparkles } from "lucide-react";
+import { Orbit } from "lucide-react";
 
 import { EffectGallery } from "@/components/effect-gallery";
 import { StyleSwitch } from "@/components/style-preview";
-import { Badge } from "@/components/ui/badge";
+import { effectDocs } from "@/lib/effect-docs";
 
 export const metadata: Metadata = {
   title: "Effects",
@@ -13,52 +13,44 @@ export const metadata: Metadata = {
 
 export default function EffectsPage() {
   return (
-    <main className="mx-auto max-w-[1600px] px-5 py-14 sm:px-8 sm:py-20">
-      <div className="relative overflow-hidden rounded-[2.5rem] border border-foreground/10 bg-foreground px-6 py-16 text-background shadow-[0_50px_140px_-80px_var(--foreground)] sm:px-12 sm:py-24">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 opacity-40"
-          style={{
-            background:
-              "radial-gradient(circle at 12% 10%, color-mix(in oklch, var(--primary) 72%, transparent), transparent 28%), radial-gradient(circle at 86% 80%, color-mix(in oklch, var(--accent) 48%, transparent), transparent 32%)",
-          }}
-        />
-        <div className="relative max-w-4xl">
-          <Badge
-            className="border-background/15 bg-background/10 text-background"
-            variant="outline"
-          >
-            <Orbit /> Rivelle Effects
-          </Badge>
-          <h1 className="mt-7 text-5xl font-semibold tracking-[-.065em] sm:text-7xl lg:text-[5.5rem]">
-            Motion you can actually feel.
-          </h1>
-          <p className="mt-7 max-w-2xl text-base leading-7 text-background/60 sm:text-lg">
-            Pointer fields, animated buttons, reactive backgrounds, text motion
-            and dimensional surfaces. Each effect is a focused primitive with
-            editable source.
+    <main className="mx-auto max-w-[1600px] px-5 py-16 sm:px-8 sm:py-24">
+      <div className="grid gap-10 border-b border-border pb-16 lg:grid-cols-[minmax(0,1fr)_26rem] lg:items-end">
+        <div className="max-w-4xl">
+          <p className="section-kicker">
+            <Orbit /> Interaction effects
           </p>
-          <div className="mt-8 flex flex-wrap gap-3 text-xs font-medium text-background/55">
-            <span className="rounded-full border border-background/12 px-3 py-1.5">
-              Pointer-aware
-            </span>
-            <span className="rounded-full border border-background/12 px-3 py-1.5">
-              Reduced motion
-            </span>
-            <span className="rounded-full border border-background/12 px-3 py-1.5">
-              Source owned
-            </span>
-          </div>
+          <h1 className="mt-6 max-w-3xl text-5xl font-medium tracking-[-.03em] sm:text-7xl">
+            Focused mechanics for expressive moments.
+          </h1>
+        </div>
+        <div>
+          <p className="text-base leading-7 text-muted-foreground">
+            Pointer fields, kinetic actions, text motion and spatial surfaces.
+            Each effect installs as editable source and respects reduced-motion
+            preferences.
+          </p>
+          <dl className="mt-6 grid grid-cols-3 gap-4 border-t border-border pt-4 font-mono text-xs text-muted-foreground">
+            <div>
+              <dt className="text-foreground">{effectDocs.length}</dt>
+              <dd>mechanics</dd>
+            </div>
+            <div>
+              <dt className="text-foreground">2</dt>
+              <dd>styles</dd>
+            </div>
+            <div>
+              <dt className="text-foreground">0</dt>
+              <dd>runtime lock-in</dd>
+            </div>
+          </dl>
         </div>
       </div>
 
-      <div className="mt-14 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+      <div className="mt-12 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
         <div>
-          <div className="flex items-center gap-2 text-sm font-semibold text-primary">
-            <Sparkles className="size-4" /> Effects collection
-          </div>
-          <h2 className="mt-3 text-3xl font-semibold tracking-[-.045em] sm:text-4xl">
-            Eleven distinct mechanics. No duplicate glow fillers.
+          <p className="section-kicker">Effect index</p>
+          <h2 className="mt-3 text-3xl font-medium tracking-[-.02em]">
+            Choose by interaction, not decoration.
           </h2>
         </div>
         <StyleSwitch label="Effect style" />

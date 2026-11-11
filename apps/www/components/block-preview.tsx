@@ -14,8 +14,18 @@ import { SiteHeader01 } from "@/blocks/site-header-01";
 import { TestimonialSection01 } from "@/blocks/testimonial-section-01";
 import type { BlockSlug } from "@/lib/block-docs";
 import { StylePreview } from "@/components/style-preview";
+import { Onboarding01 } from "@/blocks/onboarding-01";
+import { BillingSettings01 } from "@/blocks/billing-settings-01";
+import { ActivityFeed01 } from "@/blocks/activity-feed-01";
+import { FileManager01 } from "@/blocks/file-manager-01";
+import { CommandCenter01 } from "@/blocks/command-center-01";
 
 const previews = {
+  "onboarding-01": Onboarding01,
+  "billing-settings-01": BillingSettings01,
+  "activity-feed-01": ActivityFeed01,
+  "file-manager-01": FileManager01,
+  "command-center-01": CommandCenter01,
   "login-01": Login01,
   "signup-01": Signup01,
   "dashboard-shell-01": DashboardShell01,
@@ -46,6 +56,7 @@ export function BlockPreview({
       canvasClassName="block-style-preview-canvas"
       className="block-style-preview"
       label="Block style"
+      previewSrc={`/preview/block/${slug}`}
     >
       <Preview />
     </StylePreview>

@@ -8,11 +8,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Rivelle — Own your interface",
+    default: "Rivelle — Editable React interface source",
     template: "%s | Rivelle",
   },
   description:
-    "Open-source, editable React and Next.js components, effects and blocks with Nova and Prism styles.",
+    "Install editable React and Next.js components, interaction effects, blocks and templates directly into your project.",
   applicationName: "Rivelle",
   keywords: [
     "React",
@@ -28,15 +28,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteConfig.url,
     siteName: "Rivelle",
-    title: "Rivelle — Own your interface",
+    title: "Rivelle — Editable React interface source",
     description:
-      "Open-source, editable React and Next.js components, effects and blocks with Nova and Prism styles.",
+      "Install editable React and Next.js components, interaction effects, blocks and templates directly into your project.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rivelle — Own your interface",
+    title: "Rivelle — Editable React interface source",
     description:
-      "Open-source, editable React and Next.js components, effects and blocks with Nova and Prism styles.",
+      "Install editable React and Next.js components, interaction effects, blocks and templates directly into your project.",
   },
 };
 

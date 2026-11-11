@@ -31,6 +31,202 @@ const primitiveProps: PropDoc[] = [
 
 export const componentDocs: ComponentDoc[] = [
   {
+    slug: "file-upload",
+    name: "File Upload",
+    description:
+      "A validated file queue with previews, progress, cancellation and retry. Connect your upload service through onUpload.",
+    install: "file-upload",
+    client: true,
+    code: `"use client"
+
+import { FileUpload } from "@/components/ui/file-upload"
+
+export function UploadDemo() {
+  return <FileUpload accept="image/*,.pdf" maxFiles={5} onFilesChange={files => console.log(files)} />
+}`,
+    props: [
+      {
+        name: "accept",
+        type: "string",
+        defaultValue: "—",
+        description:
+          "Comma-separated MIME types, wildcards or extensions. Validated for drops and file selection.",
+      },
+      {
+        name: "maxFiles",
+        type: "number",
+        defaultValue: "5",
+        description: "Maximum queue length.",
+      },
+      {
+        name: "maxSize",
+        type: "number",
+        defaultValue: "10485760",
+        description: "Maximum size per file in bytes.",
+      },
+      {
+        name: "onUpload",
+        type: "UploadHandler",
+        defaultValue: "—",
+        description:
+          "Async upload callback receiving the file, AbortSignal and onProgress percentage callback. Without it files stay queued.",
+      },
+      {
+        name: "onFilesChange",
+        type: "(files: File[]) => void",
+        defaultValue: "—",
+        description: "Receives the current queue after additions and removals.",
+      },
+    ],
+  },
+  {
+    slug: "stepper",
+    name: "Stepper",
+    description:
+      "Controlled step progress with completed, active, upcoming and error states in horizontal or vertical layouts.",
+    install: "stepper",
+    client: true,
+    code: `"use client"
+
+import { useState } from "react"
+import { Stepper } from "@/components/ui/stepper"
+
+export function Steps() {
+  const [step, setStep] = useState(1)
+  return <Stepper value={step} onValueChange={setStep} steps={[
+    { id: "details", title: "Details" },
+    { id: "team", title: "Team" },
+    { id: "finish", title: "Finish" },
+  ]} />
+}`,
+    props: [
+      {
+        name: "steps",
+        type: "StepperStep[]",
+        defaultValue: "—",
+        description:
+          "Stable ID, title, optional description and error for each step.",
+      },
+      {
+        name: "value",
+        type: "number",
+        defaultValue: "—",
+        description: "Zero-based active step index.",
+      },
+      {
+        name: "onValueChange",
+        type: "(step: number) => void",
+        defaultValue: "—",
+        description:
+          "Allows returning to the current or earlier steps. Validate forward movement in the parent form.",
+      },
+      {
+        name: "orientation",
+        type: '"horizontal" | "vertical"',
+        defaultValue: '"horizontal"',
+        description: "Layout direction.",
+      },
+    ],
+  },
+  {
+    slug: "tree-view",
+    name: "Tree View",
+    description:
+      "Hierarchical navigation with expansion, disabled nodes, selection and Arrow, Home, End, Enter and Space keyboard controls.",
+    install: "tree-view",
+    client: true,
+    code: `import { TreeView } from "@/components/ui/tree-view"
+
+<TreeView defaultExpanded={["src"]} nodes={[
+  { id: "src", name: "src", children: [
+    { id: "page", name: "page.tsx" },
+  ] },
+]} />`,
+    props: [
+      {
+        name: "nodes",
+        type: "TreeNode[]",
+        defaultValue: "—",
+        description:
+          "Nested nodes with unique IDs, names, children and optional disabled state.",
+      },
+      {
+        name: "value",
+        type: "string",
+        defaultValue: "—",
+        description:
+          "Controlled selected node ID; selection is internal when omitted.",
+      },
+      {
+        name: "onValueChange",
+        type: "(id: string) => void",
+        defaultValue: "—",
+        description: "Called on selection.",
+      },
+      {
+        name: "defaultExpanded",
+        type: "string[]",
+        defaultValue: "[]",
+        description: "Initially expanded node IDs.",
+      },
+    ],
+  },
+  {
+    slug: "data-table",
+    name: "Data Table",
+    description:
+      "A typed client-side table with numeric sorting, search, column visibility, row selection and pagination.",
+    install: "data-table",
+    client: true,
+    code: `"use client"
+
+import { DataTable } from "@/components/ui/data-table"
+
+<DataTable
+  label="Projects"
+  data={[{ id: "launch", name: "Launch website", budget: 8400 }]}
+  getRowId={row => row.id}
+  columns={[
+    { id: "name", header: "Project", value: row => row.name, hideable: false },
+    { id: "budget", header: "Budget", value: row => row.budget },
+  ]}
+/>`,
+    props: [
+      {
+        name: "data",
+        type: "T[]",
+        defaultValue: "—",
+        description:
+          "Client-side records. For very large datasets add a server pagination layer.",
+      },
+      {
+        name: "columns",
+        type: "DataColumn<T>[]",
+        defaultValue: "—",
+        description:
+          "ID, header, value accessor and optional custom cell, sortable and hideable flags.",
+      },
+      {
+        name: "getRowId",
+        type: "(row: T) => string",
+        defaultValue: "—",
+        description: "Stable unique row IDs for selection.",
+      },
+      {
+        name: "pageSize",
+        type: "number",
+        defaultValue: "5",
+        description: "Records per page.",
+      },
+      {
+        name: "onSelectionChange",
+        type: "(ids: string[]) => void",
+        defaultValue: "—",
+        description: "Receives selected row IDs.",
+      },
+    ],
+  },
+  {
     slug: "button",
     name: "Button",
     description:

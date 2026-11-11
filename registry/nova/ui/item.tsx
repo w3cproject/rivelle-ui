@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const itemVariants = cva(
-  "group/item relative flex w-full items-center gap-4 rounded-2xl border text-left outline-none transition-[background-color,border-color,box-shadow,transform] duration-200 focus-visible:ring-2 focus-visible:ring-ring/45 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-45",
+  "group/item relative flex w-full items-center gap-4 rounded-xl border text-left outline-none transition-[background-color,border-color,box-shadow] duration-150 focus-visible:ring-2 focus-visible:ring-ring/45 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-45",
   {
     variants: {
       variant: {
@@ -76,7 +76,7 @@ function ItemTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="item-title"
-      className={cn("text-sm font-semibold tracking-[-0.012em]", className)}
+      className={cn("text-sm font-medium", className)}
       {...props}
     />
   );

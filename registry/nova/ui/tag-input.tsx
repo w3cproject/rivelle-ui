@@ -44,7 +44,7 @@ function TagInput({
   disabled,
   readOnly,
   name,
-  placeholder = "Add a tag...",
+  placeholder = "Add a tag",
   onBlur,
   onKeyDown,
   onPaste,
@@ -122,7 +122,7 @@ function TagInput({
   return (
     <div
       className={cn(
-        "flex min-h-11.5 w-full flex-wrap items-center gap-1.5 rounded-xl border px-2.5 py-2 [background:var(--control-background)] [border-color:var(--control-border)] [box-shadow:var(--control-shadow)] transition-[border-color,box-shadow,background-color] duration-300 ease-[cubic-bezier(.16,1,.3,1)] hover:[background:var(--control-background-hover)] hover:[border-color:var(--control-border-hover)] hover:[box-shadow:var(--control-shadow-hover)] focus-within:[background:var(--control-background)] focus-within:[border-color:var(--control-focus-border)] focus-within:[box-shadow:var(--control-focus-shadow)] has-[[aria-invalid=true]]:![border-color:color-mix(in_oklch,var(--destructive)_55%,transparent)] has-[:disabled]:cursor-not-allowed has-[:disabled]:opacity-45",
+        "flex min-h-11 w-full flex-wrap items-center gap-1.5 rounded-lg border px-2.5 py-2 [background:var(--control-background)] [border-color:var(--control-border)] [box-shadow:var(--control-shadow)] transition-[border-color,box-shadow,background-color] duration-150 ease-[cubic-bezier(.22,1,.36,1)] hover:[background:var(--control-background-hover)] hover:[border-color:var(--control-border-hover)] focus-within:[background:var(--control-background)] focus-within:[border-color:var(--control-focus-border)] focus-within:[box-shadow:var(--control-focus-shadow)] has-[[aria-invalid=true]]:![border-color:color-mix(in_oklch,var(--destructive)_55%,transparent)] has-[:disabled]:cursor-not-allowed has-[:disabled]:opacity-45",
         className,
       )}
       data-disabled={disabled || undefined}
@@ -148,7 +148,7 @@ function TagInput({
       {tags.map((tag, index) => (
         <span
           className={cn(
-            "inline-flex h-7 max-w-full items-center gap-1 rounded-lg border border-primary/12 bg-primary/9 px-2.5 text-xs font-semibold text-primary shadow-[inset_0_1px_0_color-mix(in_oklch,var(--background)_55%,transparent)]",
+            "inline-flex h-7 max-w-full items-center gap-1 rounded-md border border-primary/12 bg-primary/9 px-2 text-xs font-medium text-primary",
             tagClassName,
           )}
           data-slot="tag-input-tag"
@@ -170,7 +170,7 @@ function TagInput({
       ))}
       <input
         className={cn(
-          "h-7 min-w-28 flex-1 bg-transparent px-1.5 text-sm font-medium text-foreground outline-none placeholder:font-normal placeholder:text-muted-foreground/70 disabled:cursor-not-allowed",
+          "h-7 min-w-28 flex-1 bg-transparent px-1.5 text-sm font-normal text-foreground outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed",
           inputClassName,
         )}
         data-slot="tag-input-control"

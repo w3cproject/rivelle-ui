@@ -38,9 +38,9 @@ export type ThemeSettings = {
 };
 export const defaultTheme: ThemeSettings = {
   neutral: "neutral",
-  accent: "indigo",
+  accent: "blue",
   font: "geist",
-  radius: "0.625rem",
+  radius: "0.5rem",
   style: "nova",
   mode: "dark",
 };
@@ -54,7 +54,7 @@ export function createThemeTokens(
   const style = settings.style ?? "nova";
   const tone = (lightness: number, multiplier = 1) =>
     `oklch(${lightness} ${Number((neutral.chroma * multiplier).toFixed(3))} ${neutral.hue})`;
-  const primary = `oklch(${dark ? 0.7 : 0.54} ${Number((accent.chroma * (dark ? 0.78 : 1)).toFixed(4))} ${accent.hue})`;
+  const primary = `oklch(${dark ? 0.7 : 0.56} ${Number((accent.chroma * (dark ? 0.76 : 1)).toFixed(4))} ${accent.hue})`;
   const prismPrimary = `oklch(${dark ? 0.72 : 0.57} ${Number((accent.chroma * (dark ? 0.9 : 1.08)).toFixed(4))} ${accent.hue})`;
   const activePrimary = style === "prism" ? prismPrimary : primary;
   const common = {
@@ -181,11 +181,11 @@ export function createThemeTokens(
         };
   return dark
     ? {
-        background: tone(0.15, 1.3),
+        background: tone(0.135, 1.2),
         foreground: tone(0.96, 0.5),
-        card: tone(0.19, 1.4),
+        card: tone(0.17, 1.3),
         "card-foreground": tone(0.96, 0.5),
-        popover: tone(0.19, 1.4),
+        popover: tone(0.18, 1.3),
         "popover-foreground": tone(0.96, 0.5),
         ...common,
         "primary-foreground": tone(0.16, 1.5),
@@ -195,8 +195,8 @@ export function createThemeTokens(
         "muted-foreground": tone(0.69, 1),
         accent: tone(0.28, 1.8),
         "accent-foreground": tone(0.94, 0.6),
-        border: "oklch(1 0 0 / 12%)",
-        input: "oklch(1 0 0 / 14%)",
+        border: "oklch(1 0 0 / 9%)",
+        input: "oklch(1 0 0 / 12%)",
         sidebar: tone(0.18, 1.35),
         "sidebar-foreground": tone(0.96, 0.5),
         "sidebar-primary": activePrimary,
@@ -210,9 +210,9 @@ export function createThemeTokens(
         "action-background-hover":
           "color-mix(in oklch,var(--foreground) 92%,transparent)",
         "action-shadow":
-          "0 1px 0 color-mix(in oklch,var(--background) 28%,transparent), 0 8px 24px -14px var(--foreground)",
+          "0 1px 2px color-mix(in oklch,var(--foreground) 12%,transparent)",
         "action-shadow-hover":
-          "0 1px 0 color-mix(in oklch,var(--background) 32%,transparent), 0 14px 30px -16px var(--foreground)",
+          "0 1px 2px color-mix(in oklch,var(--foreground) 16%,transparent)",
         "control-background":
           "color-mix(in oklch,var(--foreground) 4.5%,transparent)",
         "control-background-hover":
@@ -223,19 +223,19 @@ export function createThemeTokens(
         "control-focus-border":
           "color-mix(in oklch,var(--foreground) 14%,transparent)",
         "control-shadow":
-          "inset 0 1px 0 color-mix(in oklch,var(--background) 72%,transparent), inset 0 -1px 0 color-mix(in oklch,var(--foreground) 7%,transparent)",
+          "inset 0 1px 0 color-mix(in oklch,var(--background) 72%,transparent)",
         "control-shadow-hover":
-          "inset 0 1px 0 color-mix(in oklch,var(--background) 72%,transparent), inset 0 -1px 0 color-mix(in oklch,var(--foreground) 9%,transparent)",
+          "inset 0 1px 0 color-mix(in oklch,var(--background) 78%,transparent)",
         "control-focus-shadow":
-          "inset 0 -2px 0 var(--primary), 0 14px 34px -24px var(--foreground)",
+          "0 0 0 3px color-mix(in oklch,var(--primary) 13%,transparent)",
         "surface-background":
           "color-mix(in oklch,var(--foreground) 2.5%,transparent)",
         "surface-border":
           "color-mix(in oklch,var(--foreground) 10%,transparent)",
         "surface-shadow":
-          "inset 0 1px 0 color-mix(in oklch,var(--background) 72%,transparent), 0 18px 50px -38px var(--foreground)",
+          "0 1px 2px color-mix(in oklch,var(--foreground) 6%,transparent)",
         "surface-shadow-hover":
-          "inset 0 1px 0 color-mix(in oklch,var(--background) 76%,transparent), 0 24px 60px -38px var(--foreground)",
+          "0 1px 3px color-mix(in oklch,var(--foreground) 8%,transparent)",
       }
     : {
         background: tone(0.985, 0.35),
@@ -267,9 +267,9 @@ export function createThemeTokens(
         "action-background-hover":
           "color-mix(in oklch,var(--foreground) 92%,transparent)",
         "action-shadow":
-          "0 1px 0 color-mix(in oklch,var(--background) 28%,transparent), 0 8px 24px -14px var(--foreground)",
+          "0 1px 2px color-mix(in oklch,var(--foreground) 12%,transparent)",
         "action-shadow-hover":
-          "0 1px 0 color-mix(in oklch,var(--background) 32%,transparent), 0 14px 30px -16px var(--foreground)",
+          "0 1px 2px color-mix(in oklch,var(--foreground) 16%,transparent)",
         "control-background":
           "color-mix(in oklch,var(--foreground) 4.5%,transparent)",
         "control-background-hover":
@@ -280,19 +280,19 @@ export function createThemeTokens(
         "control-focus-border":
           "color-mix(in oklch,var(--foreground) 14%,transparent)",
         "control-shadow":
-          "inset 0 1px 0 color-mix(in oklch,var(--background) 72%,transparent), inset 0 -1px 0 color-mix(in oklch,var(--foreground) 7%,transparent)",
+          "inset 0 1px 0 color-mix(in oklch,var(--background) 72%,transparent)",
         "control-shadow-hover":
-          "inset 0 1px 0 color-mix(in oklch,var(--background) 72%,transparent), inset 0 -1px 0 color-mix(in oklch,var(--foreground) 9%,transparent)",
+          "inset 0 1px 0 color-mix(in oklch,var(--background) 78%,transparent)",
         "control-focus-shadow":
-          "inset 0 -2px 0 var(--primary), 0 14px 34px -24px var(--foreground)",
+          "0 0 0 3px color-mix(in oklch,var(--primary) 13%,transparent)",
         "surface-background":
           "color-mix(in oklch,var(--foreground) 2.5%,transparent)",
         "surface-border":
           "color-mix(in oklch,var(--foreground) 10%,transparent)",
         "surface-shadow":
-          "inset 0 1px 0 color-mix(in oklch,var(--background) 72%,transparent), 0 18px 50px -38px var(--foreground)",
+          "0 1px 2px color-mix(in oklch,var(--foreground) 6%,transparent)",
         "surface-shadow-hover":
-          "inset 0 1px 0 color-mix(in oklch,var(--background) 76%,transparent), 0 24px 60px -38px var(--foreground)",
+          "0 1px 3px color-mix(in oklch,var(--foreground) 8%,transparent)",
       };
 }
 

@@ -2,27 +2,31 @@ import { Blocks } from "lucide-react";
 
 import { BlocksGallery } from "@/components/blocks-gallery";
 import { StyleSwitch } from "@/components/style-preview";
-import { Badge } from "@/components/ui/badge";
+import { blockDocs } from "@/lib/block-docs";
 
 export default function BlocksPage() {
   return (
-    <main className="mx-auto max-w-[1600px] px-5 py-14 sm:px-8 sm:py-20">
-      <div className="max-w-3xl">
-        <Badge variant="outline">
-          <Blocks /> Application blocks
-        </Badge>
-        <h1 className="mt-6 text-5xl font-semibold tracking-[-.055em] sm:text-7xl">
-          Start with more than a blank page.
-        </h1>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          Production-minded compositions built from Rivelle primitives. Install
-          the source, connect your data and make every detail yours.
+    <main className="mx-auto max-w-[1600px] px-5 py-16 sm:px-8 sm:py-24">
+      <div className="grid gap-8 border-b border-border pb-14 lg:grid-cols-[minmax(0,1fr)_28rem] lg:items-end">
+        <div className="max-w-3xl">
+          <p className="section-kicker">
+            <Blocks /> Application blocks
+          </p>
+          <h1 className="mt-6 text-5xl font-medium tracking-[-.03em] sm:text-7xl">
+            Working product flows, ready to adapt.
+          </h1>
+        </div>
+        <p className="text-base leading-7 text-muted-foreground">
+          Authentication, settings, dashboards and marketing sections composed
+          from Rivelle primitives. Install the source and connect your own data.
         </p>
       </div>
-      <StyleSwitch
-        className="block-gallery-style-switch mt-12"
-        label="Gallery style"
-      />
+      <div className="mt-10 flex items-end justify-between gap-6">
+        <p className="font-mono text-xs text-muted-foreground">
+          {blockDocs.length} installable blocks
+        </p>
+        <StyleSwitch label="Gallery style" />
+      </div>
       <BlocksGallery />
     </main>
   );

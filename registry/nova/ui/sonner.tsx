@@ -17,8 +17,8 @@ function Toaster({ ...props }: ToasterProps) {
       }}
       toastOptions={{
         classNames: {
-          toast: "group toast rounded-2xl! border-foreground/12! bg-background/94! text-foreground! shadow-[0_24px_70px_-24px_color-mix(in_oklch,var(--foreground)_34%,transparent),inset_0_1px_0_color-mix(in_oklch,var(--background)_70%,transparent)]! backdrop-blur-xl!",
-          title: "font-semibold! tracking-[-0.012em]!",
+          toast: "group toast rounded-xl! border-foreground/10! bg-background! text-foreground! shadow-lg!",
+          title: "font-medium!",
           description: "text-muted-foreground!",
           actionButton: "rounded-lg! bg-primary! text-primary-foreground!",
           cancelButton: "rounded-lg! bg-muted! text-muted-foreground!",

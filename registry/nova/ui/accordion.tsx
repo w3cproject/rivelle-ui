@@ -24,7 +24,7 @@ function AccordionTrigger({ className, children, ...props }: React.ComponentProp
         {...props}
       >
         {children}
-        <ChevronDown className="size-4 shrink-0 text-muted-foreground transition-transform duration-300 ease-[cubic-bezier(.16,1,.3,1)] group-hover:text-primary" />
+        <ChevronDown className="size-4 shrink-0 text-muted-foreground transition-transform duration-150 ease-[cubic-bezier(.22,1,.36,1)] group-hover:text-foreground" />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   )

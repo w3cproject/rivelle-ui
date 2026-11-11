@@ -84,7 +84,7 @@ function Signup01({ className, ...props }: React.ComponentProps<"section">) {
           </h2>
           <div className="mt-9 space-y-5">
             {[
-              "53 editable UI primitives",
+              "Editable UI primitives",
               "Production-ready application blocks",
               "Server-first Next.js architecture",
             ].map((item) => (

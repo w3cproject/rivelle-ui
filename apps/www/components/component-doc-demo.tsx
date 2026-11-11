@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ExpansionComponentDemo } from "@/components/expansion-demos";
 import { useForm } from "react-hook-form";
 import {
   AlertCircle,
@@ -12,8 +13,9 @@ import {
   Italic,
   Mail,
   MoreHorizontal,
+  PackageOpen,
+  PanelLeft,
   Settings,
-  Sparkles,
   Trash2,
   Underline,
 } from "lucide-react";
@@ -293,12 +295,14 @@ function FormPreview() {
 export function ComponentDocDemo({ slug }: { slug: string }) {
   return (
     <StylePreview
+      previewSrc={`/preview/component/${slug}`}
       canvasClassName="docs-demo-canvas showcase-grid"
       className={cn(
         "docs-demo",
         slug === "navigation-menu" && "docs-demo-navigation-menu",
       )}
     >
+      <ExpansionComponentDemo slug={slug} />
       {slug === "button" && (
         <div className="flex max-w-xl flex-wrap items-center justify-center gap-3">
           <Button>
@@ -317,9 +321,7 @@ export function ComponentDocDemo({ slug }: { slug: string }) {
       )}
       {slug === "badge" && (
         <div className="flex flex-wrap justify-center gap-3">
-          <Badge>
-            <Sparkles /> New
-          </Badge>
+          <Badge>New</Badge>
           <Badge variant="secondary">In progress</Badge>
           <Badge variant="success">
             <Check /> Ready
@@ -331,7 +333,7 @@ export function ComponentDocDemo({ slug }: { slug: string }) {
         <div className="w-full max-w-sm space-y-5">
           <div className="grid gap-2">
             <Label
-              className="text-xs font-semibold tracking-[0.08em] text-muted-foreground uppercase"
+              className="text-xs font-medium text-muted-foreground"
               htmlFor="rivelle-prism-email"
             >
               Prism surface
@@ -348,7 +350,7 @@ export function ComponentDocDemo({ slug }: { slug: string }) {
           </div>
           <div className="grid gap-2">
             <Label
-              className="text-xs font-semibold tracking-[0.08em] text-muted-foreground uppercase"
+              className="text-xs font-medium text-muted-foreground"
               htmlFor="rivelle-email"
             >
               Work email
@@ -364,7 +366,7 @@ export function ComponentDocDemo({ slug }: { slug: string }) {
           </div>
           <div className="grid gap-2">
             <Label
-              className="text-xs font-semibold tracking-[0.08em] text-muted-foreground uppercase"
+              className="text-xs font-medium text-muted-foreground"
               htmlFor="rivelle-invalid"
             >
               Validation
@@ -1137,12 +1139,12 @@ export function ComponentDocDemo({ slug }: { slug: string }) {
           <CarouselContent>
             {["Foundations", "Components", "Blocks"].map((title, index) => (
               <CarouselItem className="basis-[86%] sm:basis-2/3" key={title}>
-                <div className="grid h-56 content-between overflow-hidden rounded-3xl border border-foreground/10 bg-[radial-gradient(circle_at_top_right,color-mix(in_oklch,var(--primary)_20%,transparent),transparent_48%),var(--background)] p-6 shadow-[inset_0_1px_0_color-mix(in_oklch,var(--background)_75%,transparent)]">
+                <div className="grid h-56 content-between overflow-hidden rounded-xl border border-foreground/10 bg-background p-6">
                   <Badge className="w-fit" variant="secondary">
                     0{index + 1}
                   </Badge>
                   <div>
-                    <h3 className="text-2xl font-semibold tracking-tight">
+                    <h3 className="text-2xl font-medium tracking-[-0.015em]">
                       {title}
                     </h3>
                     <p className="mt-2 text-sm text-muted-foreground">
@@ -1158,16 +1160,16 @@ export function ComponentDocDemo({ slug }: { slug: string }) {
         </Carousel>
       )}
       {slug === "resizable" && (
-        <div className="h-64 w-full max-w-2xl overflow-hidden rounded-3xl border border-foreground/10 bg-background">
+        <div className="h-64 w-full max-w-2xl overflow-hidden rounded-xl border border-foreground/10 bg-background">
           <ResizablePanelGroup direction="horizontal">
             <ResizablePanel defaultSize={34} minSize={22}>
               <div className="flex h-full flex-col gap-2 bg-foreground/[.025] p-5">
-                <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                <span className="text-xs font-medium text-muted-foreground">
                   Workspace
                 </span>
                 {["Components", "Blocks", "Themes"].map((label) => (
                   <div
-                    className="rounded-xl px-3 py-2 text-sm font-medium first:bg-primary/10 first:text-primary"
+                    className="rounded-md px-3 py-2 text-sm font-medium first:bg-primary/10 first:text-primary"
                     key={label}
                   >
                     {label}
@@ -1179,8 +1181,8 @@ export function ComponentDocDemo({ slug }: { slug: string }) {
             <ResizablePanel defaultSize={66}>
               <div className="grid h-full place-items-center p-6 text-center">
                 <div>
-                  <Sparkles className="mx-auto mb-3 size-6 text-primary" />
-                  <p className="font-semibold">Drag the handle</p>
+                  <PanelLeft className="mx-auto mb-3 size-6 text-primary" />
+                  <p className="font-medium">Drag the handle</p>
                   <p className="mt-1 text-sm text-muted-foreground">
                     Resize both panels with pointer or keyboard.
                   </p>
@@ -1242,7 +1244,7 @@ export function ComponentDocDemo({ slug }: { slug: string }) {
         <ItemGroup className="w-full max-w-xl">
           <Item variant="outline">
             <ItemMedia variant="icon">
-              <Sparkles />
+              <PackageOpen />
             </ItemMedia>
             <ItemContent>
               <ItemTitle>Component registry</ItemTitle>

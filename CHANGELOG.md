@@ -4,6 +4,18 @@ All notable changes to Rivelle will be documented here. The project follows Sema
 
 ## [Unreleased]
 
+### Added
+
+- Six independent effects: Scroll Stage, Pixel Displacement, Morphing Surface, Image Trail, Elastic Dock and Rolling Number.
+- File Upload with validated queues and upload callbacks, Stepper, keyboard Tree View and a typed client-side Data Table.
+- Onboarding, Billing Settings, Activity Feed, File Manager and Command Center blocks.
+- Workspace, Product Launch and provider-independent AI Chat Workspace templates with interactive local demo flows.
+- Isolated preview routes, responsive viewport controls, full-screen mode, animation replay and reduced-motion controls.
+
+### Changed
+
+- Preparing the 0.6.0 release with a refreshed site, documentation and component styles.
+
 ## [0.5.0] - 2026-07-18
 
 ### Added

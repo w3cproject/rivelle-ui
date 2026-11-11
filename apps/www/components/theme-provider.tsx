@@ -31,6 +31,7 @@ const defaults: RuntimeTheme = {
 };
 const ThemeContext = React.createContext<{
   settings: RuntimeTheme;
+  ready: boolean;
   update: <K extends keyof RuntimeTheme>(
     key: K,
     value: RuntimeTheme[K],
@@ -109,11 +110,12 @@ export function RivelleThemeProvider({
   const value = React.useMemo(
     () => ({
       settings,
+      ready: hydrated,
       update: <K extends keyof RuntimeTheme>(key: K, next: RuntimeTheme[K]) =>
         setSettings((current) => ({ ...current, [key]: next })),
       reset: () => setSettings(defaults),
     }),
-    [settings],
+    [settings, hydrated],
   );
 
   return (
